@@ -1,0 +1,17 @@
+AddDefaultCharset UTF-8
+AddType application/pdf .pdf
+
+RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^terraconsciencia\.com$ [OR]
+#RewriteCond %{HTTP_HOST} ^www\.terraconsciencia\.com$
+RewriteRule ^/?$ "http://localhost/terraco/SinLogin.php" [R=301,L]
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
+
+#php_value upload_max_filesize 50M
+#php_value post_max_size 50M

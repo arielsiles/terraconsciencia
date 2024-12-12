@@ -1,0 +1,275 @@
+*{
+    color:rgb(255, 255, 255);
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Belanosima', sans-serif;
+}
+input{
+    color:black;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+button{
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+h1{
+    color: black;
+}
+p{
+    color: black;
+}
+a{
+    color: black;
+}
+.edicionAdm{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: #65e06f;
+    position: fixed;
+    right: 10px;
+    top: 675px;
+    z-index: 50;
+}
+.edicionAdm i{
+    color: black;
+    font-size: 30px;
+}
+.edicionAdm:hover{
+    transform: scale(1.03);
+}
+/*Navegador*/
+.portada{
+    width: 100%;
+    height: 130px;
+    background-color: rgb(95, 187, 150);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.l1{
+    background-image: url(../IMG/IMAGOTIPO1.png);
+    width: 30%;
+    height: 120px;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50px;
+}
+.l2{
+    width: 30%;
+    height: 120px;
+    position: absolute;
+    right: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+/*Navegador*/
+.navegador{
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top:0px;
+}
+.contNav{
+    width: 70%;
+    height: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0%;
+}
+.boton {
+    width: 18%;
+    height: 100%;
+    border-radius: 0px 0px 40px 40px;
+    text-align: center;
+    font-size: 24px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    position: relative;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, .2));
+    display: block;
+}
+.boton:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+.boton:active {
+    transform: scale(0.95);
+}
+/*Desplazable Cuenta*/
+.desp{
+    display: none;
+    width: 199px;
+    height: 210px;
+    position: absolute;
+    z-index: 1;
+    background:#DCD2C6;
+    top: 50px;
+    right: 210px;
+    border-radius: 30px;
+    text-align: center;
+    transition: 2s;
+    overflow: hidden;
+}
+
+.desp p{
+    color:black;
+} 
+
+.cierra{
+    width: 199px;
+    height: 51px;
+    position: absolute;
+    background: none;
+    z-index: -1;
+    top: 0px;
+    right: 214px;
+    border-radius: 0px 0px 40px 40px;
+}
+.btnCtDesp{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: #838383 solid 1px;
+    cursor: pointer;
+}
+.btnCtDesp i{
+    font-size: 25px;
+    margin-right: 10px;
+}
+.btnCtDesp p{
+    font-size: 18px;
+}
+.btnCtDesp:hover i{
+    color: #65e06f;
+}
+.btnCtDesp:hover p{
+    color: #65e06f;
+}
+/*Confirmacion*/
+.confir{
+    width: 100%;
+    height: 1110px;
+    position: absolute;
+    background:#000000af;
+    z-index: 100;
+    display: none;
+}
+.vent{
+    width: 30%;
+    height: 40%;
+    background:#DCD2C6;
+    border-radius: 20px;
+    position: fixed;
+    left: 34%;
+    top: 29%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.vent p{
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+}
+.botonesCf{
+    width: 265px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.btnConf{
+    font-size: 26px;
+    padding-top: 10px;
+    display: block;
+    width: 80px;
+    height: 50px;
+    background: #006666;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.btnConf:hover{
+    border: #fff dashed 1px;
+    background: #65e06f;
+}
+/*Cuerpo*/
+.cuerpo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+}
+.descripcion{
+    width: 1120px;
+    height: auto;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+.noticiaCompleta{
+    width: 1120px;
+    height: auto;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+/*Pie*/
+.pie{
+    width: 100%;
+    height: 130px;
+    background-color: rgb(95, 187, 150);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    display:flex;
+    justify-content: end;
+}
+.info{
+    color: #ffffff;
+    width:80%;
+    height: 130px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.ct{
+    list-style:disc;
+}
+.contacto{
+    border-left: white 1px ;
+    display: flex;
+    height: 130px;
+    width: 20%;
+    align-items: center;
+    justify-content: space-around;
+}

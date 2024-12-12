@@ -1,0 +1,112 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.background {
+	height: 100vh;
+	width: 100vw;
+	background: radial-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('images/background-img.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.bird {
+	height: 40px;
+	width: 50px;
+	position: fixed;
+	top: 40vh;
+	left: 30vw;
+	z-index: 100;
+}
+.pipe_sprite {
+	position: fixed;
+	top: 40vh;
+	left: 100vw;
+	height: 70vh;
+	width: 6vw;
+	background:radial-gradient(lightgreen 50%, green);
+	border: 5px solid black;
+}
+.message {
+	position: absolute;
+	z-index: 10;
+	color: black;
+	top: 30%;
+	left: 50%;
+	font-size: 35px;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+.messageStyle{
+	background: white;
+	padding: 30px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	border-radius: 5%;
+}
+.score {
+	border-radius: 20px;
+	padding: auto;
+	position: fixed;
+	z-index: 10;
+	height: 10vh;
+	font-size: 50px;
+	font-weight: 100;
+	color: rgb(255, 255, 255);
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+	top: 0;
+	left: 0;
+	margin: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.score_val {
+	color: gold;
+	font-weight: bold;
+}
+
+.botonVolver{
+	margin: 5% 0% 5% 0%;
+	display: block;
+	width: 300px;
+	height: 50px;
+	border-radius: 20px;
+    border-style:solid;
+    border-color:white;
+	background-color: rgb(71, 94, 94);
+	color: rgb(255, 255, 255);
+	transition: background-color 0.3s;
+	font-size: 25px;
+	cursor: pointer;
+	text-shadow: none;
+	-webkit-text-stroke-width: 0px;
+}
+
+.botonVolver:hover{
+	background-color: rgb(31, 28, 28);
+}
+
+.botonVolver p{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+@media only screen and (max-width: 1080px) {
+    .message{
+		font-size: 50px;
+		top: 50%;
+		white-space: nowrap;
+	}
+	.score{
+		font-size: 8vh;
+	}
+	.bird{
+		width: 120px;
+		height: 90px;
+	}
+	.pipe_sprite{
+		width: 14vw;
+	}
+}

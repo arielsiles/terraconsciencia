@@ -1,0 +1,251 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Happy Monkey', cursive;
+}
+
+.contenido{
+    background-image: linear-gradient(rgba(255, 253, 253, 0.5),rgba(255, 253, 253, 0.5)), url(../IMG/op1.png);
+    height: 1920px;
+    background-size: cover;
+    background-attachment: fixed;
+    position: static;
+    text-align: center;
+    size: cover;
+    height: 1300px;
+}
+
+
+.esp{
+    opacity: 0;
+}
+
+
+.titulo{
+    color: rgb(117, 146, 146);
+    font-size: 60px;
+    margin-left:20%;
+    margin-right:20%;
+    padding-top:20px;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: rgba(229, 254, 243, 0.9);
+    border-radius: 80px;
+    border-style:dashed;
+    border-color:rgb(35, 138, 138);
+}
+
+.titulo h1{
+    color: rgb(117, 146, 146);
+    font-size: 70px;
+}
+
+.titulo h2{
+    color: rgb(117, 146, 146);
+    font-size: 50px;
+}
+
+.contenidoGen{
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 60px;
+    display:flex;
+    background-color: #759292;
+    align-items: center;
+    border-radius: 40px;
+    color: white;
+}
+
+.contenido_leght{
+    size: 50%;
+    margin: 0 7px 7px 7px;
+    width: 800px;
+    height: 600px;
+}
+.contenido_leght h2{
+    font-size: 25px;
+}
+
+.contenido_leght video{
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.contenido_right{
+    size: 40%;
+    margin: 0 7px 30px 0px;
+    padding-bottom: 5px;
+    width: 600px;
+    height: 500px;
+    background-color: #e5a357b3;
+    border-radius: 30px;
+    align-items: center;
+    text-align: center;
+    color:rgb(54, 73, 73);
+}
+
+.contenido_right h2{
+    padding-top: 30px;
+    color: rgb(54, 73, 73);
+}
+
+.calText{
+    padding-top: 30px;
+    margin-bottom: 5px;
+    color:rgb(54, 73, 73);
+}
+
+
+.boton1{
+    align-items: center;
+    margin-top: 70px;
+    text-decoration: none;
+    display:inline-block;
+    width:50%;
+    padding:20px;
+    border: 3px solid #759292;
+    border-radius:50px;
+    text-decoration: none;
+    color:#759292;
+    font-weight: bold;
+    transition: all 0.9s;
+    text-align: center;
+    font-size: 50px;
+    background-color: rgb(255, 255, 255, 0.8);
+  }
+
+  .boton1:hover{
+    background-color: #759292;
+    color:white;
+  }
+
+
+@media only screen and (max-width : 915px) {
+    .contenido{
+        background-color: rgb(62, 122, 102);
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        size: cover;
+        height: 920px;
+    }
+
+    .titulo{
+        padding-top: 30px;
+        padding-bottom: 20px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        border-bottom: 5px black;
+        border-style: dotted;
+    }
+    
+    .titulo h1{
+        background-color: blueviolet;
+        font-size: 25px;
+        border-radius: 30px;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-bottom: 15px;
+        border-style: dashed;
+        border-width: 5px 5px 5px 5px;
+        border-color: black;
+        box-shadow: 0 0 15px 5px rgb(255, 255, 255);
+    }
+
+    .contenido1{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: rgb(67, 82, 82);
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 20%;
+        margin-right: 20%;
+        border-radius: 30px;
+        height: 300px;
+        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
+        overflow-y: scroll;
+    }
+
+    .contenido2{
+        padding-top: 10px;
+        padding-bottom: 40px;
+        background-color: rgb(174, 223, 178);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 20%;
+        margin-right: 20%;
+        border-radius: 30px;
+        height: 300px;
+        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
+        overflow-y: scroll;
+    }
+    
+}
+
+@media only screen and (max-width : 1300px) and (min-width : 715px) {
+    .contenido{
+        background-color: rgb(62, 122, 102);
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        size: cover;
+        height: 950px;
+    }
+
+    .titulo{
+        padding-top: 30px;
+        padding-bottom: 20px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        border-bottom: 5px black;
+        border-style: dotted;
+    }
+    
+    .titulo h1{
+        background-color: blueviolet;
+        font-size: 45px;
+        border-radius: 30px;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-bottom: 15px;
+        border-style: dashed;
+        border-width: 5px 5px 5px 5px;
+        border-color: black;
+        box-shadow: 0 0 15px 5px rgb(255, 255, 255);
+    }
+
+    .contenido1{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: rgb(67, 82, 82);
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 20%;
+        margin-right: 20%;
+        border-radius: 30px;
+        height: 300px;
+        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
+        overflow-y: scroll;
+    }
+    
+    .contenido2{
+        padding-top: 10px;
+        padding-bottom: 40px;
+        background-color: rgb(174, 223, 178);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 20%;
+        margin-right: 20%;
+        border-radius: 30px;
+        height: 300px;
+        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
+        overflow-y: scroll;
+    }
+    
+}

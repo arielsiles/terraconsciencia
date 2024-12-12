@@ -1,0 +1,246 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Belanosima', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/*Popups*/
+.popups{
+    width: 1000px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(-45deg,rgba(0, 217, 255, 0.856),rgb(0, 217, 255),rgb(16, 239, 255));
+    border-radius: 10px;
+    position: relative;
+}
+.modal{
+    width: 88%;
+}
+.contenedor{
+    height: 180vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.pantalla{
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: aqua;
+    overflow: hidden;
+}
+/*Portada*/
+.main{
+    width: 70%;
+    height: 100%;
+    position: relative;
+}
+.main:hover{
+    transform: scale(1.01);
+}
+.botonPortada{
+    width: 50px;
+    height: 50px;
+    background: rgb(0, 255, 106);
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 2px;
+    right: 2px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.botonPortada:hover{
+    background: rgb(0, 119, 255);
+}
+/*Lado*/
+.lado{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.caja{
+    width: 99%;
+    height: 30%;
+    background: rgb(140, 0, 255);
+    position: relative;
+}
+.caja:hover{
+    transform: scale(1.01);
+}
+.botonCaja{
+    width: 30px;
+    height: 30px;
+    background: rgb(0, 255, 106);
+    border-radius: 8px;
+    position: absolute;
+    cursor: pointer;
+    top: 1px;
+    right: 1px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+.botonCaja:hover{
+    background: rgb(0, 195, 255);
+}
+.return{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 255, 21);
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.return:hover{
+    transform: scale(1.03);
+}/*Noticias*/
+.subida{
+    height: 650px;
+    width: 750px;
+    background: linear-gradient(-45deg,rgb(67, 235, 235),rgb(0, 217, 255),rgb(20, 247, 255));
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.reelevante{
+    height: 150px;
+    width: 350px;
+    background: rgb(177, 38, 38);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.contenedorNt{
+    height: 200vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.btnSubir{
+    height: 30px;
+    width: 180px;
+    background-color: rgb(54, 255, 144);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btnSubir:hover{
+    transform: scale(1.02);
+}
+/*Publicacion*/
+.contenedorPb{
+    width: 100%;
+    height: 300vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.envioPb{
+    background: linear-gradient(-45deg,rgb(136, 255, 0),rgb(157, 255, 0),rgb(200, 255, 0));
+    width: 50%;
+    height: 25%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.form{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+/*Juegos*/
+.contenedorJgs{
+    width: 100%;
+    height: 400vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.envioTest{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.envioTest input{
+    width: 70%;
+}
+/*Trivias*/
+.contenedorTr{
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+/*J1*/
+.contenedorCrt{
+    width: 100%;
+    height: 450vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; 
+}
+/*J3*/
+.contenedorFV{
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; 
+}
+/*J5*/
+.contenedorSeleccion{
+    width: 100%;
+    height: 700vh;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; 
+}
+.contenedorSel1{
+    width: 100%;
+    background-color: blue;
+}
+.contenedorSel2{
+    width: 100%;
+    background-color: red;
+}

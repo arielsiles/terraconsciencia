@@ -1,0 +1,142 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Happy Monkey', cursive;
+    
+}
+
+.esp{
+    opacity: 0;
+}
+
+.fondo{
+    background-image: linear-gradient(rgba(237, 237, 237, 0.4),rgba(237, 237, 237, 0.4)), url(../IMG/op2.png);
+    background-size: cover;
+    background-attachment: fixed;
+    position: static;
+}
+
+.tituloPrinc{
+    color: rgb(117, 146, 146);
+    font-size: 60px;
+    margin-left:20%;
+    margin-right:20%;
+    padding-top:20px;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 80px;
+    border-style:dashed;
+    border-color:rgb(35, 138, 138);
+}
+.titulo h2{
+    padding-left: 20%;
+    color: rgb(62, 62, 62);
+    padding-right: 20%;
+    text-align: center;
+}
+
+.formulario{
+    padding-top:80px;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.preg{
+    padding:40px;
+    border-radius: 20px;
+    background-color:rgba(182, 248, 255, 0.4);
+}
+
+.preg h1{
+    background-color: rgb(248, 255, 254);
+    border-radius: 20px;
+    border-style:double;
+    border-color: rgb(57, 65, 101);
+    color:rgb(41, 127, 99);
+    text-align: center;
+    font-size: 30px;
+}
+.pregunta1, .pregunta2, .pregunta3, .pregunta4, .pregunta5, .pregunta6, .pregunta7, .pregunta8, .pregunta9, .pregunta10{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: rgb(228, 250, 237);
+    border-radius: 70px;
+    color:rgb(5, 7, 7);
+}
+
+
+.pregunta1 label, .pregunta2 label, .pregunta3 label, .pregunta4 label, .pregunta5 label, .pregunta6 label, .pregunta7 label, .pregunta8 label{
+    padding-left: 25%;
+    font-size: 20px;
+
+}
+
+.pregunta9 label{
+    padding-left: 30%;
+    font-size: 30px;
+    text-align: center;
+}
+
+.pregunta10 label{
+    padding-left: 40px;
+    font-size: 23px;
+}
+
+
+.botonCal{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.botonCal button{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    margin-bottom: 40px;
+    padding: 5px;
+}
+
+.botonCal p{
+    margin-top: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 30px;
+    color:rgb(0, 0, 0);
+    background-color:#C66057;
+    border-radius: 20px;
+}
+
+.botonSig{
+    align-items: center;
+    text-align: center;
+}
+
+.boton1{
+    text-align: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 50PX;
+    text-decoration: none;
+    display:inline-block;
+    width:50%;
+    padding:20px;
+    border: 3px solid #759292;
+    border-radius:50px;
+    text-decoration: none;
+    color:#759292;
+    font-weight: bold;
+    transition: all 0.9s;
+    text-align: center;
+    font-size: 30px;
+    background-color: rgb(255, 255, 255, 0.8);
+  }
+
+  .boton1:hover{
+    background-color: #759292;
+    color:white;
+  }
+
