@@ -3,6 +3,7 @@
     require "./PHP/popups.php";
     require './PHP/direcciones.php';
     session_start();
+    $config = include('./PHP/config.php');
 
     if(isset($_SESSION['usuario'])){
         header("location: ConLogin.php");
@@ -73,11 +74,11 @@
                         <h2 class="titulo">INICIAR SESIÓN</h2>
                         <div class="entradas">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Nombre de usuario" name="nombre_usuario" id="">
+                            <input type="text" placeholder="Nombre de usuario" name="nombre_usuario" id="" value="<?php echo htmlspecialchars($config['default_user']); ?>">
                         </div>
                         <div class="entradas">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Contraseña" name="clave" id="">
+                            <input type="password" placeholder="Contraseña" name="clave" id="" value="<?php echo htmlspecialchars($config['default_password']); ?>">
                         </div>
                         <input type="submit" name="" value="Iniciar Sesion" class="btnlg">
                         <p class="ctText">¿NO TIENES CUENTA?<a href="#" id="registro2">REGISTRARSE</a></p>

@@ -12,7 +12,7 @@
         // Generar nombres únicos para los archivos
         //$timestamp = date('Ymd_His'); // Fecha y hora en formato YYYYMMDD_HHMMSS
         $imageExtension = getFileExtension($imageUrl);
-        $pdfExtension = getFileExtension($pdfFileName);
+        $pdfExtension   = getFileExtension($pdfFileName);
 
         $uniqueImageName = date('Ymd_His') . '_' . uniqid() . '.' . $imageExtension;
         $uniquePdfName   = date('Ymd_His') . '_' . uniqid() . '.' . $pdfExtension;
@@ -21,21 +21,7 @@
         $rutaPdf = "../PDF/" . $uniquePdfName;
         $rutaImage = "../IMGUP/" . $uniqueImageName;
 
-
-        //$rutaPdf = "../PDF";
-        //$rutaPdf = $rutaPdf . "/" . $pdfFileName;
-        
-        //$ruta = "../IMGUP";
-        //$ruta = $ruta . "/" . $imageUrl;
-
-        //$nameRuta = "./PDF";
-        //$nameRuta = $nameRuta . "/" . $pdfFileName;
-
-        print("Imagen: " . $rutaImage);
-        print("<br>");
-        print("Documento: " . $rutaPdf);
-
-        $ruta = $rutaImage;
+        $ruta     = $rutaImage;
         $nameRuta = $rutaPdf;
 
         if ($section == 'seccion1'){
