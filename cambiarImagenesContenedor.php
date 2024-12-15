@@ -2,9 +2,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include "./PHP/conexionBe.php";
+include "PHP/conexionBe.php";
 
-   require "./PHP/direccionSeleccion.php";
+   require "PHP/direccionSeleccion.php";
 session_start();
 $roles_permitidos = ['Administrador'];
 
@@ -21,7 +21,7 @@ $directorio_destino = "./uploads/";
         <title>Edicion</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
         <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-        <link rel="stylesheet" href="../assets/CSS/styleEdicion.css">
+        <link rel="stylesheet" href="assets/CSS/styleEdicion.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Pacifico&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@ $directorio_destino = "./uploads/";
 <body>
     <div class="contenedorSeleccion">
         <h1>Modifica los titulos de cada contenedor</h1>
-        <form action="./PHP/imagenesSeleccion.php" method="POST">
+        <form action="PHP/imagenesSeleccion.php" method="POST">
             <p>Contenedor 1: *azules</p>
             <input type="text" placeholder="Nombre del contenedor de la imagen 1-6" style="width: 290px;" name="cont1">
             <p>Contenedor 2: *rojos</p>
@@ -40,7 +40,7 @@ $directorio_destino = "./uploads/";
         <h1>
             Suba las imagenes a colocarse en el juego.
         </h1>
-        <form action="./PHP/imagenesSeleccion.php" method="POST" enctype="multipart/form-data">
+        <form action="PHP/imagenesSeleccion.php" method="POST" enctype="multipart/form-data">
             <div class="contenedorSel1">
                 <h2>CONTENEDOR 1:</h2>
                 <p>Imagen 1</p>
@@ -116,7 +116,7 @@ $directorio_destino = "./uploads/";
             Volver 
         </a>
     </div>
-    <script src="./JS/preview.js"></script>
-    <script src="./JS/resetCountersSeleccion.js"></script>
+    <script src="JS/preview.js"></script>
+    <script src="JS/resetCountersSeleccion.js"></script>
 </body>
 </html>

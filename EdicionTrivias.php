@@ -1,5 +1,5 @@
 <?php
-    require "./PHP/popups.php";
+    require "PHP/popups.php";
     session_start();
     $roles_permitidos = ['Administrador'];
     if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
@@ -13,7 +13,7 @@
         <title>Edicion</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
         <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-        <link rel="stylesheet" href="../assets/CSS/styleEdicion.css">
+        <link rel="stylesheet" href="assets/CSS/styleEdicion.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Pacifico&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     <div class="contenedorTr">
         <h2>Edita los mensajes de los popups: </h2>
         <h3>Maximo 130 caracteres.</h3>
-        <form action="./PHP/subidaCl.php" method="POST" class="popups">
+        <form action="PHP/subidaCl.php" method="POST" class="popups">
             <p>Modal 1:</p>
             <input type="text" class="modal" name="modif19" placeholder="<?php echo $descripciones[18]?>">
             <p>Modal 2:</p>
@@ -45,5 +45,5 @@
         </a>
     </div>
 </body>
-<script src="./JS/resetPoints.js"></script>
+<script src="JS/resetPoints.js"></script>
 </html>
