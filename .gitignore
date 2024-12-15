@@ -6,3 +6,4 @@
 /IMGUP/
 *.log
 *.bak
+/PHP/config.php
