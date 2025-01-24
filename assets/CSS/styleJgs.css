@@ -3,7 +3,7 @@
     margin: 0px;
     text-decoration: none;
     list-style: none;
-    font-family: 'Belanosima', sans-serif;  
+    /*font-family: 'Belanosima', sans-serif;*/
 }
 input{
     color:black;
@@ -493,7 +493,7 @@ button {
     appearance: none;
     font-family: 'SF Pixelate', sans-serif;
     border: none;
-    width: 300px;
+    width: 200px;
     padding: 10px;
     background: #DA316B;
     color: #fff;

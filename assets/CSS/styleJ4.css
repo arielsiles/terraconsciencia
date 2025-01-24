@@ -1,0 +1,193 @@
+/* General */
+.news-section {
+    padding: 30px 15px;
+    border-radius: 10px;
+}
+
+.cuerpo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.lado1 {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;    /* Centra verticalmente */
+    margin-top: 20px;       /* Espaciado superior */
+}
+
+/* Botón de regreso */
+.btnBack {
+    background-color: #56ab2f;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btnBack:hover {
+    background-color: #4a9e2b;
+    color: #fff;
+}
+
+/* Área del juego */
+.centroRmp {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    background: #a8d3f0; /* Fondo celeste más oscuro */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.centroRmp h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #004d73; /* Azul oscuro */
+}
+
+.centroRmp h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #006a96; /* Azul medio */
+}
+
+/* Área del canvas */
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#canvas {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border: 2px solid #0078c8; /* Azul más oscuro */
+    background-color: #c7e6f7; /* Fondo más oscuro para canvas */
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+#usedLetters {
+    font-size: 14px;
+    color: #004d73;
+    word-wrap: break-word;
+    text-align: center;
+    max-width: 90%;
+}
+
+/* Palabra */
+.word-container {
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #004d73;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Botón Start */
+.btnStart {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnStart:hover {
+    background-color: #0056b3;
+}
+
+
+/* Estilo para los botones y las imágenes */
+.btnBack {
+    display: inline-flex; /* Para alinear el icono con el texto */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    background-color: #87CEEB; /* Tonalidad celeste */
+    color: #fff; /* Texto blanco */
+    padding: 10px 25px; /* Más espacio alrededor */
+    font-size: 16px; /* Tamaño de la fuente */
+    border-radius: 50px; /* Botón redondeado */
+    text-decoration: none; /* Eliminar subrayado */
+    border: none; /* Sin bordes adicionales */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Suavidad en hover */
+}
+
+.btnBack:hover {
+    background-color: #5DADE2; /* Tonalidad más oscura de celeste */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    text-decoration: none; /* Asegurar que no aparezca subrayado */
+    color: #fff; /* Texto blanco */
+}
+
+.btnBack i {
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 18px; /* Ajuste del tamaño del ícono */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .centroRmp h1 {
+        font-size: 24px;
+    }
+
+    .centroRmp h3 {
+        font-size: 16px;
+    }
+
+    #canvas {
+        max-width: 250px;
+    }
+
+    .btnStart {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .btnBack {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .centroRmp h1 {
+        font-size: 20px;
+    }
+
+    .centroRmp h3 {
+        font-size: 14px;
+    }
+
+    #canvas {
+        max-width: 200px;
+    }
+
+    .btnStart {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .btnBack {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+}

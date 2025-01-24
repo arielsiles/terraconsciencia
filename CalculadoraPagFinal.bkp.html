@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Hidrica</title>
+    <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="assets/CSS/styleCalcFin.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+    <body>
+        <div class="contenido">
+            <h1 class="esp">..........</h1>
+            <div class="titulo">
+                <h2>CÁLCULOS DE LA HUELLA HÍDRICA</h1>
+            </div>
+            <div class="contenidoGen flexbox-container">
+                <div class="contenido_leght">
+                    <H1 style="margin:5px 0 5px 0; text-decoration: underline;"><strong>CONSUMO MENSUAL</strong></H1>
+                    <p style="margin:5px 0 5px 0; text-decoration: underline;"><strong>CÁLCULO AL MES</strong></p>
+                    <div style="color: #DA316B">
+                        <p>TU TOTAL DE AGUA MENSUAL UTILIZADA ES DE:</p>
+                        <p id="resp_total"></p>
+                        <script>
+                            res1 = parseInt(localStorage.getItem("res1"));
+                            res2 = parseInt(localStorage.getItem("res2"));
+                            res3 = parseInt(localStorage.getItem("res3"));
+                            res4 = parseInt(localStorage.getItem("res4"));
+                            resTotal = res1 + res2 + res3 + res4;
+                            let numeroLimitado = resTotal.toFixed(2);
+                            numeroLimitado = parseFloat(numeroLimitado);
+                            resp_total.innerHTML = numeroLimitado + ' LITROS DE AGUA'; 
+                        </script>
+                    </div>
+                    <P style="margin:5px 0 5px 0; text-decoration: underline;"><strong>GRÁFICA PASTEL POR TIPO DE CONSUMO</strong></P>
+                    <div>
+                        <script type="text/javascript">
+                            google.charts.load('current', {'packages':['corechart']});
+                            google.charts.setOnLoadCallback(drawChart);
+                      
+                            function drawChart() {
+                      
+                                var data = google.visualization.arrayToDataTable([
+                                ['Task', 'Hours per Day'],
+                                ['Consumo Personal',    parseInt(localStorage.getItem("res1"))],
+                                ['Consumo doméstico',      parseInt(localStorage.getItem("res2"))],
+                                ['Consumo de alimentos',  res3 = parseInt(localStorage.getItem("res3"))],
+                                ['Consumo de bienes y energía', res4 = parseInt(localStorage.getItem("res4"))]
+                                ]);
+                                        
+                              var options = {
+                                title: 'GRÁFICA POR TIPO DE CONSUMO'
+                              };
+                      
+                              var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                      
+                              chart.draw(data, options);
+                            }
+                        </script>
+                        <div id="piechart" style="width: 650px; height: 300px;"></div>
+                    </div>
+                    <P style="margin:0px 0 5px 0; text-decoration: underline;"><strong>CONSUMO DE PISCINAS RESIDENCIALES</strong></P>
+                    <div style="color: #DA316B">
+                        <p>TU CONSUMO DE AGUA COMPARADO A LA CANTIDAD DE PISCINAS RESIDENCIALES AL MES ES DE:</p>
+                        <p id="resp_total_piscina"></p>
+                        <script>
+                            resPis1 = parseInt(localStorage.getItem("res1"));
+                            resPis2 = parseInt(localStorage.getItem("res2"));
+                            resPis3 = parseInt(localStorage.getItem("res3"));
+                            resPis4 = parseInt(localStorage.getItem("res4"));
+                            respTotalPiscina = (resPis1 + resPis2 + resPis3 + resPis4)/41600;
+                            let numeroLimitado1 = respTotalPiscina.toFixed(2);
+                            numeroLimitado1 = parseFloat(numeroLimitado1);
+                            resp_total_piscina.innerHTML =numeroLimitado1 + ' PISCINAS RESIDENCIALES'; 
+                        </script>
+                    </div>
+                </div>
+               <div class="contenido_right">
+                    <H1 style="margin:5px 0 5px 0; text-decoration: underline;"><strong>CONSUMO ANUAL</strong></H1>
+                    <P style="margin:5px 0 5px 0; text-decoration: underline;"><strong>HUELLA HÍDRICA TOTAL AL AÑO</strong></P>
+                    <div style="color: #DA316B">
+                        <p>TU CONSUMO DE AGUA ANUAL ES DE:</p>
+                        <p id="resp_total_anual"></p>
+                        <script>
+                            resAn1 = parseInt(localStorage.getItem("res1"));
+                            resAn2 = parseInt(localStorage.getItem("res2"));
+                            resAn3 = parseInt(localStorage.getItem("res3"));
+                            resAn4 = parseInt(localStorage.getItem("res4"));
+                            respTotalAnual = (resPis1 + resPis2 + resPis3 + resPis4)*12;
+                            let numeroLimitado2 = respTotalAnual.toFixed(2);
+                            numeroLimitado2 = parseFloat(numeroLimitado2);
+                            resp_total_anual.innerHTML = numeroLimitado2  + ' LITROS AL AÑO'; 
+                        </script>
+                    </div>
+                    <P style="margin:5px 0 5px 0; text-decoration: underline;"><strong>CONSUMO DE PISCINAS RESIDENCIALES AL AÑO</strong></P>
+                    <div style="color: #DA316B">
+                        <p>TU CONSUMO DE AGUA COMPARADO A LA CANTIDAD DE PISCINAS RESIDENCIALES AL AÑO ES DE:</p>
+                        <p id="resp_total_piscina_anual"></p>
+                        <script>
+                            resPis1 = parseInt(localStorage.getItem("res1"));
+                            resPis2 = parseInt(localStorage.getItem("res2"));
+                            resPis3 = parseInt(localStorage.getItem("res3"));
+                            resPis4 = parseInt(localStorage.getItem("res4"));
+                            respTotalPiscinaAnual = ((resPis1 + resPis2 + resPis3 + resPis4)*12)/41600;
+                            let numeroLimitado3 = respTotalPiscinaAnual.toFixed(2);
+                            numeroLimitado3 = parseFloat(numeroLimitado3);
+                            resp_total_piscina_anual.innerHTML = numeroLimitado3 + ' PISCINAS RESIDENCIALES'; 
+                        </script>
+                    </div>
+                    <div>
+                        <style>
+                            .image-container {
+                                display: flex;
+                                flex-wrap: wrap;
+                            }
+                    
+                            .image {
+                                width: 100px;
+                                height: 100px;
+                                background-size: cover;
+                                margin: 5px;
+                            }
+                        </style>
+                        <h2 style="margin:5px 0 5px 0; text-decoration: underline;"><strong>NUMERO DE PISCINAS OLÍMPICAS AL AÑO</strong></h2>
+                        <!--<label for="cantidadInput">Cantidad:</label>
+                        <input type="number" id="cantidadInput" min="0">-->
+                        <p id="resp_total_piscina_olimp_anual" style="font-size: 25px; margin-top: 15px; color:#DA316B"></p>
+                        <script>
+                            resOlimPis1 = parseInt(localStorage.getItem("res1"));
+                            resOlimPis2 = parseInt(localStorage.getItem("res2"));
+                            resOlimPis3 = parseInt(localStorage.getItem("res3"));
+                            resOlimPis4 = parseInt(localStorage.getItem("res4"));
+                            respTotalPiscinaOlimAnual = ((resOlimPis1 + resOlimPis2 + resOlimPis3 + resOlimPis4)*12)/2500000;
+                            let numeroLimitado4 = respTotalPiscinaOlimAnual.toFixed(2);
+                            numeroLimitado4 = parseFloat(numeroLimitado4);
+                            resp_total_piscina_olimp_anual.innerHTML = numeroLimitado4 + ' PISCINAS OLÍMPICAS'; 
+                        </script>
+                        <div class="piscinaOlimpica">
+                            <img src="assets/IMG/PISCINA.png" alt="piscina olimpica" height="420px" width="" style="margin-top: -60px;">
+                        </div>
+                        <!--
+                        <div class="botonSig">
+                            <a class="boton1" onclick="mostrarImagenes()">MOSTRAR CANTIDAD DE PISCINAS</a>
+                        </div>
+                        
+                        <div class="image-container" id="imageContainer"></div>
+                        <script>
+                            function mostrarImagenes() {
+                                const resOlimpPis1 = parseInt(localStorage.getItem("res1"));
+                                const resOlimpPis2 = parseInt(localStorage.getItem("res2"));
+                                const resOlimpPis3 = parseInt(localStorage.getItem("res3"));
+                                const resOlimpPis4 = parseInt(localStorage.getItem("res4"));
+                                const respTotalPiscinaAnual = ((resOlimpPis1 + resOlimpPis2 + resOlimpPis3 + resOlimpPis4)*12)/2500000;
+                                const cantidadInput = respTotalPiscinaAnual;
+                                const imageContainer = document.getElementById('imageContainer');
+                                const cantidad = cantidadInput;
+                                
+                                if (!isNaN(cantidad) && cantidad >= 0) {
+                                    imageContainer.innerHTML = '';
+                    
+                                    for (let i = 0; i < cantidad; i++) {
+                                        const image = document.createElement('div');
+                                        image.className = 'image';
+                                        image.style.backgroundImage = 'url("http://localhost/login-register/Terra-ConsCiencia/assets/IMG/piscinaOlimpica.png")'; // Reemplaza con la ruta de tu imagen
+                                        imageContainer.appendChild(image);
+                                    }
+                                } else {
+                                    alert('Ingresa una cantidad válida (mayor o igual a 0).');
+                                }
+                            }
+                        </script>
+                        -->
+                    </div>
+               </div>
+           </div>
+
+           <div class="tituloConsejos">
+               <h1>PUEDES SEGUIR LOS SIGUIENTES CONSEJOS EN TU...</h1>
+           </div>
+           <div class="consejos flexbox-container">
+                <div class = "parte1Consejos">
+                    <h1>CONSUMO PERSONAL</h1>
+                    
+
+                        <h2><strong>a. En la ducha</strong></h2>
+                        <img src="assets/IMG/DUCHA.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        <p>
+                            • Toma duchas de menos de 10 minutos, porque el gasto por minuto es de 10 litros, ¡imagínate! <br>
+                            • Usa un balde para recoger el agua mientras esperas a que se caliente. Luego, puedes usar el agua recolectada para regar las plantas o limpiar. <br>
+                            • Cierra el grifo de la ducha mientras te enjabonas. <br>
+
+                        </p>
+                        
+                        <h2><strong>b. En el lavamanos</strong></h2>
+                        <img src="assets/IMG/LAVAMANOS.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        <p>
+                            • Cierra el grifo mientras te cepillas los dientes o te afeitas. <br>
+                            • Usa un vaso de agua para lavarte los dientes. <br>
+
+                        </p>
+                        <h2><strong>c. En el inodoro</strong></h2>
+                        <img src="assets/IMG/INODORO.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        <p>• Usa 2 botellas de plástico con agua dentro de la cisterna del inodoro.
+                        </p>
+                </div>
+                <div class = "parte2Consejos">
+                    <h1>CONSUMO DOMÉSTICO</h1>
+                    
+                        <P>• Repara cualquier fuga de agua en tu casa. Y si ves un grifo abierto, ¡ciérralo! <br></P>
+                        <h2><strong>a. En la cocina</strong></h2>
+                        <img src="assets/IMG/COCINA.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        <p>
+                            • Cierra el tapón de la lavandería o usa un bañador para reutilizar el agua al lavar platos o
+                            alimentos. <br>
+                            • Remoja las ollas y los sartenes para ablandar la suciedad, y así no dejar el grifo abierto <br>
+                            • Usa el agua para regar el jardín. <br>
+                            
+                        </p>
+                        
+                        <h2><strong>b. En la lavandería</strong></h2>
+                        <img src="assets/IMG/LAVANDERIA.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        <p>
+                            • Usa una lavadora eficiente en el uso del agua y asegúrate de cargarlos completamente antes de usarlos. <br>
+                            • Reutiliza el agua que sale de la lavadora, o de tu lavado a mano, para lavar pisos o regar el patio y el jardín. <br>
+                            
+                        </p>
+                        <h2><strong>c. En el jardín o patio</strong></h2>
+                        <img src="assets/IMG/JARDIN.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        <p>• Riega el jardín en la noche o temprano en la mañana. <br>
+                            • Siembra especies nativas que están adaptadas al clima local y consumen menos agua. <br>
+                            • No uses la manguera para lavar tu patio, acera o auto, mejor usa baldes. <br>
+                            • No juegues con agua y fomenta el uso consciente de esta ahora que sabes su valor. <br>
+                            
+                        </p>
+                        <h2><strong>d. Cosecha lluvia</strong></h2>
+                        <img src="assets/IMG/LLUVIA.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        <p>
+                            • Recoge el agua de lluvia en bañadores o tanques, y úsala para riego o limpieza.
+                        </p>
+                </div>
+                <div class = "parte3Consejos">
+                    <h1>CONSUMO DE ALIMENTOS</h1>
+                        <img src="assets/IMG/ALIMENTACION.png" alt="ducha"  width="100px" height="100px" style="padding-left: 90px;">
+                        
+                        
+                        <p>
+                            • Reduce tu consumo de carne, ya que la producción de carne requiere grandes cantidades de agua (decenas de miles de litros para un kilo), mucho mayor a la producción de vegetales. <br>
+                            • Reduce tu consumo de alimentos procesados y preparados grasos, estos requieren altas
+                            cantidades de agua y no son nutritivos para ti. <br>
+                            • Compra alimentos locales y de temporada, esto va a reducir la cantidad de agua necesaria para transportar los alimentos a larga distancia y para su refrigeración. <br>
+                            • Siempre lleva una botella de agua reusable (tomatodo). <br>
+                            • Infórmate sobre qué alimentos tienen una huella hídrica baja y empieza a consumirlos (por
+                            ejemplo: frutas y verduras frescas, nueces y legumbres). <br>
+                            
+                        </p>
+                        
+                </div>
+                <div class = "parte4Consejos">
+                    <h1>CONSUMO DE BIENES Y ENERGÍA</h1>
+                        <img src="assets/IMG/BIENES.png" alt="BIENES"  width="100px" height="100px" style="padding-left: 90px;">
+                        
+                        
+                        
+                        <p>
+                            • Compra, intercambia o hereda productos usados en lugar de nuevos cuando sea posible, pues producir productos nuevos requiere mucha más agua que la producción de productos usados. <br>
+                            • Consume productos locales y que vengan de procedimientos de reciclaje, porque generalmente estos requieren menor gasto de agua para su transporte y producción. <br>
+                        </p>
+                        <img src="assets/IMG/SERVICIOS.png" alt="SERVICIOS"  width="100px" height="100px" style="padding-left: 90px;">
+                        
+                        <p>
+                            • Usa bombillas LED en lugar de bombillas incandescentes, ya que las bombillas LED usan mucha menos energía y duran más tiempo. <br>
+                            • Desenchufa tus aparatos electrónicos cuando ya no los estés utilizando. <br>
+                        </p>
+                        
+                </div>
+           </div>
+
+           <div class="links">
+                <h1><strong>Consulta más información</strong></h1>
+                    <p class="PalLinks" style="font-size: 25px;">Si deseas seguir investigando y conocer huellas hídricas de Bolivia según sus actividades económicas,
+                        o de otros países del mundo, de productos alimenticios globales, cuencas hidrográficas del mundo,
+                        y compararlo con tus resultados personales, de cuenca o nacionales, entra a los siguientes enlaces
+                        de la Water Footprint Network (Red la Huella Hídrica), de los creadores de la huella hídrica:<br></p>
+                        <p class="linksRef" style="text-align: center;">
+                            <strong>Herramienta de evaluación de la huella hídrica de la WFN</strong> <br>
+                            <a href="https://www.waterfootprintassessmenttool.org/" target="_blank">www.waterfootprintassessmenttool.org</a> <br>
+                            <strong>Calculadora personal de huella hídrica de la WFN</strong> <br>
+                            <a href="https://www.waterfootprint.org/resources/interactive-tools/personal-water-footprint-calculator/" target="_blank">www.waterfootprint.org/resources/interactive-tools/personal-water-footprint-calculator</a> <br>
+                            <strong>Calculadora de huella hídrica extendida de la WFN </strong><br>
+                            <a href="https://www.waterfootprint.org/resources/interactive-tools/extended-water-footprint-calculator/" target="_blank">www.waterfootprint.org/resources/interactive-tools/extended-water-footprint-calculator</a> <br>
+                        </p>
+                        
+           </div>
+        </div>
+        <script src="JS/scriptCalPagFin.js"></script>
+    </body>
+</html>

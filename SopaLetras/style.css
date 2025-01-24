@@ -1,105 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-
-*{
-  margin: 0px;
+body {
+  font-family: Arial, sans-serif;
 }
 
 p {
-  font: 22pt sans-serif;
-  margin: 20px 20px 0px 20px;
+  font-size: 22px;
+  margin: 20px;
 }
 
-/**
-* Styles for the puzzle
-*/
-
-.container{
-  background: linear-gradient(rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.4)), url("portadaDerecha.jpg");
-  height: 800px;
+/* Contenedor principal */
+.container {
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("portadaDerecha.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  padding: 2%;
   text-align: center;
-  padding: 2% 2% 2% 2%;
 }
 
-.tituloJuego{
+/* Títulos */
+.tituloJuego {
   background-color: white;
-  margin: 0% 20% 1% 20%;
+  margin: 0 5%;
   border-radius: 20px;
-  border-style: solid;
-  font-size: 50px;
+  border: 1px solid black;
+  font-size: 2.5rem;
+  padding: 10px;
+  display: inline-block;
+  white-space: nowrap; /* Asegura que el título no se divida en varias líneas */
 }
 
-.subtituloJuego{
+.subtituloJuego {
   background-color: rgb(71, 94, 94);
-  padding: 1%;
+  padding: 10px;
   border-radius: 20px;
-  border-style:solid;
-  border-color:white;
+  border: 1px solid white;
   color: white;
-  margin: 0% 25% 0% 25%;
+  margin: 10px 5%;
+  font-size: 1.25rem;
+  display: inline-block;
+  white-space: nowrap; /* Asegura que el subtítulo no se divida en varias líneas */
+  max-width: 80%; /* Limita el ancho para evitar que ocupe toda la pantalla */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
 }
 
-.botonVolver{
-  justify-content: center;
+/* Botón de volver */
+.botonVolver {
+  display: inline-flex;
   align-items: center;
-	margin: 1% 0% 0% 0%;
-	display: block;
-	width: 300px;
-	height: 50px;
-	border-radius: 20px;
-  border-style:solid;
-  border-color:white;
-	background-color: rgb(71, 94, 94);
-	color: rgb(255, 255, 255);
-	transition: background-color 0.3s;
-	font-size: 25px;
-	cursor: pointer;
-	text-shadow: none;
-	-webkit-text-stroke-width: 0px;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 10px 20px;
+  max-width: 300px;
+  border-radius: 20px;
+  border: 1px solid white;
+  background-color: rgb(71, 94, 94);
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.botonVolver:hover{
-	background-color: rgb(31, 28, 28);
+.botonVolver:hover {
+  background-color: rgb(31, 28, 28);
 }
 
-.botonVolver p{
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.botonVolver a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
+.botonVolver img {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Contenedor del juego y palabras */
+.juego-container {
+  display: flex;
+  flex-direction: column; /* Apilamiento en dispositivos pequeños */
+  align-items: center;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .juego-container {
+    flex-direction: row; /* Lado a lado en pantallas grandes */
+    justify-content: center;
+  }
+}
+
+/* Tablero de juego */
 #juego {
   background-color: white;
   border: 1px solid black;
-  padding: 10px;
-  float: left;
-  margin: 0px 20px;
-  margin-left: 32%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(18, 1fr); /* Ajustar número de columnas al tamaño del tablero */
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
-#juego div {
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* style for each square in the puzzle */
 #juego .puzzleSquare {
   height: 40px;
   width: 40px;
   text-transform: uppercase;
   background-color: white;
-  border: 0;
-  font: 1.5em sans-serif;
+  border: none; /* Sin bordes */
+  font: 1.5rem sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0; /* Eliminar márgenes */
+  padding: 0; /* Eliminar padding interno */
 }
 
-button::-moz-focus-inner {
-  border: 0;
-}
-
-/* indicates when a square has been selected */
+/* Estados de los cuadros del juego */
 #juego .selected {
   background-color: orange;
 }
 
-/* indicates that the square is part of a word that has been found */ 
 #juego .found {
   background-color: blue;
   color: white;
@@ -110,45 +144,98 @@ button::-moz-focus-inner {
   color: white;
 }
 
-/* indicates that all words have been found */
 #juego .complete {
   background-color: green;
 }
 
-/**
-* Styles for the word list
-*/
+/* Lista de palabras */
 #Palabras {
-  margin-top: 100px;
-  padding: 1% 1% 1% 1%;
-  display: flex;
-  flex-direction: row; 
-  width: 230px;
-  font-size: 25px;
   background-color: white;
+  padding: 10px;
   border-radius: 20px;
-  border-style: solid;
-  border-color: black;
+  border: 1px solid black;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #Palabras ul {
-  list-style-type: none;
+  list-style: none;
+  padding: 0;
 }
 
 #Palabras li {
-  padding: 0px 0;
-  font: 1em sans-serif;
+  padding: 5px 0;
+  font-size: 1rem;
 }
 
-/* indicates that the word has been found */
 #Palabras .wordFound {
   text-decoration: line-through;
   color: gray;
 }
 
-/**
-* Styles for the button
-*/
+/* Botón adicional (resolver) */
 #solve {
-  margin: 0 30px;
+  margin: 20px 0;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .tituloJuego {
+    font-size: 2rem;
+    margin: 0 10%;
+  }
+
+  .subtituloJuego {
+    font-size: 1rem;
+    margin: 10px 15%;
+  }
+
+  #juego {
+    grid-template-columns: repeat(18, 1fr); /* Número fijo de columnas */
+  }
+
+  #juego .puzzleSquare {
+    height: 30px;
+    width: 30px;
+    font-size: 1rem;
+  }
+
+  #Palabras {
+    font-size: 1rem;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tituloJuego {
+    font-size: 1.75rem;
+    margin: 0 5%;
+  }
+
+  .subtituloJuego {
+    font-size: 0.9rem;
+    margin: 10px 5%;
+  }
+
+  .botonVolver {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  #juego {
+    grid-template-columns: repeat(13, 1fr);
+  }
+
+  #juego .puzzleSquare {
+    height: 25px;
+    width: 25px;
+    font-size: 0.8rem;
+  }
+
+  #Palabras {
+    font-size: 0.9rem;
+  }
 }

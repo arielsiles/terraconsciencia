@@ -129,3 +129,219 @@
     background-color: #759292;
     color:white;
   }
+
+/* -------- NUEVOS --------- */
+/* Estilo principal para el título */
+.tituloPrinc2 {
+    color: rgb(117, 146, 146);
+    font-size: 3vw; /* Tamaño de fuente responsivo basado en el ancho de la ventana */
+    margin: 20px auto; /* Márgenes automáticos para centrar */
+    max-width: 80%; /* Limita el ancho máximo del título */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centrado del texto */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 40px; /* Bordes redondeados */
+    border-style: dashed;
+    border-color: rgb(35, 138, 138);
+    border-width: 3px; /* Grosor de la línea del borde */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .tituloPrinc2 {
+        font-size: 5vw; /* Fuente más grande en pantallas pequeñas */
+        padding: 15px;
+        border-radius: 30px; /* Bordes redondeados más pequeños */
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas (teléfonos) */
+@media (max-width: 480px) {
+    .tituloPrinc2 {
+        font-size: 6vw; /* Fuente aún más grande */
+        padding: 10px;
+        border-radius: 20px; /* Bordes más pequeños */
+    }
+}
+
+.formulario {
+    padding-top: 5vw;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.preg {
+    padding: 4vw;
+    border-radius: 20px;
+    background-color: rgba(182, 248, 255, 0.4);
+}
+
+.preg h1 {
+    background-color: rgb(248, 255, 254);
+    border-radius: 20px;
+    border-style: double;
+    border-color: rgb(57, 65, 101);
+    color: rgb(41, 127, 99);
+    text-align: center;
+    font-size: 2vw;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+/* Estilo específico para los labels */
+.pregunta1 label {
+    font-size: 1.2rem; /* Tamaño de texto relativo */
+    padding: 5px 10px;
+    /*border: 1px solid #ddd;*/
+    border-radius: 10px;
+    /*background-color: #f9f9f9;*/
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.pregunta1 label:hover {
+    background-color: #e0f7fa;
+}
+
+.pregunta1 input {
+    margin-right: 10px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .preg h1 {
+        font-size: 4vw;
+    }
+
+    .pregunta1 label {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formulario {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .preg h1 {
+        font-size: 5vw;
+    }
+
+    .pregunta1 label {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ----------- */
+/* Estilo base */
+.botonCal {
+    font-size: 1.5vw; /* Tamaño relativo al ancho de la pantalla */
+    text-align: center;
+    padding-top: 5vw; /* Espaciado responsivo */
+    padding-bottom: 5vw;
+}
+
+.boton1 {
+    display: inline-block;
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+    width: auto; /* Ajustar automáticamente el ancho según el contenido */
+    max-width: 300px; /* Limitar el tamaño máximo en pantallas grandes */
+    min-width: 150px; /* Limitar el tamaño mínimo en pantallas pequeñas */
+    padding: 1em; /* Espaciado interno */
+    border: 3px solid #759292;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #759292;
+    font-weight: bold;
+    font-size: 1.2em; /* Escala de texto */
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out; /* Animación suave */
+    text-align: center; /* Asegurar el texto centrado */
+}
+
+.boton1:hover {
+    background-color: #759292;
+    color: white;
+}
+
+/* Ajustes para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    .botonCal {
+        font-size: 1.2em; /* Tamaño más pequeño en tabletas */
+        padding-top: 4vw;
+        padding-bottom: 4vw;
+    }
+
+    .boton1 {
+        width: auto; /* Ajustar según el contenido */
+        font-size: 1em;
+        padding: 0.8em;
+    }
+}
+
+/* Ajustes para pantallas pequeñas (teléfonos) */
+@media (max-width: 480px) {
+    .botonCal {
+        font-size: 1em; /* Reducir aún más el tamaño de fuente */
+        padding-top: 3vw;
+        padding-bottom: 3vw;
+    }
+
+    .boton1 {
+        width: auto; /* Ajustar al contenido */
+        font-size: 0.9em; /* Texto más pequeño */
+        padding: 0.6em;
+    }
+}
+
+
+/* ----------- */
+/* Estilo base para todas las preguntas */
+.pregunta1, .pregunta2, .pregunta3, .pregunta4, .pregunta5, .pregunta6 {
+    margin: 2vw 0; /* Margen superior e inferior responsivo */
+    background-color: rgb(228, 250, 237);
+    border-radius: 20px; /* Reducido para que sea más elegante en móviles */
+    color: rgb(5, 7, 7);
+    padding: 2vw; /* Espaciado responsivo */
+    text-align: center; /* Alinear todo al centro */
+}
+
+/* Estilo para etiquetas (labels) en preguntas específicas */
+.pregunta1 label, .pregunta2 label, .pregunta6 label,
+.pregunta3 label, .pregunta4 label, .pregunta5 label {
+    display: block; /* Asegurar que las etiquetas estén en línea vertical */
+    margin: 1vw auto; /* Espaciado uniforme y centrado */
+    font-size: 1.2rem; /* Tamaño de fuente relativo */
+    text-align: left; /* Alinear texto a la izquierda */
+}
+
+/* Ajustes responsivos para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    .pregunta1, .pregunta2, .pregunta3, .pregunta4, .pregunta5, .pregunta6 {
+        padding: 3vw; /* Más espaciado en pantallas medianas */
+        border-radius: 15px; /* Bordes más pequeños */
+    }
+
+    .pregunta1 label, .pregunta2 label, .pregunta3 label,
+    .pregunta4 label, .pregunta5 label, .pregunta6 label {
+        font-size: 1rem; /* Reducir ligeramente el tamaño de fuente */
+        padding-left: 5%; /* Reducir el padding izquierdo */
+    }
+}
+
+/* Ajustes responsivos para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .pregunta1, .pregunta2, .pregunta3, .pregunta4, .pregunta5, .pregunta6 {
+        padding: 4vw; /* Más espacio en pantallas pequeñas */
+        border-radius: 10px; /* Bordes aún más pequeños */
+    }
+
+    .pregunta1 label, .pregunta2 label, .pregunta3 label,
+    .pregunta4 label, .pregunta5 label, .pregunta6 label {
+        font-size: 0.9rem; /* Texto más pequeño en pantallas pequeñas */
+        padding-left: 0; /* Quitar padding izquierdo */
+    }
+}

@@ -20,7 +20,7 @@ let contenido = document.getElementById('cont');
 let fnd = document.getElementById('fnd');
 let cierre = document.getElementById('btnCerrar');
 
-abrir.addEventListener('click', () => opLog.style.display="block");
+//abrir.addEventListener('click', () => opLog.style.display="block");
 let cerrarVentana = () => {
     login.classList.add('close')
     setTimeout(() =>{
@@ -28,7 +28,7 @@ let cerrarVentana = () => {
         opLog.style.display = 'none'
     }, 1);
 }
-off.addEventListener('click',()=>cerrarVentana())
+//off.addEventListener('click',()=>cerrarVentana())
 window.addEventListener('click', e=> e.target == opLog && cerrarVentana());
 
 let cerrarVentanaModal = () => {
@@ -42,24 +42,24 @@ let cerrarVentanaModal = () => {
 window.addEventListener('click', e=> e.target == fnd && cerrarVentanaModal())
 
 
-sign_up_btn.addEventListener("click",()=>{
+/*sign_up_btn.addEventListener("click",()=>{
     contenedor.classList.add("registerMode");
-});
+});*/
 
-sign_in_btn.addEventListener("click",()=>{
+/*sign_in_btn.addEventListener("click",()=>{
     contenedor.classList.remove("registerMode");
-});
+});*/
 
 
-sign_up_btn2.addEventListener("click",()=>{
+/*sign_up_btn2.addEventListener("click",()=>{
     contenedor.classList.add("registerMode2");
-});
+});*/
 
-sign_in_btn2.addEventListener("click",()=>{
+/*sign_in_btn2.addEventListener("click",()=>{
     contenedor.classList.remove("registerMode2");
-});
+});*/
 
-window.onload = function(){
+/*window.onload = function(){
     let randomModal = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     if(randomModal == 1){
         document.getElementById("m1").style.display="block";
@@ -74,7 +74,7 @@ window.onload = function(){
     }else if(randomModal == 6){
         document.getElementById("m6").style.display="block";
     }
-}
+}*/
 
 
 

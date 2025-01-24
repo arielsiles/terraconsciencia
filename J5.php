@@ -15,111 +15,218 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Juego Seleccion</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-        <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-        <link rel="stylesheet" href="../assets/CSS/styleJgs.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Pacifico&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <!--Popup-->
-        <!--Confirmacion-->
-        <div class="confir" id="fndCf">
-            <div class="vent" id="vent">
-                <p>¿Desea cerrar sesión?</p>
-                <div class="botonesCf">
-                    <a class="btnConf" href="SinLogin.html">Sí</a>
-                    <a class="btnConf" href="javascript:cierraConf()">NO</a>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Terra ConsCiencia</title>
+
+    <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
+
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+
+    <!--<link rel="stylesheet" href="assets/CSS/styleJgs.css">-->
+
+    <style>
+        /*Juego 5*/
+        .button {
+            padding: 1rem 2rem;
+            border-radius: .5rem;
+            border: none;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #f4f0ff;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .button::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: .5rem;
+            background: linear-gradient(180deg, rgba(8, 77, 126, 0) 0%, rgba(8, 77, 126, 0.42) 100%), rgba(47,255,255,.24);
+            box-shadow: inset 0 0 12px rgba(151,200,255,.44);
+            z-index: -1;
+        }
+
+        .button::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(8, 77, 126, 0) 0%, rgba(8, 77, 126, 0.42) 100%), rgba(47,255,255,.24);
+            box-shadow: inset 0 0 12px rgba(151,200,255,.44);
+            border-radius: .5rem;
+            opacity: 0;
+            z-index: -1;
+            transition: all .3s ease-in;
+        }
+
+        .button:hover::after {
+            opacity: 1;
+        }
+
+        .button-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: .5rem;
+            z-index: -1;
+        }
+
+        .button-border::before {
+            content: "";
+            position: absolute;
+            border-radius: .5rem;
+            padding: 1px;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(184, 238, 255, 0.24) 0%, rgba(184, 238, 255, 0) 100%), linear-gradient(0deg, rgba(184, 238, 255, 0.32), rgba(184, 238, 255, 0.32));
+            pointer-events: none;
+        }
+
+        #evaluarButton {
+            background-color: #799f9f;
+            color: white;
+            margin: 0 auto;
+            display: block;
+            max-width: 200px;
+        }
+
+        #Puntuacion {
+            font-size: 2rem;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #juego {
+            width: 100%;
+            height: auto;
+            min-height: 650px;
+            /*background-color: #7EB9C0;*/
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 1200px) {
+            #evaluarButton {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #Puntuacion {
+                font-size: 2rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            #Puntuacion {
+                font-size: 1.5rem;
+            }
+
+            #evaluarButton {
+                max-width: 180px;
+            }
+
+            #juego {
+                padding: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            #Puntuacion {
+                font-size: 1.2rem;
+            }
+
+            #evaluarButton {
+                max-width: 160px;
+            }
+
+            #juego {
+                padding: 3px;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+<?php include 'header_info.php'; ?>
+
+<?php include 'main_menu_user.php'; ?>
+
+<main>
+
+    <!--<section class="news-section section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div id="juego">
+                    <h3>Selecciona las imagenes correctamente segun su contenedor.</h3>
+                    <script src="JS/game.js"></script>
+                </div>
+
+            </div>
+        </div>
+    </section>-->
+
+    <section class="news-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div id="juego">
+                    <h3>Selecciona las imagenes correctamente según su contenedor.</h3>
+                    <script src="JS/game.js"></script>
                 </div>
             </div>
         </div>
-        <!--Portada-->
-        <div class="portada">
-            <a class="l1">
-            </a>
-            <div class="l2">
-                <a href="https://gaiapacha.org/" target="_blank" style="background-image: url(./IMG/LogoGaia.png); background-size: 100% 100%; width: 180px; height: 70px;  right: 120px;"></a>
-                <a href="https://www.solidagro.be/en/home/worldwide/bolivia" target="_blank" style="background-image: url(./IMG/LogoSolidagro.png); background-size: 100% 100%; width: 120px; height: 70px;"></a>
-                <a target="_blank" style="background-image: url(./IMG/bELGICA.png); background-size: 100% 100%; width: 220px; height: 120px; margin-top:10px;"></a>
-            </div>
-        </div>
-        <!--Navegacion-->
-        <nav class="navegador">
-            <ul class="contNav">
-                <a href="ConLoginAdm.php" class="boton" style="background:rgb(215, 102, 92); ">
-                    <li>INICIO</li>
-                </a>
-                <a href="Noticias.php" class="boton" style="background:rgb(239, 170, 86);border-color: black;">
-                    <li>NOTICIAS</li>
-                </a>
-                <a href="Publicaciones.php" class="boton" style="background:rgb(125, 192, 207); width: 22%;">
-                    <li>PUBLICACIONES</li>
-                </a>
-                <a href="Trivias.php" class="boton" style="background: #22764D;border-style:dashed; border-top:none; border-color: black;">
-                    <li>TRIVIAS</li>
-                </a>
-                <a href="javascript:abreCt()" class="boton" style="background:rgb(238, 37, 117); display: flex; justify-content: space-evenly;">
-                    <li>CUENTA&nbsp;&nbsp;</li>
-                    <!--Cuenta Desplegable-->
-                    <img class="abrirPerfil" id="giro" src="IMG/botArrow.svg" width="22px" height="22px" alt="">
-                    <a href="javascript:cierraCt()" class="cierra" id="cl"></a>
-                    <div class="desp" id="despCt">
-                        <a href="Cuenta.html" class="btnCtDesp">
-                            <i class="fas fa-user"></i>
-                            <p>Ir a mi cuenta</p>
-                        </a>
-                        <div class="btnCtDesp">
-                            <i class="fas fa-question"></i>
-                            <p>Ayuda</p>
-                        </div>
-                        <a href="javascript:abreConf()" class="btnCtDesp">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <p>Cerrar Sesion</p>
-                        </a>
-                    </div>
-                </a>
-            </ul>
-        </nav>
-        <!--Cuerpo-->
-        <div id="juego">
-            <h3>Selecciona las imagenes correctamente segun su contenedor.</h3>
-            <script src="./JS/game.js"></script>
-        </div>
-        <!--Pie-->
-        <footer class="pie">
-            <div class="info">
-            <div class="infoGaia">
-                <p>
-                    <ul class="ct">
-                        <b>GAIA PACHA</b>
-                        <li>Celular: 76957456</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:gaiapacha@gaiapacha.org">gaiapacha@gaiapacha.org</a></li>
-                    </ul>
-                </p>
-            </div>
-            <div class="infoSolid">
-                <p>
-                    <ul class="ct">
-                        <b>SOLIDAGRO</b>
-                        <li>Celular: +32 3 777 20 15</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:info@solidagro.be">info@solidagro.be</a></li>
-                    </ul>
-                </p>
-            </div>
-            </div>
-            <div class="contacto">
-                <p>REDES SOCIALES:</p>
-                <a href="https://www.facebook.com/gaiapacha?mibextid=ZbWKwL"><img src="IMG/facebook.png" alt="facebook" width="50px" height="50px"></a>
-                <a href="https://instagram.com/gaiapacha?igshid=YmMyMTA2M2Y="><img src="IMG/instagram.png" alt="instagram" width="50px" height="50px"></a>
-                <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha/"><img src="IMG/linkedin.png" alt="linkedin" width="50px" height="50px"></a>
-            </div>
-            <script src="JS/scriptCt.js"></script>
-            <script src="JS/scriptCl.js"></script>
-        </footer>
-    </body>
+    </section>
+
+
+</main>
+
+<?php include 'footer.php'; ?>
+
+<!-- JAVASCRIPT FILES -->
+
+<script src="JS/jquery.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script src="JS/jquery.sticky.js"></script>
+
+<!--<script src="JS/game.js"></script>-->
+
+</body>
+
 </html>

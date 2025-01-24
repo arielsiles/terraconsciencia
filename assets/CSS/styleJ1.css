@@ -1,0 +1,123 @@
+/* Estilos generales */
+.news-section {
+    background-color: #f0f8ff; /* Color de fondo suave */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.cuerpo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Estilo para los botones y las imágenes */
+.btnBack {
+    display: inline-flex; /* Para alinear el icono con el texto */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    background-color: #87CEEB; /* Tonalidad celeste */
+    color: #fff; /* Texto blanco */
+    padding: 10px 25px; /* Más espacio alrededor */
+    font-size: 16px; /* Tamaño de la fuente */
+    border-radius: 50px; /* Botón redondeado */
+    text-decoration: none; /* Eliminar subrayado */
+    border: none; /* Sin bordes adicionales */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Suavidad en hover */
+}
+
+.btnBack:hover {
+    background-color: #5DADE2; /* Tonalidad más oscura de celeste */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    text-decoration: none; /* Asegurar que no aparezca subrayado */
+    color: #fff; /* Texto blanco */
+}
+
+.btnBack i {
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+    font-size: 18px; /* Ajuste del tamaño del ícono */
+}
+.lado {
+    width: 100%;
+    text-align: center;
+}
+
+/* Estilos para el área de las cartas */
+#juego-memoria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Estilos individuales para cada carta */
+.carta {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.5s;  /* Transición de transformación */
+    transform-style: preserve-3d; /* Habilita los efectos 3D */
+    perspective: 1000px; /* Añadido para efecto de profundidad en 3D */
+    border-radius: 10px;
+}
+
+/* Efecto de hover para aumentar el tamaño */
+.carta:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor para las cartas: Voltear en 3D */
+.carta.volteada {
+    transform: rotateY(180deg); /* Voltear la carta 180 grados */
+}
+
+/* Parte delantera de la carta */
+.front {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('../IMG/IMAGOTIPO-Rotado.png'); /* URL completa de la imagen */
+    background-size: cover; /* Asegura que la imagen se ajuste bien */
+    background-position: center; /* Centra la imagen en la parte frontal */
+    backface-visibility: hidden; /* Esconde la parte trasera cuando está volteada */
+}
+
+/* Parte trasera de la carta */
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    transform: rotateY(180deg); /* Rota la parte trasera para que esté tapada por defecto */
+}
+
+/* Estilo para la imagen en la parte trasera */
+.back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Responsividad: ajuste de la cuadrícula */
+@media (max-width: 768px) {
+    .carta {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carta {
+        width: 80px;
+        height: 80px;
+    }
+}
