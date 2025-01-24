@@ -1,3 +1,4 @@
+/.idea/
 /vendor/
 .env
 /node_modules/
@@ -7,3 +8,4 @@
 *.log
 *.bak
 /PHP/config.php
+/.idea/inspectionProfiles/Project_Default.xml

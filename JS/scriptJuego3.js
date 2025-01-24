@@ -1,64 +1,78 @@
+// Mostrar las preguntas ocultando el texto inicial
+function mostrarPreguntas() {
+  document.getElementById("actFVTxt").classList.add("d-none");
+  document.getElementById("actFV").classList.remove("d-none");
 
-/*Juego 3*/
-function mostrarFV(){
-  document.getElementById("actFV").style.zIndex="2";
-  document.getElementById("vOp2").style.zIndex="2";
-}
-function ocultarFV(){
-  document.getElementById("actFV").style.zIndex="0";
-  document.getElementById("vOp2").style.zIndex="0";
+  // Obtener preguntas dinámicamente desde el servidor
+  fetch("./PHP/obtenerPreguntas.php")
+      .then((response) => response.json())
+      .then((data) => {
+        const preguntasContainer = document.getElementById("preguntasContainer");
+        preguntasContainer.innerHTML = ""; // Limpiar contenido previo
+
+        data.forEach((pregunta, index) => {
+          preguntasContainer.innerHTML += `
+          <div class="mb-3">
+            <h5>Afirmación ${index + 1} (+2pts.)</h5>
+            <p>${pregunta.pregunta}</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="a${index + 1}" value="F" id="f${index + 1}">
+              <label class="form-check-label" for="f${index + 1}">Falso</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="a${index + 1}" value="V" id="v${index + 1}">
+              <label class="form-check-label" for="v${index + 1}">Verdadero</label>
+            </div>
+          </div>
+        `;
+        });
+      })
+      .catch((error) => console.error("Error al obtener las preguntas:", error));
 }
 
+
+// Volver al texto inicial
+function volverTexto() {
+  document.getElementById("actFV").classList.add("d-none");
+  document.getElementById("actFVTxt").classList.remove("d-none");
+}
+
+// Calcular puntuación
 function calcularPuntuacion() {
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (this.readyState == 4) {
-      if (this.status == 200) {
-        try {
-          let fov = JSON.parse(this.responseText);
-          let formularioFV = document.getElementById('formFV');
-          let respuestasFV = formularioFV.elements;
+  fetch("./PHP/obtenerRespuestas.php")
+      .then((response) => response.json())
+      .then((respuestasCorrectas) => {
+        const formulario = document.getElementById("formFV");
+        let puntos = 0;
 
-          let puntos = 0;
-
-          if (respuestasFV['a1'].value === fov[2]) {
+        for (let key in respuestasCorrectas) {
+          const seleccion = formulario[key]?.value;
+          if (seleccion === respuestasCorrectas[key]) {
             puntos += 2;
           }
-
-          if (respuestasFV['a2'].value === fov[3]) {
-            puntos += 2;
-          }
-
-          if (respuestasFV['a3'].value === fov[4]) {
-            puntos += 2;
-          }
-
-          if (respuestasFV['a4'].value === fov[5]) {
-            puntos += 2;
-          }
-
-          if (respuestasFV['a5'].value === fov[6]) {
-            puntos += 2;
-          }
-
-          let resultadoFV = document.getElementById('resultadoFV');
-          let puntuacionFV = document.getElementById('puntuacionFV');
-          puntuacionFV.textContent = 'Tu puntuación: ' + puntos + '/10';
-          resultadoFV.style.display = 'block';
-
-          let xhr2 = new XMLHttpRequest();
-          xhr2.open("POST", "./PHP/actualizarPuntuacionFV.php");
-          xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-          xhr2.send("puntos=" + puntos);
-        } catch (error) {
-          console.error("Error al parsear la respuesta del servidor: " + error);
         }
-      } else {
-        console.error("Error en la solicitud: " + this.status);
-      }
-    }
-  };
-  xhr.open("GET", "./PHP/obtenerFOV.php");
-  xhr.send();
+
+        // Mostrar resultado
+        const resultado = document.getElementById("resultadoFV");
+        const puntuacion = document.getElementById("puntuacionFV");
+
+        puntuacion.textContent = `Tu puntuación: ${puntos}/10`;
+        resultado.classList.remove("d-none");
+
+        // Actualizar puntuación en el servidor
+        actualizarPuntuacion(puntos);
+      })
+      .catch((error) => console.error("Error al obtener las respuestas:", error));
 }
-/*Fin Juego 3*/
+
+// Actualizar puntuación en el servidor
+function actualizarPuntuacion(puntos) {
+  fetch("./PHP/actualizarPuntuacionFV.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ puntos }),
+  })
+      .then((response) => response.text())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error al actualizar la puntuación:", error));
+}

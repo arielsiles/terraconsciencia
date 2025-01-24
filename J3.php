@@ -1,18 +1,18 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
-    session_start();
-    include "./PHP/popups.php";
-    include "./PHP/fov.php";
-    $roles_permitidos = ['Administrador','Usuario'];
-    if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
-        header("Location: SinLogin.php");
-        session_destroy();
-        die();
-    } else {
-        if ($_SESSION['rol'] == 'Administrador') {
-            header("Location: J3Adm.php");
-        }
+header('Content-Type: text/html; charset=utf-8');
+session_start();
+include "./PHP/popups.php";
+include "./PHP/fov.php";
+$roles_permitidos = ['Administrador','Usuario'];
+if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
+    header("Location: SinLogin.php");
+    session_destroy();
+    die();
+} else {
+    if ($_SESSION['rol'] == 'Administrador') {
+        header("Location: J3Adm.php");
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,116 +34,7 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
 
-    <style>
-        /* Estilos generales */
-        .cuerpo {
-            padding: 20px;
-            background-color: #f9f9f9; /* Fondo claro para destacar */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-        }
 
-        /*!* Botón Volver Atrás *!
-        .btnBack {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px 15px;
-            color: #fff;
-            background-color: #5bb5ab; !* Verde agua *!
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
-        }
-
-        .btnBack:hover {
-            background-color: #76c7c0; !* Más claro al pasar el cursor *!
-            text-decoration: none;
-        }*/
-
-        /* Central (Texto y preguntas) */
-        .central {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .central h1, .central h2, .central h3 {
-            color: #333; /* Texto oscuro */
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .central p.lectura {
-            font-size: 1.1rem;
-            color: #555; /* Gris suave */
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        /* Preguntas Falso o Verdadero */
-        .rsFV {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 10px 0;
-        }
-
-        .rsFV label {
-            font-size: 1.1rem;
-            color: #333;
-            font-weight: normal;
-            cursor: pointer;
-        }
-
-        .rsFV input[type="radio"] {
-            margin-right: 10px;
-        }
-
-        /* Botones y resultados */
-        .vntOpr, .vntOpr2 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .vntOpr a, .vntOpr2 button {
-            font-size: 1rem;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px 20px;
-            background-color: #5bb5ab;
-            color: #fff;
-            border-radius: 5px;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .vntOpr a:hover, .vntOpr2 button:hover {
-            background-color: #76c7c0;
-        }
-
-        /* Resultado */
-        #resultadoFV {
-            text-align: center;
-            padding: 15px;
-            background-color: #76c7c0; /* Fondo verde agua */
-            color: #fff;
-            border: 3px solid #5bb5ab; /* Borde */
-            border-radius: 10px;
-            max-width: 400px;
-            margin: 20px auto 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-    </style>
 
 </head>
 
@@ -155,75 +46,108 @@
 
 <main>
 
-    <section class="testimonial-section section-padding section-bg">
-        <div class="container">
+    <section class="cta-section section-padding section-bg">
+
+        <div class="container py-4">
             <div class="row">
-                <div class="cuerpo">
-                    <!-- Botón Volver Atrás con imagen -->
-                    <div class="d-flex align-items-center justify-content-end mb-3">
-                        <a href="Trivias.php" class="btnBack d-flex align-items-center">
-                            <i class="fas fa-arrow-circle-left me-2"></i>
-                            Volver Atrás
-                        </a>
-                    </div>
+                <!-- Botón para regresar -->
+                <div class="col-12 mb-3 text-end">
+                    <a href="Trivias.php" class="btn btn-secondary">
+                        <i class="fas fa-arrow-circle-left"></i> Volver Atrás
+                    </a>
+                </div>
 
-                    <!-- Contenido Central -->
-                    <div class="central">
-                        <div id="actFVTxt">
-                            <h1 class="text-center"><?php echo $titulo[0]; ?></h1>
-                            <p class="lectura"><?php echo $afirmaciones[0]; ?></p>
-                        </div>
+                <!-- Sección de texto inicial -->
+                <div id="actFVTxt" class="col-12 text-center">
+                    <h2 class="mb-4 text-info">Áreas de Recarga Hídrica</h2>
 
-                        <div class="actFV" id="actFV">
-                            <div class="contTestFV">
-                                <div id="testFV">
-                                    <h5 class="text-center">Responde Falso o Verdadero</h5>
-                                    <form id="formFV">
-                                        <?php for ($i = 1; $i <= 5; $i++) : ?>
-                                            <div class="mb-4">
-                                                <h7>Afirmación <?php echo $i; ?> (+2pts.)</h7>
-                                                <p><?php echo $afirmaciones[$i]; ?></p>
-                                                <div class="row g-2 mt-2 rsFV">
-                                                    <div class="col-12 col-md-4">
-                                                        <label class="d-flex align-items-start">
-                                                            <input type="radio" name="a<?php echo $i; ?>" value="f" class="me-2">(F) Falso
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-12 col-md-4">
-                                                        <label class="d-flex align-items-start">
-                                                            <input type="radio" name="a<?php echo $i; ?>" value="v" class="me-2">(V) Verdadero
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endfor; ?>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="lead">
+                        Una <strong>cuenca hidrográfica</strong> es un territorio determinado por la cumbre de los cerros, donde las aguas confluyen hacia un río principal. Una cuenca está formada por <span class="text-info">quebradas, acequias, riachuelos y vertientes</span> donde se moviliza el agua dulce hasta llegar a un punto único de desfogue llamado <em>punto de salida</em>, que usualmente es un río principal o mar. Las cuencas hidrográficas tienen como fin captar o recoger el agua de lluvia que alimenta a los ríos, quebradas, vertientes, lagos, lagunas y represas.
+                    </p>
 
-                    <!-- Botones de Acción -->
-                    <div class="d-flex flex-column align-items-center mt-4">
-                        <div class="vntOpr" id="vOp1">
-                            <a href="javascript:mostrarFV()" class="btnBack">
-                                Continuar <i class="fas fa-arrow-circle-right"></i>
-                            </a>
+                    <p class="text-start">
+                        <strong>Partes de una cuenca hidrográfica:</strong> Una cuenca puede estar constituida por otras zonas donde la recarga hídrica puede ser significativa. Las más importantes son:
+                    </p>
+
+                    <ul class="list-group list-group-flush text-start mb-4">
+                        <li class="list-group-item">
+                            <strong>a)</strong> <span class="fw-bold">Cuenca alta:</span> Donde se originan los ríos y quebradas, con mayor concentración de áreas de recarga hídrica al existir mayor captación de agua de lluvia.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>b)</strong> <span class="fw-bold">Cuenca media:</span> Encargada de transportar el agua proveniente desde la zona alta hacia la parte baja, donde se concentra la mayor densidad hídrica conformada por lagunas, ríos, quebradas y vertientes.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>c)</strong> <span class="fw-bold">Cuenca baja:</span> Es la zona más caudalosa que concentra la mayor cantidad de agua proveniente de las otras dos zonas.
+                        </li>
+                    </ul>
+
+                    <p class="lead">
+                        Es un sitio de mayor aprovechamiento ya que se usa en riego, consumo humano, ganadería e industria.
+                    </p>
+
+                    <p class="text-start">
+                        <strong>Importancia de las cuencas hidrográficas:</strong>
+                    </p>
+
+                    <ol class="list-group list-group-numbered text-start mb-4">
+                        <li class="list-group-item">Permiten la captación y acumulación de agua en el suelo.</li>
+                        <li class="list-group-item">Permiten el riego para especies cultivadas, dotando de alimentos a las familias cercanas a la cuenca y de la zona.</li>
+                        <li class="list-group-item">Su buen manejo reduce los riesgos de desastres naturales como las inundaciones, deslizamientos, erosión de suelos.</li>
+                        <li class="list-group-item">Ofrecen servicios ambientales como aire puro, agua, suelo fértil, humedad.</li>
+                        <li class="list-group-item">Se convierten en un hábitat para especies vegetales y/o animales silvestres.</li>
+                        <li class="list-group-item">Promueven la recreación y el turismo sostenible.</li>
+                    </ol>
+
+                    <p class="text-start">
+                        <strong>El área de recarga hídrica:</strong> Es la zona geográfica que, por sus características naturales, capta, almacena e incorpora el agua procedente de la lluvia al subsuelo, aguas superficiales y a otros acuíferos y cuerpos de agua estáticos y/o en movimiento. La capacidad de un área de recarga hídrica (cuenca, subcuenca o sitio específico), está definida por:
+                    </p>
+
+                    <ul class="list-group list-group-flush text-start mb-4">
+                        <li class="list-group-item">Cobertura vegetal permanente.</li>
+                        <li class="list-group-item">Mayor diversidad y combinación de plantaciones (forestales nativos o exóticos, arbustos, hierbas y pastos).</li>
+                        <li class="list-group-item">Tipo de suelo, especialmente la textura, un factor importante para determinar la capacidad de recarga hídrica. Los suelos impermeables y compactados impiden o dificultan la infiltración, mientras que los suelos permeables facilitan la recarga.</li>
+                    </ul>
+
+                    <p class="text-start">
+                        <strong>Las acciones para recuperar áreas de recarga hídrica son:</strong>
+                    </p>
+
+                    <ul class="list-group list-group-flush text-start">
+                        <li class="list-group-item">Promover e incentivar la regeneración de la cobertura arbórea, arbustiva o pastizales naturales dentro del área.</li>
+                        <li class="list-group-item">Realizar acciones de reforestación, sistemas agroforestales y prácticas agroecológicas.</li>
+                        <li class="list-group-item">Controlar y evitar la quema en las áreas de recarga y descarga, no contaminar el agua, ni matar la vegetación.</li>
+                        <li class="list-group-item">Evitar el sobrepastoreo y la agricultura convencional (uso de agroquímicos).</li>
+                        <li class="list-group-item">Evaluar para identificar si es necesario aislar o impedir el ingreso de personas o animales para que recupere, mantenga o incremente su cobertura vegetal.</li>
+                    </ul>
+
+                    <button class="btn btn-primary mt-4 px-5 py-2" onclick="mostrarPreguntas()">Continuar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+
+
+                <!-- Sección del test de preguntas -->
+                <div id="actFV" class="col-12 d-none">
+                    <form id="formFV">
+                        <!-- Preguntas dinámicas -->
+                        <div id="preguntasContainer"></div>
+
+                        <!-- Botones de acción -->
+                        <div class="mt-4 text-center">
+                            <button type="button" class="btn btn-success" onclick="calcularPuntuacion()">Calcular Resultado</button>
+                            <button type="button" class="btn btn-warning" onclick="volverTexto()">Volver al Texto</button>
                         </div>
-                        <div class="vntOpr2" id="vOp2">
-                            <button type="button" onclick="calcularPuntuacion()" class="btn btn-custom">Calcular Resultado</button>
-                            <div id="resultadoFV" class="text-center mt-2 p-3" style="display: none;">
-                                <h2 style="color: #ffffff; font-weight: bold;">Resultado</h2>
-                                <p id="puntuacionFV" style="font-size: 1.25rem; color: #ffffff;"></p>
-                            </div>
-                            <a href="javascript:ocultarFV()" class="btnBack">
-                                <i class="fas fa-arrow-circle-left"></i> Volver al Texto
-                            </a>
-                        </div>
+                    </form>
+
+                    <!-- Resultado -->
+                    <div id="resultadoFV" class="mt-4 d-none text-center">
+                        <h2>Resultado</h2>
+                        <p id="puntuacionFV" class="fs-4 fw-bold"></p>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </section>
 
 
