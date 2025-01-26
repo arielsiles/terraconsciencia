@@ -1,6 +1,6 @@
 <?php
 include "PHP/conexionBe.php";
-$result = $conexion->query("SELECT dir_imagen, descripcion_pb, dir_pdf FROM seccionpb1");
+$result = $conexion->query("SELECT dir_imagen, descripcion_pb, dir_pdf FROM seccionpb1 order by id_publicacion desc ");
 
 $resultados = [];
 if ($result->num_rows > 0) {

@@ -28,17 +28,17 @@
             move_uploaded_file($nameImageUrl, $ruta);
             move_uploaded_file($pdfTempName, $rutaPdf);
             $query = "INSERT INTO seccionpb1 (dir_imagen, descripcion_pb, dir_pdf) VALUES ('$ruta', '$description', '$nameRuta')";
-            header('Location: ../PublicacionesAdm.php');
+            header('Location: ../Publicaciones.php');
         } elseif ($section == 'seccion2') {
             move_uploaded_file($nameImageUrl, $ruta);
             move_uploaded_file($pdfTempName, $rutaPdf);
             $query = "INSERT INTO seccionpb2 (dir_imagen, descripcion_pb, dir_pdf) VALUES ('$ruta', '$description', '$nameRuta')";
-            header('Location: ../PublicacionesAdm.php');
+            header('Location: ../Publicaciones.php');
         } elseif ($section == 'seccion3') {
             move_uploaded_file($nameImageUrl, $ruta);
             move_uploaded_file($pdfTempName, $rutaPdf);
             $query = "INSERT INTO seccionpb3 (dir_imagen, descripcion_pb, dir_pdf) VALUES ('$ruta', '$description', '$nameRuta')";
-            header('Location: ../PublicacionesAdm.php');
+            header('Location: ../Publicaciones.php');
         }
         mysqli_query($conexion, $query);
     }

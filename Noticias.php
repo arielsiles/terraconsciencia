@@ -8,11 +8,11 @@
         header("Location: NoticiasSl.php");
         session_destroy();
         die();
-    } else {
+    } /*else {
         if ($_SESSION['rol'] == 'Administrador') {
             header("Location: NoticiasAdm.php");
         }
-    }
+    }*/
 ?>
 
 <!doctype html>

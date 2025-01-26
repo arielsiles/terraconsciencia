@@ -40,9 +40,10 @@
             <label for="subModPp" class="botonPortada" ><i class="fas fa-thumbs-up"></i></label>
         </form>
         <button id="resetButton">Restablecer puntos</button>
-        <a class="return" href="TriviasAdm.php">
-            Volver 
-        </a>
+
+        <!--<a class="return" href="TriviasAdm.php">Volver</a>-->
+        <a class="return" href="ConLogin.php">Volver</a>
+
     </div>
 </body>
 <script src="JS/resetPoints.js"></script>

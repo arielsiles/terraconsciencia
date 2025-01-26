@@ -36,7 +36,8 @@
                     Subir PDF
                 </label>
                 <!-- -->
-                <input type="text" name="description" maxlength="200" placeholder="Descripción">
+                <input type="text" name="description" maxlength="200" placeholder="Descripción" style="width: 550px;">
+
                 <p>Maximo 200 caracteres.</p>
                 <button type="submit">Agregar publicación</button>
             </form>
@@ -55,7 +56,7 @@
                     Subir PDF
                 </label>
                 <!-- -->
-                <input type="text" name="description" placeholder="Descripción">
+                <input type="text" name="description" placeholder="Descripción" style="width: 550px;">
                 <p>Maximo 200 caracteres.</p>
                 <button type="submit">Agregar publicación</button>
             </form>
@@ -74,7 +75,7 @@
                     Subir PDF
                 </label>
                 <!-- -->
-                <input type="text" name="description" placeholder="Descripción">
+                <input type="text" name="description" placeholder="Descripción" style="width: 550px;">
                 <p>Maximo 200 caracteres.</p>
                 <button type="submit">Agregar publicación</button>
             </form>
@@ -97,9 +98,10 @@
             <input type="submit" value="Modificar" id="subModPpPb" style="display: none;">
             <label for="subModPpPb" class="botonPortada" ><i class="fas fa-thumbs-up"></i></label>
         </form>
-        <a class="return" href="PublicacionesAdm.php">
-            Volver 
-        </a>
+
+        <!--<a class="return" href="PublicacionesAdm.php">Volver</a>-->
+        <a class="return" href="ConLogin.php">Volver</a>
+
     </div>
     <script src="./JS/preview.js"></script>
 </body>

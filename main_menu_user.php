@@ -28,6 +28,21 @@
                     <a class="nav-link" href="Trivias.php">Trivias</a>
                 </li>
 
+                <?php if ($_SESSION['rol'] == 'Administrador') { ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link click-scroll dropdown-toggle" href="#section_5"
+                       id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">Admin</a>
+
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                        <li><a class="dropdown-item" href="SubirNoticias.php">Noticias</a></li>
+                        <li><a class="dropdown-item" href="SubirPublicacion.php">Publicaciones</a></li>
+                        <li><a class="dropdown-item" href="EdicionTrivias.php">Trivias</a></li>
+                        <!--<li><a class="dropdown-item" href="#"></a></li>-->
+                    </ul>
+                </li>
+                <?php } ?>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"
                        id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
@@ -37,7 +52,7 @@
                         <li><a class="dropdown-item" href="Cuenta.php?id=<?php echo $_SESSION['usuario'];?>">Ir a mi cuenta</a></li>
 
                         <li>
-                            <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal"> <i class="fas fa-sign-out-alt"></i> <p>Cerrar Sesion</p> </a>
+                            <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal"><p>Cerrar Sesion</p> </a>
                         </li>
                     </ul>
                 </li>

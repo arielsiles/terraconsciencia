@@ -7,11 +7,11 @@
         header("Location: SinLogin.php");
         session_destroy();
         die();
-    } else {
+    } /*else {
         if ($_SESSION['rol'] == 'Administrador') {
             header("Location: PublicacionesAdm.php");
         }
-    }
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +34,6 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
 
     <style>
         .card {
@@ -139,76 +138,6 @@
 <?php include 'main_menu_user.php'; ?>
 
 <main>
-    <!-- Version ok B5 -->
-    <!--<section class="news-section section-padding">
-        <div class="container">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-
-                    <div class="carousel-item active">
-                        <div class="cards-wrapper">
-                            <div class="card" style="background-image: url('https://terraconsciencia.com/IMGUP/El_agua_es_vida_El_agua_nutre.png');">
-                                <a href="path-to-your-pdf.pdf" class="download-btn" download title="Descargar PDF">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <div class="card-body">
-                                    <p class="card-text">Cartilla orientada a jóvenes para aprender la importancia del agua en el planeta. Resalta la relación del recurso con la agricultura, así como con las acciones de consumo y protección.</p>
-                                </div>
-                            </div>
-                            <div class="card" style="background-image: url('https://terraconsciencia.com/IMGUP/Reglas-basicas-para-cultivar.png');">
-                                <a href="path-to-your-pdf.pdf" class="download-btn" download title="Descargar PDF">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <div class="card-body">
-                                    <p class="card-text">Guía básica para iniciar un huerto orgánico y saludable a través de la siembra de semillas y plantines, presentado en forma sencilla y educativa.</p>
-                                </div>
-                            </div>
-                            <div class="card" style="background-image: url('https://terraconsciencia.com/IMGUP/El_agua_es_vida_El_agua_nutre.png');">
-                                <a href="path-to-your-pdf.pdf" class="download-btn" download title="Descargar PDF">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <div class="card-body">
-                                    <p class="card-text">Cartilla orientada a jóvenes sobre el uso de recursos hídricos...</p>
-                                </div>
-                            </div>
-                            <div class="card" style="background-image: url('https://terraconsciencia.com/IMGUP/El_agua_es_vida_El_agua_nutre.png');">
-                                <a href="path-to-your-pdf.pdf" class="download-btn" download title="Descargar PDF">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <div class="card-body">
-                                    <p class="card-text">Tríptico sobre recursos sostenibles y salud...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="cards-wrapper">
-                            <div class="card" style="background-image: url('https://terraconsciencia.com/IMGUP/El_agua_es_vida_El_agua_nutre.png');">
-                                <a href="path-to-your-pdf.pdf" class="download-btn" download title="Descargar PDF">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <div class="card-body">
-                                    <p class="card-text">Otro recurso educativo para jóvenes...</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>-->
 
     <section class="news-section section-padding">
         <div class="container">
@@ -224,11 +153,6 @@
 
         </div>
     </section>
-
-
-
-
-
 
 </main>
 

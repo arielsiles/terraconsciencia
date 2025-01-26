@@ -2,7 +2,7 @@
 include "PHP/conexionBe.php";
 
 // Consulta para obtener datos
-$query = "SELECT dir_imagen, descripcion_pb, dir_pdf FROM seccionpb3";
+$query = "SELECT dir_imagen, descripcion_pb, dir_pdf FROM seccionpb3 order by id desc ";
 $result = $conexion->query($query);
 
 $resultados = [];

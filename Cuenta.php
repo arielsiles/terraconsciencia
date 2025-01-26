@@ -21,127 +21,123 @@
 
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Cuenta</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-        <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-        <link rel="stylesheet" href="assets/CSS/styleCt.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Pacifico&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <!--Portada-->
-        <div class="portada">
-            <a class="l1">
-            </a>
-            <div class="l2">
-                <a href="https://gaiapacha.org/" target="_blank" style="background-image: url(./IMG/LogoGaia.png); background-size: 100% 100%; width: 180px; height: 70px;  right: 120px;"></a>
-                <a href="https://www.solidagro.be/en/home/worldwide/bolivia" target="_blank" style="background-image: url(./IMG/LogoSolidagro.png); background-size: 100% 100%; width: 120px; height: 70px;"></a>
-                <a target="_blank" style="background-image: url(./IMG/bELGICA.png); background-size: 100% 100%; width: 220px; height: 120px; margin-top:10px;"></a>
-            </div>
-        </div>
-        <!--Confirmacion-->
-        <div class="confir" id="fndCf">
-            <div class="vent" id="vent">
-                <p>¿Desea cerrar sesión?</p>
-                <div class="botonesCf">
-                    <a class="btnConf" href="PHP/cerrar_sesion.php">Sí</a>
-                    <a class="btnConf" href="javascript:cierraConf()">NO</a>
-                </div>
-            </div>
-        </div>
-        <!--Navegacion-->
-        <nav class="navegador">
-            <ul class="contNav">
-                <a href="ConLogin.php" class="boton" style="background:rgb(215, 102, 92);">
-                    <li>INICIO</li>
-                </a>
-                <a href="Noticias.php" class="boton" style="background:rgb(239, 170, 86);">
-                    <li>NOTICIAS</li>
-                </a>
-                <a href="Publicaciones.php" class="boton" style="background:rgb(125, 192, 207); width: 22%;">
-                    <li>PUBLICACIONES</li>
-                </a>
-                <a href="Trivias.php" class="boton" style="background: #22764D;">
-                    <li>TRIVIAS</li>
-                </a>
-                <a href="#" class="boton" style="background:rgb(238, 37, 117);border-color:black; border-style:dashed; border-top:none;">
-                    <li>CUENTA&nbsp;&nbsp;</li>
-                </a>
-            </ul>
-        </nav>
-        <!--Cuerpo-->
-        <div class="cuerpo">
-            <div class="lado"></div>
-            <div class="main">
-                <div class="right">
-                    <div class="perfil">
-                        <div class="imagen">
-                            <form class="fotoPf" method="post" enctype="multipart/form-data" action="./PHP/guardar_perfil.php">
-                                <input type="file" name="foto" id="imgChange" accept="image/*" style="display:none;" onchange="javascript:previewImage(event, '#imgPf')" required>
-                                <label for="imgChange">
-                                    <img src="<?php $rutaImagen = str_replace('../', './', $row['perfil']); echo $rutaImagen; ?>" alt="avatar" width="100%" height="100%" id="imgPf" style="cursor: pointer;">
-                                </label>
-                                <input type="submit" value="Actualizar Perfil" class="send">
-                            </form>
-                            <div class="descPf">
-                                <p class="name">
-                                    <?php
-                                        if (isset($row['nombre_usuario'])) {
-                                            echo $row['nombre_usuario'];
-                                        } else {
-                                            echo "Nombre de usuario no encontrado.";
-                                        }
-                                    ?>
-                                </p>
-                                <p class="puntuacion"><?php echo $row['puntos'];?>pts.</p>
-                                <p class="correo"><?php echo $row['correo']; ?></p>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Terra ConsCiencia</title>
+
+    <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
+
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<?php include 'header_info.php'; ?>
+
+<?php include 'main_menu_user.php'; ?>
+
+<main>
+
+    <section class="news-section py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <!-- Contenedor principal -->
+                <div class="col-lg-8 col-md-10 col-12">
+                    <div class="row g-4">
+                        <!-- Lado izquierdo (espaciador en pantallas grandes) -->
+                        <div class="col-lg-2 d-none d-lg-block"></div>
+
+                        <!-- Contenido principal -->
+                        <div class="col-lg-8 col-md-12">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <!-- Perfil -->
+                                    <div class="text-center mb-4">
+                                        <!-- Avatar con borde -->
+                                        <form class="fotoPf d-flex flex-column align-items-center" method="post" enctype="multipart/form-data" action="./PHP/guardar_perfil.php">
+                                            <input type="file" name="foto" id="imgChange" accept="image/*" style="display:none;" onchange="javascript:previewImage(event, '#imgPf')" required>
+                                            <label for="imgChange">
+                                                <img src="<?php $rutaImagen = str_replace('../', './', $row['perfil']); echo $rutaImagen; ?>"
+                                                     alt="avatar"
+                                                     class="rounded-circle img-fluid border border-2 border-success"
+                                                     id="imgPf"
+                                                     style="cursor: pointer; max-width: 150px;">
+                                            </label>
+                                            <!-- Botón debajo del avatar -->
+                                            <button type="submit" class="btn btn-success mt-3">
+                                                <i class="fas fa-upload me-2"></i> Actualizar Perfil
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                    <!-- Información del perfil -->
+                                    <div class="text-center mb-4">
+                                        <h5 class="fw-bold">
+                                            <?php
+                                            if (isset($row['nombre_usuario'])) {
+                                                echo $row['nombre_usuario'];
+                                            } else {
+                                                echo "Nombre de usuario no encontrado.";
+                                            }
+                                            ?>
+                                        </h5>
+                                        <!-- Resaltando los puntos -->
+                                        <p class="mb-1 text-warning fw-bold" style="font-size: 1.25rem;">
+                                            <?php echo $row['puntos']; ?> pts.
+                                        </p>
+                                        <p class="mb-1 text-muted"><?php echo $row['correo']; ?></p>
+                                    </div>
+
+                                    <!-- Opciones -->
+                                    <div class="d-flex justify-content-center">
+                                        <a href="javascript:abreConf()" class="btn btn-danger">
+                                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="opciones">
-                            <a href="javascript:abreConf()" class="cs">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <p>Cerrar Sesion</p>
-                            </a>
-                        </div>
-                    </div> 
-                </div>     
-            </div>     
-            <div class="lado"></div>
+
+                        <!-- Lado derecho (espaciador en pantallas grandes) -->
+                        <div class="col-lg-2 d-none d-lg-block"></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <!--Pie-->
-        <footer class="pie">
-            <div class="info">
-            <div class="infoGaia">
-                <p>
-                    <ul class="ct">
-                        <b>GAIA PACHA</b>
-                        <li>Celular: 76957456</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:gaiapacha@gaiapacha.org">gaiapacha@gaiapacha.org</a></li>
-                    </ul>
-                </p>
-            </div>
-            <div class="infoSolid">
-                <p>
-                    <ul class="ct">
-                        <b>SOLIDAGRO</b>
-                        <li>Celular: +32 3 777 20 15</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:info@solidagro.be">info@solidagro.be</a></li>
-                    </ul>
-                </p>
-            </div>
-            </div>
-            <div class="contacto">
-                <p>REDES SOCIALES:</p>
-                <a href="https://www.facebook.com/gaiapacha?mibextid=ZbWKwL"><img src="IMG/facebook.png" alt="facebook" width="50px" height="50px"></a>
-                <a href="https://instagram.com/gaiapacha?igshid=YmMyMTA2M2Y="><img src="IMG/instagram.png" alt="instagram" width="50px" height="50px"></a>
-                <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha/"><img src="IMG/linkedin.png" alt="linkedin" width="50px" height="50px"></a>
-            </div>
-        </footer>
-        <script src="./JS/scriptCt.js"></script>
-        <script src="./JS/preview.js"></script>
-    </body>
+    </section>
+
+
+
+</main>
+
+<?php include 'footer.php'; ?>
+
+<!-- JAVASCRIPT FILES -->
+
+<script src="JS/jquery.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script src="JS/jquery.sticky.js"></script>
+
+<script src="JS/preview.js"></script>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>-->
+
+</body>
+
 </html>

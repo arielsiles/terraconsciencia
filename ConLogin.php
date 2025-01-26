@@ -8,11 +8,11 @@ if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos
     header("Location: SinLogin.php");
     session_destroy();
     die();
-} else {
+} /*else {
     if ($_SESSION['rol'] == 'Administrador') {
         header("Location: ConLoginAdm.php");
     }
-}
+}*/
 
 ?>
 <!doctype html>
