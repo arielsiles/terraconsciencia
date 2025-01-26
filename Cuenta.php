@@ -48,6 +48,8 @@
 
 <?php include 'header_info.php'; ?>
 
+<?php include 'modal_cierre.php'; ?>
+
 <?php include 'main_menu_user.php'; ?>
 
 <main>
@@ -105,9 +107,14 @@
 
                                     <!-- Opciones -->
                                     <div class="d-flex justify-content-center">
-                                        <a href="javascript:abreConf()" class="btn btn-danger">
+                                        <!--<a href="javascript:abreConf()" class="btn btn-danger">
                                             <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                        </a>-->
+
+                                        <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                            <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
                                         </a>
+
                                     </div>
                                 </div>
                             </div>
