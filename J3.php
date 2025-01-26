@@ -59,7 +59,8 @@ if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos
 
                 <!-- Sección de texto inicial -->
                 <div id="actFVTxt" class="col-12 text-center">
-                    <h2 class="mb-4 text-info">Áreas de Recarga Hídrica</h2>
+                    <h2 class="mb-2 text-info">Áreas de Recarga Hídrica</h2>
+                    <h5 class="mb-4 text-secondary">Lee atentamente y responde</h5>
 
                     <p class="lead">
                         Una <strong>cuenca hidrográfica</strong> es un territorio determinado por la cumbre de los cerros, donde las aguas confluyen hacia un río principal. Una cuenca está formada por <span class="text-info">quebradas, acequias, riachuelos y vertientes</span> donde se moviliza el agua dulce hasta llegar a un punto único de desfogue llamado <em>punto de salida</em>, que usualmente es un río principal o mar. Las cuencas hidrográficas tienen como fin captar o recoger el agua de lluvia que alimenta a los ríos, quebradas, vertientes, lagos, lagunas y represas.
