@@ -33,8 +33,6 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Clasificación</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
     <style>
         body {
             background-color: #f8f9fa;
@@ -80,7 +78,6 @@ if ($result->num_rows > 0) {
             margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 10px;
         }
 
         @media (max-width: 576px) {
@@ -112,11 +109,8 @@ if ($result->num_rows > 0) {
         <h5 class="w-100">Contenedor Orgánicos</h5>
     </div>
 
-    <!-- Botones de acción -->
+    <!-- Botón Evaluar -->
     <div class="evaluate-btn">
-        <a href="Trivias.php" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Volver atrás
-        </a>
         <button id="evaluate-btn" class="btn btn-primary" disabled>Evaluar</button>
     </div>
 </div>
