@@ -7,11 +7,11 @@ if (!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitido
     header("Location: SinLogin.php");
     session_destroy();
     die();
-} else {
+} /*else {
     if ($_SESSION['rol'] == 'Administrador') {
         header("Location: J5Adm.php");
     }
-}
+}*/
 
 include "./PHP/conexionBe.php";
 // Consulta para obtener las imágenes

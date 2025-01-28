@@ -8,11 +8,11 @@
         header("Location: SinLogin.php");
         session_destroy();
         die();
-    } else {
+    } /*else {
         if ($_SESSION['rol'] == 'Administrador') {
             header("Location: J2Adm.php");
         }
-    }
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="es">
