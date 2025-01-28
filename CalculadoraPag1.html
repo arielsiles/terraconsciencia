@@ -3,41 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Hidrica</title>
-    <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-    <link rel="stylesheet" href="assets/CSS/styleCalcPag1.css">
-
-    <!-- CSS FILES -->
+    <title>Calculadora Hídrica</title>
+    <link rel="shortcut icon" href="IMG/Icono.ico">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="assets/CSS/styleCalc.css">
 </head>
 <body>
-<div class="fondo">
+<div class="container">
 
     <div class="titulo">
-        <h1 class="esp">..........</h1>
-        <h1 class="tituloPrinc2" >CONSUMO PERSONAL</h1>
-        <H2>Conoce la cantidad de agua que consumes en tus actividades personales</H2>
-
-
+        <h1>CONSUMO PERSONAL</h1>
+        <h2>Conoce la cantidad de agua que consumes en tus actividades personales</h2>
     </div>
+
     <div class="container formulario">
         <div class="preg">
             <section class="p1">
                 <h1>1. ¿Cuántas veces al día te lavas las manos en tu casa y escuela / universidad / trabajo?</h1>
-                <!--<div class="pregunta1">
-                    <label>
-                        <input type="radio" id="p11" name="p1"> 1 a 2 veces
-                    </label>
-                    <label>
-                        <input type="radio" id="p12" name="p1"> 3 a 4 veces
-                    </label>
-                    <label>
-                        <input type="radio" id="p13" name="p1"> 5 a 6 veces
-                    </label>
-                </div>-->
                 <div class="pregunta1">
                     <label>
                         <input type="radio" id="p11" name="p1"> 1 a 2 veces
@@ -130,39 +113,26 @@
                 </div>
             </section>
 
-            <!--<div class="botonCal">
-                <a  class="boton1" onclick="resultado()">CALCULAR RESULTADO</a>
-                <script src="JS/scriptCalPag1.js"></script>
-                <p>TU TOTAL DE CONSUMO PERSONAL AL MES ES: <br> <span id="resultado"></span></p>
-            </div>-->
-
-            <div class="container text-center mt-5">
-                <div class="botonCal">
-                    <a class="btn btn-secondary btn-lg" onclick="resultado()">CALCULAR RESULTADO</a>
-                    <script src="JS/scriptCalPag1.js"></script>
-                    <p class="mt-4">
-                        TU TOTAL DE CONSUMO PERSONAL AL MES ES: <br>
-                        <span id="resultado" class="fw-bold text-dark"></span>
-                    </p>
-                </div>
+            <div class="text-center mt-5">
+                <a class="btn btn-secondary btn-lg" onclick="resultado()">CALCULAR RESULTADO</a>
+                <p class="mt-4 resultado-texto">
+                    TU TOTAL DE CONSUMO PERSONAL AL MES ES: <br>
+                    <span id="resultado" class="resultado-valor"></span>
+                </p>
             </div>
 
             <div class="botonSig">
-                <a href ="CalculadoraPag2.html" class="boton1">SIGUIENTE 🡺</a>
+                <a href="CalculadoraPag2.html">
+                    SIGUIENTE <i class="bi bi-arrow-right-circle"></i>
+                </a>
             </div>
-
         </div>
     </div>
 </div>
 
-<!-- JAVASCRIPT FILES -->
-
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.sticky.js"></script>
-<script src="js/click-scroll.js"></script>
-<script src="js/counter.js"></script>
-<script src="js/custom.js"></script>
-
+<script src="JS/jquery.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script src="JS/jquery.sticky.js"></script>
+<script src="JS/scriptCalPag1.js"></script>
 </body>
 </html>

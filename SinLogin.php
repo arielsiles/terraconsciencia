@@ -76,40 +76,19 @@
 
     <section class="cta-section section-padding section-bg">
         <div class="container">
-            <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center text-center">
 
-                <div class="col-lg-5 col-12 ms-auto">
+                <div class="col-12">
                     <h2 class="mb-0">¿Sabes cuál es la huella hídrica que generas?</h2>
                 </div>
 
-                <div class="col-lg-5 col-12">
-                    <a href="#" class="me-4">¡Descúbrelo ahora!</a>
-
-                    <a href="CalculadoraInicio.html" class="custom-btn btn smoothscroll">Haz click para empezar</a>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section class="about-section section-padding">
-        <div class="container">
-            <div class="row">
+    <?php include 'mensaje_calculadora.php'; ?>
 
-                <div class="col-lg-6 col-md-5 col-12">
-                    <img src="IMG/Ilustracionessolopersonaje-05.svg"
-                         class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-5 col-md-7 col-12">
-                    <div class="custom-text-block">
-                        <h2 class="mb-0">Desde ahora empieza el cambio desde tu conocimiento a la acción <br />¡Prepárate!</h2>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    <?php include 'apoyo.php'; ?>
 
 </main>
 
