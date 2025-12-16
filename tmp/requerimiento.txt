@@ -1,0 +1,32 @@
+Nueva Sección: PURISKIRI
+
+1.	Descripción General
+
+PURISKIRI será el espacio dentro de la plataforma Terraconsciencia destinado exclusivamente a docentes. Funcionará como un centro de recursos educativos, donde podrán cargar y descargar materiales como presentaciones, cartillas y guías didácticas, así como acceder a actividades prácticas para desarrollar en clase.
+
+2. Objetivos de la Sección
+
+- Facilitar el acceso a recursos educativos actualizados.
+- Ofrecer un repositorio organizado por temas y niveles educativos.
+- Permitir que los profesores compartan sus propias adaptaciones o experiencias en clase.
+- Fomentar una comunidad activa de intercambio pedagógico.
+
+3. Estructura de la Sección
+
+- Encabezado: Título de la sección y breve descripción inspiradora sobre el propósito de compartir conocimiento.
+- Botón de acceso rápido:
+	Descargar Recursos
+	Subir Recursos
+- Barra de búsqueda y filtros (por tema, nivel educativo, tipo de material).
+
+4. Funcionalidades Técnicas
+
+- Carga de archivos: formatos permitidos (PDF, PPT, DOCX).
+- Responsive design: que funcione bien en computadoras, tablets y celulares.
+
+5. Propuesta Visual
+
+- Diseño limpio y amigable con íconos claros para cada tipo de recurso.
+- Colores que identifiquen la sección dentro del estilo general de Terraconsciencia (ej: verde y naranja para resaltar dinamismo y naturaleza).
+- Imágenes representativas de docentes en acción.
+
