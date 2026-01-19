@@ -28,6 +28,10 @@
                     <a class="nav-link" href="Trivias.php">Trivias</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="Puriskiri.php">PURISKIRI</a>
+                </li>
+
                 <?php if ($_SESSION['rol'] == 'Administrador') { ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link click-scroll dropdown-toggle" href="#section_5"
@@ -38,7 +42,7 @@
                         <li><a class="dropdown-item" href="SubirNoticias.php">Noticias</a></li>
                         <li><a class="dropdown-item" href="SubirPublicacion.php">Publicaciones</a></li>
                         <li><a class="dropdown-item" href="EdicionTrivias.php">Trivias</a></li>
-                        <!--<li><a class="dropdown-item" href="#"></a></li>-->
+                        <li><a class="dropdown-item" href="PuriskiriAdm.php">PURISKIRI</a></li>
                     </ul>
                 </li>
                 <?php } ?>

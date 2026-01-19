@@ -3,7 +3,7 @@
     include "./PHP/conexionBe.php";
     include "./PHP/popups.php";
     session_start();
-    $roles_permitidos = ['Administrador','Usuario'];
+    $roles_permitidos = ['Administrador','Usuario','Docente'];
     if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
         header("Location: NoticiasSl.php");
         session_destroy();

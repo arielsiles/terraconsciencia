@@ -1,0 +1,4 @@
+- Las categorias de los recursos deben ser gestionados por el usuario administrador, modificar, eliminar, agregar nuevas categorias,
+  o inactivar categorias existentes en caso que no se pueda eliminar por tener recursos asociados
+
+- Los recursos registrados se deben poder editar o eliminar por el usuario que los registro o por el administrador.

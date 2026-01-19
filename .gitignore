@@ -9,4 +9,5 @@
 *.log
 *.bak
 /PHP/config.php
+/PURISKIRI/
 /.idea/inspectionProfiles/Project_Default.xml

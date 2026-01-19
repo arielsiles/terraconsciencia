@@ -3,7 +3,7 @@
     session_start();
     include "./PHP/popups.php";
     include "./PHP/fov.php";
-    $roles_permitidos = ['Administrador','Usuario'];
+    $roles_permitidos = ['Administrador','Usuario','Docente'];
     if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
         header("Location: SinLogin.php");
         session_destroy();
