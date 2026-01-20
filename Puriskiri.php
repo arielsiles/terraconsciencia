@@ -172,7 +172,9 @@ function getIconoTipo($tipo) {
 
             <div class="row g-4">
                 <?php while ($categoria = mysqli_fetch_assoc($resultado_categorias)) {
-                    $imagen = isset($imagenes_categoria[$categoria['slug']]) ? $imagenes_categoria[$categoria['slug']] : 'images/causes/group-people-volunteering-foodbank-poor-people.jpg';
+                    // Usar imagen de BD si existe, sino usar imagen por defecto del array o default generico
+                    $imagen_default = isset($imagenes_categoria[$categoria['slug']]) ? $imagenes_categoria[$categoria['slug']] : 'images/causes/group-people-volunteering-foodbank-poor-people.jpg';
+                    $imagen = !empty($categoria['imagen']) ? $categoria['imagen'] : $imagen_default;
                     $color = isset($colores_categoria[$categoria['slug']]) ? $colores_categoria[$categoria['slug']] : 'primary';
                 ?>
                 <div class="col-lg-4 col-md-6 col-12">

@@ -119,6 +119,7 @@ if (isset($_GET['agregada'])) {
                     <thead>
                         <tr>
                             <th>Orden</th>
+                            <th>Imagen</th>
                             <th>Nombre</th>
                             <th>Slug</th>
                             <th>Descripcion</th>
@@ -132,6 +133,13 @@ if (isset($_GET['agregada'])) {
                             <?php while ($categoria = mysqli_fetch_assoc($resultado)) { ?>
                             <tr>
                                 <td><?php echo $categoria['orden']; ?></td>
+                                <td>
+                                    <?php if (!empty($categoria['imagen'])) { ?>
+                                    <img src="<?php echo htmlspecialchars($categoria['imagen']); ?>" alt="Portada" style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                    <?php } else { ?>
+                                    <span class="text-muted small">Sin imagen</span>
+                                    <?php } ?>
+                                </td>
                                 <td><strong><?php echo htmlspecialchars($categoria['nombre']); ?></strong></td>
                                 <td><code><?php echo htmlspecialchars($categoria['slug']); ?></code></td>
                                 <td><?php echo htmlspecialchars(substr($categoria['descripcion'] ?? '', 0, 50)) . (strlen($categoria['descripcion'] ?? '') > 50 ? '...' : ''); ?></td>
@@ -159,6 +167,7 @@ if (isset($_GET['agregada'])) {
                                             data-slug="<?php echo htmlspecialchars($categoria['slug']); ?>"
                                             data-descripcion="<?php echo htmlspecialchars($categoria['descripcion'] ?? ''); ?>"
                                             data-orden="<?php echo $categoria['orden']; ?>"
+                                            data-imagen="<?php echo htmlspecialchars($categoria['imagen'] ?? ''); ?>"
                                             title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
@@ -217,7 +226,7 @@ if (isset($_GET['agregada'])) {
                             <?php } ?>
                         <?php } else { ?>
                         <tr>
-                            <td colspan="7" class="text-center py-4">
+                            <td colspan="8" class="text-center py-4">
                                 <p class="text-muted mb-0">No hay categorias registradas.</p>
                             </td>
                         </tr>
@@ -246,7 +255,7 @@ if (isset($_GET['agregada'])) {
                 <h5 class="modal-title">Nueva Categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="PHP/puriskiri_agregar_categoria.php" method="post">
+            <form action="PHP/puriskiri_agregar_categoria.php" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="agregar_nombre" class="form-label">Nombre *</label>
@@ -260,6 +269,11 @@ if (isset($_GET['agregada'])) {
                     <div class="mb-3">
                         <label for="agregar_descripcion" class="form-label">Descripcion</label>
                         <textarea class="form-control" id="agregar_descripcion" name="descripcion" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="agregar_imagen" class="form-label">Imagen de Portada</label>
+                        <input type="file" class="form-control" id="agregar_imagen" name="imagen" accept="image/jpeg,image/png,image/gif">
+                        <small class="text-muted">JPG, PNG o GIF. Maximo 5MB. Recomendado: 800x600px</small>
                     </div>
                     <div class="mb-3">
                         <label for="agregar_orden" class="form-label">Orden</label>
@@ -284,8 +298,9 @@ if (isset($_GET['agregada'])) {
                 <h5 class="modal-title">Editar Categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="PHP/puriskiri_editar_categoria.php" method="post">
+            <form action="PHP/puriskiri_editar_categoria.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" id="editar_id" name="id">
+                <input type="hidden" id="editar_imagen_actual" name="imagen_actual">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="editar_nombre" class="form-label">Nombre *</label>
@@ -299,6 +314,15 @@ if (isset($_GET['agregada'])) {
                     <div class="mb-3">
                         <label for="editar_descripcion" class="form-label">Descripcion</label>
                         <textarea class="form-control" id="editar_descripcion" name="descripcion" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editar_imagen" class="form-label">Imagen de Portada</label>
+                        <div id="editar_imagen_preview" class="mb-2" style="display: none;">
+                            <img src="" alt="Imagen actual" style="max-width: 200px; max-height: 150px; object-fit: cover; border-radius: 4px;">
+                            <p class="small text-muted mt-1">Imagen actual</p>
+                        </div>
+                        <input type="file" class="form-control" id="editar_imagen" name="imagen" accept="image/jpeg,image/png,image/gif">
+                        <small class="text-muted">JPG, PNG o GIF. Maximo 5MB. Dejar vacio para mantener la imagen actual.</small>
                     </div>
                     <div class="mb-3">
                         <label for="editar_orden" class="form-label">Orden</label>
@@ -342,6 +366,21 @@ editarModal.addEventListener('show.bs.modal', function(event) {
     document.getElementById('editar_slug').value = button.getAttribute('data-slug');
     document.getElementById('editar_descripcion').value = button.getAttribute('data-descripcion');
     document.getElementById('editar_orden').value = button.getAttribute('data-orden');
+
+    // Manejar imagen actual
+    var imagenActual = button.getAttribute('data-imagen');
+    document.getElementById('editar_imagen_actual').value = imagenActual;
+    var previewContainer = document.getElementById('editar_imagen_preview');
+
+    if (imagenActual && imagenActual.trim() !== '') {
+        previewContainer.style.display = 'block';
+        previewContainer.querySelector('img').src = imagenActual;
+    } else {
+        previewContainer.style.display = 'none';
+    }
+
+    // Limpiar el input de archivo
+    document.getElementById('editar_imagen').value = '';
 });
 </script>
 

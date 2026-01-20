@@ -42,13 +42,54 @@ if (mysqli_num_rows($resultado_check) > 0) {
     die();
 }
 
+// Procesar imagen si se subio
+$ruta_imagen = '';
+if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+    $archivo = $_FILES['imagen'];
+    $tipos_permitidos = ['image/jpeg', 'image/png', 'image/gif'];
+    $max_size = 5 * 1024 * 1024; // 5MB
+
+    // Validar tipo de archivo
+    if (!in_array($archivo['type'], $tipos_permitidos)) {
+        header("Location: ../PuriskiriCategoriasAdm.php?error=1&msg=tipo_archivo");
+        die();
+    }
+
+    // Validar tamaño
+    if ($archivo['size'] > $max_size) {
+        header("Location: ../PuriskiriCategoriasAdm.php?error=1&msg=tamaño");
+        die();
+    }
+
+    // Crear directorio si no existe
+    $directorio = '../PURISKIRI/categorias/';
+    if (!is_dir($directorio)) {
+        mkdir($directorio, 0755, true);
+    }
+
+    // Generar nombre unico
+    $extension = pathinfo($archivo['name'], PATHINFO_EXTENSION);
+    $nombre_archivo = $slug . '_' . time() . '.' . $extension;
+    $ruta_destino = $directorio . $nombre_archivo;
+
+    // Mover archivo
+    if (move_uploaded_file($archivo['tmp_name'], $ruta_destino)) {
+        $ruta_imagen = 'PURISKIRI/categorias/' . $nombre_archivo;
+    }
+}
+
 // Insertar nueva categoria
-$query = "INSERT INTO puriskiri_categorias (nombre, slug, descripcion, orden, activo)
-    VALUES ('$nombre', '$slug', '$descripcion', $orden, 1)";
+$ruta_imagen_escaped = mysqli_real_escape_string($conexion, $ruta_imagen);
+$query = "INSERT INTO puriskiri_categorias (nombre, slug, descripcion, orden, imagen, activo)
+    VALUES ('$nombre', '$slug', '$descripcion', $orden, '$ruta_imagen_escaped', 1)";
 
 if (mysqli_query($conexion, $query)) {
     header("Location: ../PuriskiriCategoriasAdm.php?agregada=1");
 } else {
+    // Si falla el insert y se subio imagen, eliminarla
+    if (!empty($ruta_imagen) && file_exists('../' . $ruta_imagen)) {
+        unlink('../' . $ruta_imagen);
+    }
     header("Location: ../PuriskiriCategoriasAdm.php?error=1");
 }
 
