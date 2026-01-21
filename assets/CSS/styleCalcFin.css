@@ -1,110 +1,237 @@
 *{
+    box-sizing: border-box;
     padding: 0px;
     margin: 0px;
     text-decoration: none;
     list-style: none;
-    font-family: 'Happy Monkey', cursive;
+    /*font-family: 'Happy Monkey', cursive;*/
 }
 
-.contenido{
-    background-image: linear-gradient(rgba(237, 237, 237, 0.4),rgba(237, 237, 237, 0.4)), url(../IMG/op1.png);
-    height: 2300px;
+.titulo {
+    color: rgb(45, 59, 60);
+    font-size: 4vw; /* Tamaño de fuente relativo al ancho de la ventana */
+    margin: 5% auto; /* Centrado horizontal con márgenes automáticos */
+    padding: 2% 5%; /* Espaciado proporcional */
+    text-align: center;
+    background-color: rgba(229, 254, 243, 0.7);
+    border-radius: 2em; /* Unidades relativas para bordes redondeados */
+    /*border-style: dashed;*/
+    border-color: rgb(35, 138, 138);
+    max-width: 90%; /* Limitar el ancho máximo */
+    box-sizing: border-box; /* Incluir padding y bordes en el tamaño total */
+}
+
+.titulo h2 {
+    color: rgb(117, 146, 146);
+    font-size: 3.5vw; /* Escala el tamaño de la fuente según el ancho de la ventana */
+}
+
+/* Media queries para tamaños específicos */
+@media (max-width: 768px) { /* Tablets y dispositivos medianos */
+    .titulo {
+        font-size: 5vw;
+        padding: 3% 10%;
+        border-radius: 1.5em;
+    }
+
+    .titulo h2 {
+        font-size: 4.5vw;
+    }
+}
+
+@media (max-width: 480px) { /* Teléfonos móviles */
+    .titulo {
+        font-size: 6vw;
+        padding: 5% 10%;
+        border-radius: 1em;
+    }
+
+    .titulo h2 {
+        font-size: 5vw;
+    }
+}
+
+
+/* -------------- NUEVO ---------------- */
+/* Fondo del contenido */
+.contenido {
+    background-image: linear-gradient(rgba(237, 237, 237, 0.4), rgba(237, 237, 237, 0.4)), url(../IMG/op1.png);
+    min-height: 100vh; /* Ajuste dinámico para altura */
     background-size: cover;
     background-attachment: fixed;
-    position: static;
+    background-position: center;
     text-align: center;
-    size: cover;
-    height: 2300px;
+    position: relative;
 }
 
-.esp{
+/* Texto escondido */
+.esp {
     opacity: 0;
 }
 
-
-.titulo{
-    color: rgb(45, 59, 60);
-    font-size: 60px;
-    margin-left:20%;
-    margin-right:20%;
-    padding-top:20px;
-    padding-bottom: 30px;
-    text-align: center;
-    background-color: rgba(229, 254, 243, 0.7);
-    border-radius: 80px;
-    border-style:dashed;
-    border-color:rgb(35, 138, 138);
-}
-
-
-.titulo h2{
-    color: rgb(117, 146, 146);
-    font-size: 50px;
-}
-
-.contenidoGen{
-    margin-top: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-top: 60px;
-    padding-bottom: 40px;
-    display:flex;
+/* Contenedor general */
+.contenidoGen {
+    margin: 50px auto; /* Centrado automático */
+    padding: 60px 20px;
+    display: flex;
+    flex-wrap: wrap; /* Permite ajuste responsivo */
+    justify-content: center;
     background-color: rgb(126, 185, 192);
     align-items: center;
-    border-radius: 40px;
+    border-radius: 20px;
     color: white;
 }
 
-.contenido_leght{
-    size: 40%;
-    margin: 0 50px 20px 50px;
-    size: 40%;
-    padding-bottom: 5px;
-    width: 650px;
-    height: 600px;
-    background-color: rgba(255, 255, 255);
-    border-radius: 30px;
-    align-items: center;
-    text-align: center;
-    color:rgb(54, 73, 73);
-}
-
-.contenido_leght h1{
-    padding-top: 30px;
+/* Estilos comunes para secciones */
+.contenido_leght,
+.contenido_right {
+    flex: 1 1 100%; /* Por defecto, ocupa el ancho completo */
+    max-width: 500px; /* Tamaño máximo */
+    min-height: 300px; /* Altura mínima para diseño */
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
     color: rgb(54, 73, 73);
-}
-
-
-.contenido_leght video{
-    align-items: center;
-    padding-top: 30px;
-    padding-bottom: 50px;
-}
-
-.contenido_right{
-    size: 40%;
-    margin: 0 7px 20px 0px;
-    padding-bottom: 5px;
-    width: 650px;
-    height: 600px;
-    background-color: rgba(255, 255, 255);
-    border-radius: 30px;
-    align-items: center;
     text-align: center;
-    color:rgb(54, 73, 73);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para diseño limpio */
 }
 
-.contenido_right h1{
-    padding-top: 30px;
+/* Títulos dentro de las secciones */
+.contenido_leght h1,
+.contenido_right h1 {
+    padding-top: 10px;
     color: rgb(54, 73, 73);
+    font-size: 1.5rem; /* Ajuste dinámico del tamaño del texto */
 }
 
-#piechart{
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
-    display:flex;
+/* Videos dentro de las secciones */
+.contenido_leght video {
+    width: 100%; /* Ajuste al contenedor */
+    max-width: 400px; /* Tamaño máximo */
+    margin: 20px auto;
+    display: block;
 }
+
+/* Responsividad adicional */
+@media (min-width: 768px) {
+    .contenido_leght,
+    .contenido_right {
+        flex: 1 1 calc(50% - 40px); /* Mitad del ancho menos márgenes */
+    }
+}
+
+@media (min-width: 1200px) {
+    .contenido_leght,
+    .contenido_right {
+        max-width: 650px; /* Aumenta el límite en pantallas grandes */
+    }
+}
+
+.chart-container {
+    width: 100%; /* Se ajusta dinámicamente al ancho del contenedor */
+    max-width: 500px; /* Límite máximo en pantallas grandes */
+    margin: 0 auto; /* Centrado horizontal */
+    height: auto; /* Altura ajustable */
+    text-align: center;
+}
+
+#piechart {
+    width: 100%; /* Se expande para llenar el contenedor */
+    height: 400px; /* Altura base */
+    max-height: 400px; /* Límite máximo para pantallas grandes */
+}
+
+/* ----------------------------------- */
+/* Estilo básico */
+.tituloConsejos {
+    margin: 50px 20px 0;
+    padding: 40px 20px 20px;
+    background-color: rgb(126, 185, 192);
+    border-radius: 40px 40px 0 0;
+    text-align: center;
+}
+
+.consejos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 0 20px 50px;
+    background-color: rgb(126, 185, 192);
+    border-radius: 0 0 40px 40px;
+    padding: 20px;
+    color: white;
+    justify-content: center;
+}
+
+.parteConsejo {
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Tamaño máximo en pantallas grandes */
+}
+
+.parteConsejo h1 {
+    font-size: 24px;
+    text-align: center;
+    font-family: monospace;
+}
+
+.parteConsejo img {
+    margin: 10px 0;
+    max-width: 80%; /* Adaptar imágenes */
+    height: auto;
+}
+
+.parteConsejo p, .parteConsejo h2 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Scrollbar personalizado */
+.parteConsejo::-webkit-scrollbar {
+    display: none;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .parteConsejo {
+        max-width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+
+    .consejos {
+        flex-direction: column; /* Disposición en columna */
+        align-items: center;
+    }
+
+    .tituloConsejos {
+        font-size: 18px; /* Reduce tamaño de fuente */
+    }
+}
+
+@media (max-width: 480px) {
+    .parteConsejo h1 {
+        font-size: 20px; /* Ajuste para pantallas pequeñas */
+    }
+
+    .parteConsejo img {
+        max-width: 100px; /* Ajusta el tamaño de las imágenes */
+    }
+
+    .tituloConsejos {
+        font-size: 16px;
+    }
+}
+
+/* -------------- FIN ---------------- */
 
 .botonSig{
     align-items: center;
@@ -136,329 +263,87 @@
     color:white;
   }
 
-@media only screen and (max-width : 915px) {
-    .contenido{
-        background-color: rgb(62, 122, 102);
-        padding: 0px;
-        margin: 0px;
-        text-align: center;
-        size: cover;
-        height: 920px;
-    }
-
-    .titulo{
-        padding-top: 30px;
-        padding-bottom: 20px;
-        border-top: 0px;
-        border-left: 0px;
-        border-right: 0px;
-        border-bottom: 5px black;
-        border-style: dotted;
-    }
-    
-    .titulo h1{
-        background-color: blueviolet;
-        font-size: 25px;
-        border-radius: 30px;
-        margin-left: 25%;
-        margin-right: 25%;
-        margin-bottom: 15px;
-        border-style: dashed;
-        border-width: 5px 5px 5px 5px;
-        border-color: black;
-        box-shadow: 0 0 15px 5px rgb(255, 255, 255);
-    }
-
-    .contenido1{
-        padding-top: 10px;
-        padding-bottom: 10px;
-        background-color: rgb(67, 82, 82);
-        margin-top: 40px;
-        margin-bottom: 40px;
-        margin-left: 20%;
-        margin-right: 20%;
-        border-radius: 30px;
-        height: 300px;
-        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
-        overflow-y: scroll;
-    }
-
-    .contenido2{
-        padding-top: 10px;
-        padding-bottom: 40px;
-        background-color: rgb(174, 223, 178);
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 20%;
-        margin-right: 20%;
-        border-radius: 30px;
-        height: 300px;
-        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
-        overflow-y: scroll;
-    }
-    
-}
-
-@media only screen and (max-width : 1300px) and (min-width : 715px) {
-    .contenido{
-        background-color: rgb(62, 122, 102);
-        padding: 0px;
-        margin: 0px;
-        text-align: center;
-        size: cover;
-        height: 950px;
-    }
-
-    .titulo{
-        padding-top: 30px;
-        padding-bottom: 20px;
-        border-top: 0px;
-        border-left: 0px;
-        border-right: 0px;
-        border-bottom: 5px black;
-        border-style: dotted;
-    }
-    
-    .titulo h1{
-        background-color: blueviolet;
-        font-size: 45px;
-        border-radius: 30px;
-        margin-left: 25%;
-        margin-right: 25%;
-        margin-bottom: 15px;
-        border-style: dashed;
-        border-width: 5px 5px 5px 5px;
-        border-color: black;
-        box-shadow: 0 0 15px 5px rgb(255, 255, 255);
-    }
-
-    .contenido1{
-        padding-top: 10px;
-        padding-bottom: 10px;
-        background-color: rgb(67, 82, 82);
-        margin-top: 40px;
-        margin-bottom: 40px;
-        margin-left: 20%;
-        margin-right: 20%;
-        border-radius: 30px;
-        height: 300px;
-        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
-        overflow-y: scroll;
-    }
-    
-    .contenido2{
-        padding-top: 10px;
-        padding-bottom: 40px;
-        background-color: rgb(174, 223, 178);
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 20%;
-        margin-right: 20%;
-        border-radius: 30px;
-        height: 300px;
-        box-shadow: 0 0 15px 5px rgb(240, 193, 193);
-        overflow-y: scroll;
-    }
-    
-}
-
-.tituloConsejos{
-    margin-top: 50px;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: rgb(126, 185, 192);
-    border-radius: 40px 40px 0px 0px;
-
-}
-
-.consejos{
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-bottom: 50px;
-    display:flex;
-    background-color: rgb(126, 185, 192);
-    align-items: center;
-    border-radius: 0px 0px 40px 40px;
-    color: white;
-    text-align: center;
-}
-
-.consejos h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.parte1Consejos{
-    padding: 2px 2px 2px 2px;
+.links {
     border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    background-color:white;
-    color:black;
-    width: 20%;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-.parte1Consejos::-webkit-scrollbar{
-    display: none;
-}
-
-.parte1Consejos h1{
-    text-align: center;
-    font-size: 30px;
-    font-family: monospace;
-}
-
-.parte1Consejos h2{
-    text-align: center;
-}
-
-.parte1Consejos p{
-    text-align: left;
-}
-
-.parte2Consejos{
-    padding: 2px 2px 2px 2px;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    background-color:white;
-    color:black;
-    width: 20%;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-.parte2Consejos::-webkit-scrollbar{
-    display: none;
-}
-
-.parte2Consejos h1{
-    text-align: center;
-    font-size: 30px;
-    font-family: monospace;
-}
-
-.parte2Consejos h2{
-    text-align: center;
-}
-
-.parte2Consejos p{
-    text-align: left;
-}
-
-.parte3Consejos{
-    padding: 2px 2px 2px 2px;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    background-color:white;
-    color:black;
-    width: 20%;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-
-.parte3Consejos::-webkit-scrollbar{
-    display: none;
-}
-
-.parte3Consejos h1{
-    text-align: center;
-    font-size: 30px;
-    font-family: monospace;
-}
-
-.parte3Consejos h2{
-    text-align: center;
-}
-
-.parte3Consejos p{
-    text-align: left;
-}
-
-.parte4Consejos{
-    padding: 2px 2px 2px 2px;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    background-color:white;
-    color:black;
-    width: 20%;
-    float: left;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-
-.parte4Consejos::-webkit-scrollbar{
-    display: none;
-}
-
-.parte4Consejos h1{
-    text-align: center;
-    font-size: 30px;
-    font-family: monospace;
-}
-
-.parte4Consejos h2{
-    text-align: center;
-}
-
-.parte4Consejos p{
-    text-align: left;
-}
-
-.links{
-    border-radius: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 450px;
-    padding-top: 50px;
-    margin-top: 100px;
-    margin-bottom: 350px;
+    margin: 0 20px;
+    padding: 50px 20px;
+    height: auto;
     background-color: #5fba96;
 }
 
-.links h1{
+.links h1 {
     color: rgb(45, 59, 60);
     text-transform: uppercase;
     margin-bottom: 10px;
-    font-size: 40px;
+    font-size: 2.5rem; /* Usar rem para mayor flexibilidad */
 }
 
-.links p{
+.links p {
     text-align: justify;
-    font-size: 20px;
+    font-size: 1.25rem; /* Usar rem para mayor flexibilidad */
 }
 
-.PalLinks{
+.PalLinks {
     color: white;
-    font-size: 50px;
+    font-size: 3.125rem; /* 50px */
 }
-.linksRef{
+
+.linksRef {
     margin-top: 10px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 25px;
+    font-size: 1.5625rem; /* 25px */
     color: #2e3e38;
 }
-.linksRef a{
+
+.linksRef a {
     text-decoration: underline;
-    font-size: 25px;
-    text-transform:lowercase;
+    font-size: 1.5625rem; /* 25px */
+    text-transform: lowercase;
     color: rgb(161, 66, 51);
+}
+
+@media (max-width: 768px) {
+    .links {
+        margin: 20px;
+        padding: 30px 10px;
+    }
+
+    .links h1 {
+        font-size: 2rem; /* Ajuste en tamaños de fuente */
+    }
+
+    .links p, .linksRef {
+        font-size: 1.125rem; /* Ajuste en tamaños de fuente */
+    }
+
+    .PalLinks {
+        font-size: 2.5rem; /* Ajuste en tamaños de fuente */
+    }
+
+    .linksRef a {
+        font-size: 1.25rem; /* Ajuste en tamaños de fuente */
+    }
+}
+
+@media (max-width: 480px) {
+    .links {
+        padding: 20px;
+    }
+
+    .links h1 {
+        font-size: 1.5rem; /* Ajuste en tamaños de fuente */
+    }
+
+    .links p, .linksRef {
+        font-size: 1rem; /* Ajuste en tamaños de fuente */
+    }
+
+    .PalLinks {
+        font-size: 2rem; /* Ajuste en tamaños de fuente */
+    }
+
+    .linksRef a {
+        font-size: 1.125rem; /* Ajuste en tamaños de fuente */
+    }
 }

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Subir Recursos Educativos - PURISKIRI">
+    <meta name="author" content="Fundación Gaia Pacha">
+
+    <title>Subir Recursos - PURISKIRI</title>
+
+    <link rel="shortcut icon" href="IMG/Icono.ico">
+
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+
+    <!-- CSS Específico PURISKIRI -->
+    <link href="assets/CSS/stylePuriskiri.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body id="section_1">
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 d-flex flex-wrap">
+                <p class="d-flex me-4 mb-0">
+                    <i class="bi-geo-alt me-2"></i>
+                    Cochabamba, Bolivia
+                </p>
+
+                <p class="d-flex mb-0">
+                    <i class="bi-envelope me-2"></i>
+
+                    <a href="mailto:gaiapacha@gaiapacha.org">
+                        gaiapacha@gaiapacha.org
+                    </a>
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                <ul class="social-icon">
+                    <li class="social-icon-item">
+                        <a href="https://www.facebook.com/gaiapacha" target="_blank" class="social-icon-link bi-facebook"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="https://www.instagram.com/gaiapacha" target="_blank" class="social-icon-link bi-instagram"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha" target="_blank" class="social-icon-link bi-linkedin"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="http://wa.me/59176957456" target="_blank" class="social-icon-link bi-whatsapp"></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="images/logo-color-02.png" class="logo img-fluid" alt="Terra ConsCiencia">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="ConLoginAdm.php">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="NoticiasSl.php">Noticias</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="Puriskiri_Principal.html">PURISKIRI</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- BREADCRUMB -->
+    <section class="section-padding-top" style="padding-top: 30px;">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="Puriskiri_Principal.html">PURISKIRI</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Subir Recurso</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE SUBIDA -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-12 mx-auto">
+                    <h2 class="text-center mb-4">Subir Nuevo Recurso</h2>
+                    <p class="text-center text-muted mb-5">Comparte tus materiales educativos con la comunidad de docentes</p>
+
+                    <div class="custom-text-box">
+                        <form id="uploadForm" onsubmit="event.preventDefault(); alert('Esta es una vista previa. La funcionalidad de subida estará disponible próximamente.');">
+                            <!-- Título -->
+                            <div class="mb-4">
+                                <label for="titulo" class="form-label">Título del Recurso *</label>
+                                <input type="text" class="form-control" id="titulo" placeholder="Ej: Cartilla sobre Seguridad Hídrica" required>
+                                <small class="text-muted">Usa un título descriptivo y claro</small>
+                            </div>
+
+                            <!-- Descripción -->
+                            <div class="mb-4">
+                                <label for="descripcion" class="form-label">Descripción *</label>
+                                <textarea class="form-control" id="descripcion" rows="4" placeholder="Describe el contenido del recurso, objetivos de aprendizaje y cómo puede ser utilizado en clase..." required></textarea>
+                                <small class="text-muted">Mínimo 100 caracteres</small>
+                            </div>
+
+                            <!-- Tema -->
+                            <div class="mb-4">
+                                <label for="tema" class="form-label">Tema *</label>
+                                <select class="form-select" id="tema" required>
+                                    <option value="">Selecciona un tema...</option>
+                                    <option value="agua">Seguridad Hídrica</option>
+                                    <option value="ambiente">Medio Ambiente</option>
+                                    <option value="agricultura">Agricultura Sostenible</option>
+                                    <option value="alimentacion">Seguridad Alimentaria</option>
+                                    <option value="clima">Cambio Climático</option>
+                                    <option value="biodiversidad">Biodiversidad</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- Nivel Educativo -->
+                            <div class="mb-4">
+                                <label for="nivel" class="form-label">Nivel Educativo *</label>
+                                <select class="form-select" id="nivel" required>
+                                    <option value="">Selecciona un nivel...</option>
+                                    <option value="primaria">Primaria</option>
+                                    <option value="secundaria">Secundaria</option>
+                                    <option value="universitario">Universitario</option>
+                                    <option value="todos">Todos los niveles</option>
+                                </select>
+                            </div>
+
+                            <!-- Tipo de Material -->
+                            <div class="mb-4">
+                                <label for="tipo" class="form-label">Tipo de Material *</label>
+                                <select class="form-select" id="tipo" required>
+                                    <option value="">Selecciona un tipo...</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="ppt">PowerPoint (PPT/PPTX)</option>
+                                    <option value="docx">Word (DOC/DOCX)</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- Carga de Archivo -->
+                            <div class="mb-4">
+                                <label for="archivo" class="form-label">Archivo del Recurso *</label>
+                                <input type="file" class="form-control" id="archivo" accept=".pdf,.ppt,.pptx,.doc,.docx" required>
+                                <small class="text-muted">Formatos permitidos: PDF, PPT, PPTX, DOC, DOCX (Máx. 50MB)</small>
+                            </div>
+
+                            <!-- Imagen de Portada -->
+                            <div class="mb-4">
+                                <label for="portada" class="form-label">Imagen de Portada (Opcional)</label>
+                                <input type="file" class="form-control" id="portada" accept="image/*">
+                                <small class="text-muted">Imagen representativa del recurso (JPG, PNG, máx. 5MB)</small>
+                            </div>
+
+                            <!-- Autor -->
+                            <div class="mb-4">
+                                <label for="autor" class="form-label">Autor (Opcional)</label>
+                                <input type="text" class="form-control" id="autor" placeholder="Tu nombre o pseudónimo">
+                                <small class="text-muted">Si no lo especificas, aparecerá como "Anónimo"</small>
+                            </div>
+
+                            <!-- Institución -->
+                            <div class="mb-4">
+                                <label for="institucion" class="form-label">Institución Educativa (Opcional)</label>
+                                <input type="text" class="form-control" id="institucion" placeholder="Nombre de tu institución educativa">
+                            </div>
+
+                            <!-- Palabras Clave -->
+                            <div class="mb-4">
+                                <label for="keywords" class="form-label">Palabras Clave (Opcional)</label>
+                                <input type="text" class="form-control" id="keywords" placeholder="Ej: agua, conservación, huella hídrica">
+                                <small class="text-muted">Separa las palabras con comas. Ayudan a que otros encuentren tu recurso.</small>
+                            </div>
+
+                            <!-- Vista Previa -->
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-info-circle"></i> Vista Previa</h6>
+                                <p class="mb-0">Después de seleccionar los archivos, aquí verás una vista previa de cómo se mostrará tu recurso en el catálogo.</p>
+                            </div>
+
+                            <!-- Términos y Condiciones -->
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terminos" required>
+                                    <label class="form-check-label" for="terminos">
+                                        Acepto los términos y condiciones. Confirmo que tengo los derechos para compartir este material. *
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Botones -->
+                            <div class="d-flex gap-3 flex-wrap">
+                                <button type="submit" class="btn btn-primary flex-fill">
+                                    <i class="fas fa-upload"></i> Subir Recurso
+                                </button>
+                                <a href="Puriskiri_Principal.html" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Cancelar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Información Adicional -->
+                    <div class="mt-5">
+                        <div class="custom-text-box">
+                            <h5 class="mb-3"><i class="fas fa-lightbulb"></i> Consejos para Subir Recursos</h5>
+                            <ul>
+                                <li>Asegúrate de que el título sea descriptivo y fácil de buscar</li>
+                                <li>Proporciona una descripción detallada que incluya objetivos y contenidos</li>
+                                <li>Verifica que el archivo esté en buen estado y sea legible</li>
+                                <li>Usa una imagen de portada atractiva para llamar la atención</li>
+                                <li>Las palabras clave ayudan a otros docentes a encontrar tu recurso</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-12 mb-4">
+                <img src="images/logo-terra-b.png" class="logo-footer img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                <h5 class="site-footer-title mb-3">FUNDACIÓN GAIA PACHA</h5>
+
+                <p class="text-white d-flex mb-2">
+                    <i class="bi-telephone me-2"></i>
+
+                    <a href="tel: +591 76957456" class="site-footer-link">
+                        +591 76957456
+                    </a>
+                </p>
+
+                <p class="text-white d-flex">
+                    <i class="bi-envelope me-2"></i>
+
+                    <a href="mailto:gaiapacha@gaiapacha.org" class="site-footer-link">
+                        gaiapacha@gaiapacha.org
+                    </a>
+                </p>
+
+                <p class="text-white d-flex mt-3">
+                    <i class="bi-geo-alt me-2"></i>
+                    Calle Idelfonso Murguia 777, <br />entre Tocopilla y C. Antofagasta, <br />Cochabamba - Bolivia
+                </p>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                <h5 class="site-footer-title mb-3">SOLIDAGRO</h5>
+
+                <p class="text-white d-flex mb-2">
+                    <i class="bi-telephone me-2"></i>
+
+                    <a href="tel: +32 3 777 20 15" class="site-footer-link">
+                        +32 3 777 20 15
+                    </a>
+                </p>
+
+                <p class="text-white d-flex">
+                    <i class="bi-envelope me-2"></i>
+
+                    <a href="mailto:info@solidagro.be" class="site-footer-link">
+                        info@solidagro.be
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="site-footer-bottom">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-7 col-12">
+                    <p class="copyright-text mb-0">
+                        Copyright © 2025
+                        <a href="https://gaiapacha.org" target="_blank">Fundación Gaia Pacha</a>
+                    </p>
+                </div>
+
+                <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
+                    <ul class="social-icon">
+                        <li class="social-icon-item">
+                            <a href="https://www.facebook.com/gaiapacha" target="_blank" class="social-icon-link bi-facebook"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="https://www.instagram.com/gaiapacha" target="_blank" class="social-icon-link bi-instagram"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha" target="_blank" class="social-icon-link bi-linkedin"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="http://wa.me/59176957456" target="_blank" class="social-icon-link bi-whatsapp"></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JAVASCRIPT FILES -->
+<script src="JS/jquery.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+
+</body>
+
+</html>

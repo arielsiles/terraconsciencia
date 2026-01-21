@@ -3,146 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Hidrica</title>
-    <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-    <link rel="stylesheet" href="assets/CSS/styleCalcPag4.css">
+    <title>Calculadora Hídrica - Bienes y Energía</title>
+    <link rel="shortcut icon" href="IMG/Icono.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/CSS/styleCalc.css">
 </head>
 <body>
-    <div class="fondo">
-        <div class="titulo">
-            <h1 class="esp">..........</h1>
-            <h1 class="tituloPrinc" >CONSUMO DE BIENES Y ENERGÍA</h1>
-            <H2>Conoce la cantidad de agua que consumes en tus bienes y energia</H2>
-        </div>
-        <div class="formulario">
-            <div class="preg">
-                <section class="p1">
-                    <h1>1. ¿Cuántos cuadernos compraste este año?</h1>
-                        <div class="pregunta1">
-                            <label>
-                                <input type="radio" id="p11" name="p1"> 1 a 2 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p12" name="p1"> 3 a 4 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p13" name="p1"> 5 a 6 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p14" name="p1"> Ninguno
-                            </label>
-                        </div>
-                </section>
-                <section class="p2">
-                    <h1>2. ¿Cuántas poleras/camisetas compraste este año?</h1>
-                        <div class="pregunta2">
-                            <label>
-                                <input type="radio" id="p21" name="p2"> 1 a 2 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p22" name="p2"> 3 a 4 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p23" name="p2"> 5 a 6 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p24" name="p2"> Ninguna
-                            </label>
-                        </div>
-                </section>
-                <section class="p3">
-                    <h1>3. ¿Cuántos jeans/pantalones vaqueros compraste este año?</h1>
-                        <div class="pregunta3">
-                            <label>
-                                <input type="radio" id="p31" name="p3"> 1 a 2 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p32" name="p3"> 3 a 4 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p33" name="p3"> 5 a 6 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p34" name="p3"> Ninguno
-                            </label>
-                        </div>
-                </section>
-                <section class="p4">
-                    <h1>4. ¿Cuántos zapatos de cuero compraste este año?</h1>
-                        <div class="pregunta4">
-                            <label>
-                                <input type="radio" id="p41" name="p4"> 1 a 2 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p42" name="p4"> 3 a 4 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p43" name="p4"> 5 a 6 veces
-                            </label>
-                            <label>
-                                <input type="radio" id="p44" name="p4"> Ninguno
-                            </label>
-                        </div>
-                </section>
-                <section class="p5">
-                    <h1>5. ¿Cuánto tiempo pones a cargar tu celular o tablet?</h1>
-                        <div class="pregunta5">
-                            <label>
-                                <input type="radio" id="p51" name="p5"> Media hora
-                            </label>
-                            <label>
-                                <input type="radio" id="p52" name="p5"> 1 hora
-                            </label>
-                            <label>
-                                <input type="radio" id="p53" name="p5"> 2 horas
-                            </label>
-                            <label>
-                                <input type="radio" id="p54" name="p5"> 3 horas
-                            </label>
-                            <label>
-                                <input type="radio" id="p55" name="p5"> Toda la noche
-                            </label>
-                            <label>
-                                <input type="radio" id="p56" name="p5"> No tengo celular o tablet
-                            </label>
-                        </div>
-                </section>
-                <section class="p6">
-                    <h1>6. ¿Cuánto tiempo pones a cargar tu computadora o laptop?</h1>
-                        <div class="pregunta6">
-                            <label>
-                                <input type="radio" id="p61" name="p6"> Media hora
-                            </label>
-                            <label>
-                                <input type="radio" id="p62" name="p6"> 1 hora
-                            </label>
-                            <label>
-                                <input type="radio" id="p63" name="p6"> 2 horas
-                            </label>
-                            <label>
-                                <input type="radio" id="p64" name="p6"> 3 horas
-                            </label>
-                            <label>
-                                <input type="radio" id="p65" name="p6"> Toda la noche
-                            </label>
-                            <label>
-                                <input type="radio" id="p66" name="p6"> No tengo computadora o laptop
-                            </label>
-                        </div>
-                </section>
+<div class="container">
 
-                <div class="botonCal">
-                    <a  class="boton1" onclick="resultado()">CALCULAR RESULTADO</a>
-                    <script src="JS/scriptCalPag4.js"></script>
-                    <p>TU TOTAL EN EL CONSUMO DE BIENES Y ENERGÍA AL MES ES: <span id="resultado"></span></p>
+    <div class="titulo">
+        <h1>CONSUMO DE BIENES Y ENERGÍA</h1>
+        <h2>Conoce la cantidad de agua que consumes en tus bienes y energía</h2>
+    </div>
+
+    <div class="container formulario">
+        <div class="preg">
+            <section class="p1">
+                <h1>1. ¿Cuántos cuadernos compraste este año?</h1>
+                <div class="pregunta1">
+                    <label><input type="radio" id="p11" name="p1"> 1 a 2 veces</label>
+                    <label><input type="radio" id="p12" name="p1"> 3 a 4 veces</label>
+                    <label><input type="radio" id="p13" name="p1"> 5 a 6 veces</label>
+                    <label><input type="radio" id="p14" name="p1"> Ninguno</label>
                 </div>
-
-                <div class="botonSig">
-                    <a href ="CalculadoraPagFinal.html" class="boton1">CONOCE TU HUELLA HÍDRICA</a>
+            </section>
+            <section class="p2">
+                <h1>2. ¿Cuántas poleras/camisetas compraste este año?</h1>
+                <div class="pregunta1">
+                    <label><input type="radio" id="p21" name="p2"> 1 a 2 veces</label>
+                    <label><input type="radio" id="p22" name="p2"> 3 a 4 veces</label>
+                    <label><input type="radio" id="p23" name="p2"> 5 a 6 veces</label>
+                    <label><input type="radio" id="p24" name="p2"> Ninguna</label>
                 </div>
+            </section>
+            <section class="p3">
+                <h1>3. ¿Cuántos jeans/pantalones vaqueros compraste este año?</h1>
+                <div class="pregunta1">
+                    <label><input type="radio" id="p31" name="p3"> 1 a 2 veces</label>
+                    <label><input type="radio" id="p32" name="p3"> 3 a 4 veces</label>
+                    <label><input type="radio" id="p33" name="p3"> 5 a 6 veces</label>
+                    <label><input type="radio" id="p34" name="p3"> Ninguno</label>
+                </div>
+            </section>
+            <section class="p4">
+                <h1>4. ¿Cuántos zapatos de cuero compraste este año?</h1>
+                <div class="pregunta1">
+                    <label><input type="radio" id="p41" name="p4"> 1 a 2 veces</label>
+                    <label><input type="radio" id="p42" name="p4"> 3 a 4 veces</label>
+                    <label><input type="radio" id="p43" name="p4"> 5 a 6 veces</label>
+                    <label><input type="radio" id="p44" name="p4"> Ninguno</label>
+                </div>
+            </section>
+            <section class="p5">
+                <h1>5. ¿Cuánto tiempo pones a cargar tu celular o tablet?</h1>
+                <div class="pregunta1">
+                    <label><input type="radio" id="p51" name="p5"> Media hora</label>
+                    <label><input type="radio" id="p52" name="p5"> 1 hora</label>
+                    <label><input type="radio" id="p53" name="p5"> 2 horas</label>
+                    <label><input type="radio" id="p54" name="p5"> 3 horas</label>
+                    <label><input type="radio" id="p55" name="p5"> Toda la noche</label>
+                    <label><input type="radio" id="p56" name="p5"> No tengo celular o tablet</label>
+                </div>
+            </section>
+            <section class="p6">
+                <h1>6. ¿Cuánto tiempo pones a cargar tu computadora o laptop?</h1>
+                <div class="pregunta1">
+                    <label><input type="radio" id="p61" name="p6"> Media hora</label>
+                    <label><input type="radio" id="p62" name="p6"> 1 hora</label>
+                    <label><input type="radio" id="p63" name="p6"> 2 horas</label>
+                    <label><input type="radio" id="p64" name="p6"> 3 horas</label>
+                    <label><input type="radio" id="p65" name="p6"> Toda la noche</label>
+                    <label><input type="radio" id="p66" name="p6"> No tengo computadora o laptop</label>
+                </div>
+            </section>
 
+            <!--<div class="text-center mt-5">
+                <a class="btn btn-secondary btn-lg" onclick="resultado()">CALCULAR RESULTADO</a>
+                <p class="mt-4">TU TOTAL EN EL CONSUMO DE BIENES Y ENERGÍA AL MES ES: <br>
+                <span id="resultado" class="fw-bold text-dark"></span></p>
+            </div>-->
+            <div class="text-center mt-5">
+                <a class="btn btn-secondary btn-lg" onclick="resultado()">CALCULAR RESULTADO</a>
+                <p class="mt-4 resultado-texto">
+                    TU TOTAL EN EL CONSUMO DE BIENES Y ENERGÍA AL MES ES:
+                    <br>
+                    <span id="resultado" class="resultado-valor"></span>
+                </p>
+            </div>
+
+
+            <div class="botonSig">
+                <a href="CalculadoraPagFinal.html" class="btn btn-primary btn-lg">CONOCE TU HUELLA HÍDRICA</a>
             </div>
         </div>
     </div>
+</div>
+
+<script src="JS/jquery.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script src="JS/scriptCalPag4.js"></script>
 </body>
 </html>

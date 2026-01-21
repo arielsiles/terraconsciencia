@@ -3,7 +3,7 @@
     margin: 0px;
     text-decoration: none;
     list-style: none;
-    font-family: 'Belanosima', sans-serif;  
+    /*font-family: 'Belanosima', sans-serif;*/
 }
 input{
     color:black;
@@ -385,7 +385,7 @@ button {
     width: 70%;
     height: 570px;
     top: 180px;
-    background: linear-gradient(47deg, rgb(232, 255, 127),rgb(255, 255, 126),rgb(255, 255, 139));
+    /*background: linear-gradient(47deg, rgb(232, 255, 127),rgb(255, 255, 126),rgb(255, 255, 139));*/
     border-radius: 5px;
     box-sizing: border-box;
     padding: 20px;
@@ -412,7 +412,7 @@ button {
     width: 70%;
     height: 570px;
     top: 180px;
-    background: linear-gradient(47deg, rgb(232, 255, 127),rgb(255, 255, 126),rgb(255, 255, 139));
+    /*background: linear-gradient(47deg, rgb(232, 255, 127),rgb(255, 255, 126),rgb(255, 255, 139));*/
     color: black;
     border-radius: 5px;
     display: flex;
@@ -493,7 +493,7 @@ button {
     appearance: none;
     font-family: 'SF Pixelate', sans-serif;
     border: none;
-    width: 300px;
+    width: 200px;
     padding: 10px;
     background: #DA316B;
     color: #fff;

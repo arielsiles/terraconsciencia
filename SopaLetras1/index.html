@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Accept-Charset" content="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sopa de letras</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="wordfind.js"></script> 
+    <script type="text/javascript" src="wordfindgame.js"></script> 
+    <link rel="icon" href="sopa.ico" type="image/x-icon">
+</head>
+<body>
+  <div class="container">
+    <div class="titulo">
+      <h1 class="tituloJuego">SOPA DE LETRAS</h1>
+      <h2 class="subtituloJuego">Divi&eacute;rtete encontrando todas las palabras.</h2>
+    </div>
+    <button class="botonVolver"><a href="../Trivias.php" class="boton" style="text-decoration: none; color: white;"><img src="flecha-izquierda.png" alt="Imagen de flecha" style="width: 20px; height: 20px;"> Presiona para volver </a></button>
+    <div id='juego'></div>
+    <div id='Palabras'></div>
+    
+    <!--<div><button id='solve'>Resolver el juego</button></div>-->
+    <!--apartado de la sopa de letras-->
+    <script>
+    var words = ['Alimentación','Transgenicos','Acuifero','Escorrentía','Pesticidas','Fertilizantes'];
+    var gamePuzzle = wordfindgame.create(words, '#juego', '#Palabras'); 
+        
+    var puzzle = wordfind.newPuzzle(words,{height: 18, width:18, fillBlanks: false});
+    wordfind.print(puzzle);   
+        
+    $('#solve').click( function() {wordfindgame.solve(gamePuzzle, words);});
+        
+    </script>
+  </div>
+    
+</body>
+</html>

@@ -1,125 +1,220 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
-    session_start();
-    include "./PHP/popups.php";
-    $roles_permitidos = ['Administrador','Usuario'];
-    if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
-        header("Location: SinLogin.php");
-        session_destroy();
-        die();
-    } else {
-        if ($_SESSION['rol'] == 'Administrador') {
-            header("Location: J5Adm.php");
-        }
+header('Content-Type: text/html; charset=utf-8');
+session_start();
+include "./PHP/popups.php";
+$roles_permitidos = ['Administrador', 'Usuario', 'Docente'];
+if (!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)) {
+    header("Location: SinLogin.php");
+    session_destroy();
+    die();
+} /*else {
+    if ($_SESSION['rol'] == 'Administrador') {
+        header("Location: J5Adm.php");
     }
+}*/
+
+include "./PHP/conexionBe.php";
+// Consulta para obtener las imágenes
+$sql = "SELECT ruta, valor FROM img_ord";
+$result = $conexion->query($sql);
+
+// Comprobar si hay resultados
+$images = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $images[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Juego Seleccion</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-        <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-        <link rel="stylesheet" href="../assets/CSS/styleJgs.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Pacifico&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <!--Popup-->
-        <!--Confirmacion-->
-        <div class="confir" id="fndCf">
-            <div class="vent" id="vent">
-                <p>¿Desea cerrar sesión?</p>
-                <div class="botonesCf">
-                    <a class="btnConf" href="SinLogin.html">Sí</a>
-                    <a class="btnConf" href="javascript:cierraConf()">NO</a>
-                </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Clasificación</title>
+    <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container-game {
+            padding: 20px;
+        }
+
+        .image-container {
+            border: 2px dashed #aaa;
+            border-radius: 10px;
+            padding: 10px;
+            min-height: 200px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .image-container img {
+            width: 100px;
+            height: auto;
+            max-height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .image-container img.selected {
+            border: 2px solid #007bff;
+            border-radius: 5px;
+        }
+
+        .modal img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .evaluate-btn {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        @media (max-width: 576px) {
+            .image-container img {
+                width: 80px;
+                max-height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container-game">
+    <h1 class="text-center">Ordena, elige sabiamente y gana!!!</h1>
+    <p class="text-center">Haz clic en una imagen para seleccionarla, y decide a qué contenedor moverla con un click.</p>
+
+    <!-- Contenedor general de imágenes -->
+    <div id="general-container" class="image-container bg-light">
+        <h3 id="score-title" class="text-center d-none">Puntuación: <span id="score">0</span></h3>
+        <?php foreach ($images as $image): ?>
+            <img src="<?php echo $image['ruta']; ?>" alt="Imagen" data-type="<?php echo $image['valor']; ?>">
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Contenedores de destino -->
+    <div id="transgenico-container" class="image-container bg-danger bg-opacity-25 mt-2">
+        <h5 class="w-100">Contenedor Transgénicos</h5>
+    </div>
+    <div id="organico-container" class="image-container bg-success bg-opacity-25 mt-2">
+        <h5 class="w-100">Contenedor Orgánicos</h5>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="evaluate-btn">
+        <a href="Trivias.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver atrás
+        </a>
+        <button id="evaluate-btn" class="btn btn-primary" disabled>Evaluar</button>
+    </div>
+</div>
+
+<!-- Modal para ampliar imágenes -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Visualización de Imagen</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modal-image" src="" alt="Imagen ampliada">
             </div>
         </div>
-        <!--Portada-->
-        <div class="portada">
-            <a class="l1">
-            </a>
-            <div class="l2">
-                <a href="https://gaiapacha.org/" target="_blank" style="background-image: url(./IMG/LogoGaia.png); background-size: 100% 100%; width: 180px; height: 70px;  right: 120px;"></a>
-                <a href="https://www.solidagro.be/en/home/worldwide/bolivia" target="_blank" style="background-image: url(./IMG/LogoSolidagro.png); background-size: 100% 100%; width: 120px; height: 70px;"></a>
-                <a target="_blank" style="background-image: url(./IMG/bELGICA.png); background-size: 100% 100%; width: 220px; height: 120px; margin-top:10px;"></a>
-            </div>
-        </div>
-        <!--Navegacion-->
-        <nav class="navegador">
-            <ul class="contNav">
-                <a href="ConLoginAdm.php" class="boton" style="background:rgb(215, 102, 92); ">
-                    <li>INICIO</li>
-                </a>
-                <a href="Noticias.php" class="boton" style="background:rgb(239, 170, 86);border-color: black;">
-                    <li>NOTICIAS</li>
-                </a>
-                <a href="Publicaciones.php" class="boton" style="background:rgb(125, 192, 207); width: 22%;">
-                    <li>PUBLICACIONES</li>
-                </a>
-                <a href="Trivias.php" class="boton" style="background: #22764D;border-style:dashed; border-top:none; border-color: black;">
-                    <li>TRIVIAS</li>
-                </a>
-                <a href="javascript:abreCt()" class="boton" style="background:rgb(238, 37, 117); display: flex; justify-content: space-evenly;">
-                    <li>CUENTA&nbsp;&nbsp;</li>
-                    <!--Cuenta Desplegable-->
-                    <img class="abrirPerfil" id="giro" src="IMG/botArrow.svg" width="22px" height="22px" alt="">
-                    <a href="javascript:cierraCt()" class="cierra" id="cl"></a>
-                    <div class="desp" id="despCt">
-                        <a href="Cuenta.html" class="btnCtDesp">
-                            <i class="fas fa-user"></i>
-                            <p>Ir a mi cuenta</p>
-                        </a>
-                        <div class="btnCtDesp">
-                            <i class="fas fa-question"></i>
-                            <p>Ayuda</p>
-                        </div>
-                        <a href="javascript:abreConf()" class="btnCtDesp">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <p>Cerrar Sesion</p>
-                        </a>
-                    </div>
-                </a>
-            </ul>
-        </nav>
-        <!--Cuerpo-->
-        <div id="juego">
-            <h3>Selecciona las imagenes correctamente segun su contenedor.</h3>
-            <script src="./JS/game.js"></script>
-        </div>
-        <!--Pie-->
-        <footer class="pie">
-            <div class="info">
-            <div class="infoGaia">
-                <p>
-                    <ul class="ct">
-                        <b>GAIA PACHA</b>
-                        <li>Celular: 76957456</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:gaiapacha@gaiapacha.org">gaiapacha@gaiapacha.org</a></li>
-                    </ul>
-                </p>
-            </div>
-            <div class="infoSolid">
-                <p>
-                    <ul class="ct">
-                        <b>SOLIDAGRO</b>
-                        <li>Celular: +32 3 777 20 15</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:info@solidagro.be">info@solidagro.be</a></li>
-                    </ul>
-                </p>
-            </div>
-            </div>
-            <div class="contacto">
-                <p>REDES SOCIALES:</p>
-                <a href="https://www.facebook.com/gaiapacha?mibextid=ZbWKwL"><img src="IMG/facebook.png" alt="facebook" width="50px" height="50px"></a>
-                <a href="https://instagram.com/gaiapacha?igshid=YmMyMTA2M2Y="><img src="IMG/instagram.png" alt="instagram" width="50px" height="50px"></a>
-                <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha/"><img src="IMG/linkedin.png" alt="linkedin" width="50px" height="50px"></a>
-            </div>
-            <script src="JS/scriptCt.js"></script>
-            <script src="JS/scriptCl.js"></script>
-        </footer>
-    </body>
+    </div>
+</div>
+
+<script>
+    let score = 0;
+    const scoreDisplay = document.getElementById("score");
+    const evaluateBtn = document.getElementById("evaluate-btn");
+    const scoreTitle = document.getElementById("score-title");
+    let selectedImage = null;
+
+    // Seleccionar imagen al hacer clic
+    document.querySelectorAll(".image-container img").forEach(img => {
+        img.addEventListener("click", () => {
+            document.querySelectorAll(".image-container img").forEach(img => img.classList.remove("selected"));
+            selectedImage = img;
+            img.classList.add("selected");
+
+            const modalImage = document.getElementById("modal-image");
+            modalImage.src = img.src;
+            const modal = new bootstrap.Modal(document.getElementById("imageModal"));
+            modal.show();
+        });
+    });
+
+    // Mover imagen al contenedor de destino
+    document.querySelectorAll(".image-container").forEach(container => {
+        container.addEventListener("click", () => {
+            if (selectedImage && container.id !== selectedImage.parentElement.id) {
+                container.appendChild(selectedImage);
+                selectedImage.classList.remove("selected");
+                selectedImage = null;
+                checkImagesMoved();
+            }
+        });
+    });
+
+    function checkImagesMoved() {
+        const generalContainer = document.getElementById("general-container");
+        evaluateBtn.disabled = generalContainer.querySelectorAll("img").length !== 0;
+    }
+
+    // Evaluar y mostrar el puntaje
+    evaluateBtn.addEventListener("click", () => {
+        score = 0;
+        const transgenicoContainer = document.getElementById("transgenico-container");
+        const organicoContainer = document.getElementById("organico-container");
+
+        transgenicoContainer.querySelectorAll("img").forEach(img => {
+            if (img.dataset.type === "transgenico") {
+                score++;
+            }
+        });
+
+        organicoContainer.querySelectorAll("img").forEach(img => {
+            if (img.dataset.type === "organico") {
+                score++;
+            }
+        });
+
+        scoreDisplay.textContent = score;
+        scoreTitle.classList.remove("d-none");
+
+        alert(`¡Juego terminado! Tu puntuación es: ${score}`);
+        sendScoreToServer(score);
+    });
+
+    function sendScoreToServer(puntos) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "./PHP/actualizarPuntuacionSeleccion.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                alert(xhr.responseText);
+            } else {
+                alert("Hubo un problema al actualizar la puntuación.");
+            }
+        };
+        xhr.send(`puntos=${puntos}`);
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

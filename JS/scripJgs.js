@@ -1,7 +1,7 @@
 /*Juego 1*/
+
 let cartasVolteadas = 0;
-let carta1 = null;
-let carta2 = null;
+let carta1, carta2;
 
 function voltearCarta(event) {
   let carta = event.currentTarget;
@@ -9,6 +9,7 @@ function voltearCarta(event) {
     return;
   }
   carta.classList.add("volteada");
+
   if (cartasVolteadas === 0) {
     carta1 = carta;
     cartasVolteadas = 1;
@@ -16,15 +17,17 @@ function voltearCarta(event) {
     carta2 = carta;
     cartasVolteadas = 2;
 
+    // Verificamos si las cartas coinciden
     if (carta1.querySelector(".back img").src === carta2.querySelector(".back img").src) {
+      // No ocultamos las cartas, solo dejamos las cartas volteadas
       setTimeout(function() {
-        carta1.style.visibility = "hidden";
-        carta2.style.visibility = "hidden";
+        // Ahora solo limpiamos las variables para las cartas
         carta1 = null;
         carta2 = null;
         cartasVolteadas = 0;
+        // Verificar el fin del juego después de que ambas cartas hayan sido volteadas
         verificarFinJuego();
-      }, 1000);
+      }, 500); // Esperar medio segundo para asegurar que ambas cartas se hayan volteado
     } else {
       setTimeout(function() {
         carta1.classList.remove("volteada");
@@ -32,32 +35,47 @@ function voltearCarta(event) {
         carta1 = null;
         carta2 = null;
         cartasVolteadas = 0;
-      }, 1000);
+        // Verificar el fin del juego después de la animación de las cartas
+        verificarFinJuego();
+      }, 500); // Esperar medio segundo para asegurar que ambas cartas se hayan volteado
     }
   }
 }
 
+
 function verificarFinJuego() {
   let cartas = document.getElementsByClassName("carta");
+
+  // Verificamos si todas las cartas están volteadas
   for (let i = 0; i < cartas.length; i++) {
-    if (getComputedStyle(cartas[i]).visibility !== "hidden") {
-      return;
+    if (!cartas[i].classList.contains("volteada")) {
+      return; // Si alguna carta no está volteada, no termina el juego
     }
   }
+
+  // Si todas las cartas están volteadas (y por ende emparejadas)
   alert("¡Has ganado! ¡Has encontrado todas las cartas!");
-  let puntuacion = 10; 
+
+  // Asignamos la puntuación al usuario
+  let puntuacion = 10;
+
+  // Enviar la puntuación al servidor
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "./PHP/puntuacionCartas.php");
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function() {
     if (xhr.status === 200) {
-      alert(xhr.responseText);
+      alert(xhr.responseText); // Mostrar la respuesta del servidor
     } else {
       alert("Hubo un error al enviar la puntuación al servidor");
     }
   };
+
+  // Enviar la puntuación como parámetro
   xhr.send("puntuacion=" + puntuacion);
 }
+
+
 /*Juego 3*/
 function mostrarFV(){
   document.getElementById("actFV").style.zIndex="2";

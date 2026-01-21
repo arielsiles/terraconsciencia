@@ -1,0 +1,19 @@
+/* Estilos personalizados para botones */
+.btn-custom {
+    background-color: #76c7c0;
+    color: white; /* Color de texto siempre blanco */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-custom:hover {
+    background-color: #5bb5ab; /* Fondo más oscuro */
+    color: white; /* Color del texto permanece blanco */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Efecto de sombra */
+}
+

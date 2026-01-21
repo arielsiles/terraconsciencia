@@ -18,7 +18,7 @@ if (!isset($_SESSION['id']) || !isset($_POST['puntos'])) {
 $usuarioId = $_SESSION['id'];
 $puntos = intval($_POST['puntos']); // Asegurar que 'puntos' sea un entero
 
-// Consulta preparada para evitar inyecci¨®n de SQL
+// Consulta preparada para evitar inyecciï¿½ï¿½n de SQL
 $consulta = "SELECT contadorFV FROM usuarios WHERE id = ?";
 $stmt = mysqli_prepare($conexion, $consulta);
 mysqli_stmt_bind_param($stmt, "i", $usuarioId);
@@ -37,21 +37,21 @@ $contadorFV = $fila['contadorFV'];
 if ($contadorFV > 0) {
     echo "Ya has respondido al formulario demasiadas veces.";
 } else {
-    // Consulta preparada para evitar inyecci¨®n de SQL
+    // Consulta preparada para evitar inyecciï¿½ï¿½n de SQL
     $consultaActualizar = "UPDATE usuarios SET puntos = puntos + ?, contadorFV = 1 WHERE id = ?";
     $stmtActualizar = mysqli_prepare($conexion, $consultaActualizar);
     mysqli_stmt_bind_param($stmtActualizar, "ii", $puntos, $usuarioId);
     mysqli_stmt_execute($stmtActualizar);
 
-    // Manejo de errores para la consulta de actualizaci¨®n
+    // Manejo de errores para la consulta de actualizaciï¿½ï¿½n
     if (!$stmtActualizar) {
-        die("Error al actualizar la puntuaci¨®n: " . mysqli_error($conexion));
+        die("Error al actualizar la puntuaciÃ³n: " . mysqli_error($conexion));
     }
 
-    echo "La puntuaci¨®n se actualiz¨® correctamente";
+    echo "La puntuaciÃ³n se actualizÃ³ correctamente";
 }
 
-// Cerrar las consultas preparadas y la conexi¨®n
+// Cerrar las consultas preparadas y la conexiï¿½ï¿½n
 mysqli_stmt_close($stmt);
 mysqli_stmt_close($stmtActualizar);
 mysqli_close($conexion);

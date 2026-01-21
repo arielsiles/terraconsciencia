@@ -1,5 +1,6 @@
 <?php
     include './PHP/conexionBe.php';
+
     $sql = "SELECT * FROM falsoverdadero";
     $resultado = $conexion -> query($sql);
     $titulo = array();

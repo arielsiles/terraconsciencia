@@ -1,41 +1,298 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Hidrica</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Terra ConsCiencia</title>
+
     <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-    <!--<link rel="stylesheet" href="../assets/CSS/styleCalcIni.css">-->
-    <link rel="stylesheet" href="assets/CSS/styleCalcIni.css">
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+
+    <style>
+        /* Contenedor para mantener la proporción del video */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* Relación de aspecto 4:3 (1080 / 1440 * 100) */
+            overflow: hidden;
+            border-radius: 8px; /* Bordes redondeados opcionales */
+            background-color: #f0f8ff; /* Fondo celeste claro para resaltar el video */
+        }
+
+        /* Estilo del video */
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta el video al contenedor */
+            border-radius: 8px; /* Asegura que el video coincida con el contenedor */
+        }
+
+        /* Asegurar que las columnas se adapten responsivamente */
+        @media (max-width: 768px) {
+            .custom-text-box {
+                margin-top: 20px;
+            }
+        }
+    </style>
+
+
 </head>
-<body>
-    <div class="fondo">
-        <div class="contenido">
-            <h1 class="esp">..........</h1>
-            <div class="titulo">
-                <h2>CALCULADORA HÍDRICA</h2>
-                <h2>"YAKU CALCU"</h2>
+
+<body id="section_1">
+
+<header class="site-header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 d-flex flex-wrap">
+                <p class="d-flex me-4 mb-0">
+                    <i class="bi-geo-alt me-2"></i>
+                    Cochabamba, Bolivia
+                </p>
+
+                <p class="d-flex mb-0">
+                    <i class="bi-envelope me-2"></i>
+
+                    <a href="mailto:gaiapacha@gaiapacha.org">
+                        gaiapacha@gaiapacha.org
+                    </a>
+                </p>
             </div>
-            <div class="contenidoGen flexbox-container">
-                 <div class="contenido_leght">
-                <h2>¿QUÉ ES LA CALCULADORA DE HUELLA HÍDRICA?</h2>
-                <video width="580" height="435" preload="auto" controls>
-                    <!--<source src="video/TUTORIAL_YAKUCALCU.ogv" type="video/ogg">-->
-                    <!--<source src="video/TUTORIAL_YAKUCALCU.mp4" type="video/mp4">-->
-                    <source src="video/TUTORIAL.mp4" type="video/mp4">
-                </video>
-                 </div>
-                <div class="contenido_right">
-                    <h2>La calculadora de Huella Hídrica es una herramienta que permite cuantificar el uso directo e indirecto del agua en las actividades y evaluar su impacto.</h2>
-                    <h2>A través de datos y cálculos precisos, esta herramienta brinda una visión clara de la cantidad de agua requerida y cómo es posible reducir la Huella Hídrica para contribuir a la sostenibilidad del planeta.</h2>
-                    <h2>¿QUIERES CALCULAR TU HUELLA HÍDRICA?</h2>
+
+            <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                <ul class="social-icon">
+
+
+                    <li class="social-icon-item">
+                        <a href="https://www.facebook.com/gaiapacha" target="_blank" class="social-icon-link bi-facebook"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="https://www.instagram.com/gaiapacha" target="_blank" class="social-icon-link bi-instagram"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha" target="_blank" class="social-icon-link bi-linkedin"></a>
+                    </li>
+
+                    <li class="social-icon-item">
+                        <a href="http://wa.me/59176957456" target="_blank" class="social-icon-link bi-whatsapp"></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-lg bg-light shadow-lg">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="images/logo-color-02.png" class="logo img-fluid" alt="Kind Heart Charity">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="ConLoginAdm.php">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="NoticiasSl.php">Noticias</a>
+                </li>
+
+
+                <!--<li class="nav-item ms-3">
+                    <button type="button" class="nav-link custom-btn custom-border-btn btn" data-bs-toggle="modal" data-bs-target="#loginModal"> Iniciar Sesión </button>
+                </li>-->
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+
+    <!--<section class="cta-section section-padding section-bg">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-10 col-12 text-center mx-auto">
+                    <h2 class="mb-0">CALCULADORA HÍDRICA</h2>
+                    <h2 class="mb-3">"YAKU CALCU"</h2>
+                </div>
+
+                <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                    <video class="custom-text-box-image img-fluid" controls>
+                        <source src="video/TUTORIAL.mp4" type="video/mp4"> Tu navegador no soporta la etiqueta de video.
+                    </video>
+
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="custom-text-box">
+                        <h5 class="mb-3">¿QUÉ ES LA CALCULADORA DE HUELLA HÍDRICA?</h5>
+
+                        <h6 class="mb-3">La calculadora de Huella Hídrica es una herramienta que permite cuantificar el uso directo e indirecto del agua en las actividades y evaluar su impacto.</h6>
+                        <h6 class="mb-3">A través de datos y cálculos precisos, esta herramienta brinda una visión clara de la cantidad de agua requerida y cómo es posible reducir la Huella Hídrica para contribuir a la sostenibilidad del planeta.</h6>
+                    </div>
+
+                    <div class="custom-text-box text-center">
+                        <h6 class="mb-3">¿QUIERES CALCULAR TU HUELLA HÍDRICA?</h6>
+                        <a href="CalculadoraPag1.html" class="custom-btn btn smoothscroll">PRESIONA AQUÍ</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="wrapper">
-                <a href ="CalculadoraPag1.html" class="boton1">PRESIONA AQUÍ</a>
+
+        </div>
+    </section>-->
+
+    <section class="cta-section section-padding section-bg">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-10 col-12 text-center mx-auto">
+                    <h2 class="mb-0">CALCULADORA HÍDRICA</h2>
+                    <h2 class="mb-3">"YAKU CALCU"</h2>
+                </div>
+
+                <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                    <div class="video-container">
+                        <video class="custom-text-box-image" controls>
+                            <source src="video/TUTORIAL.mp4" type="video/mp4"> Tu navegador no soporta la etiqueta de video.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="custom-text-box">
+                        <h5 class="mb-3">¿QUÉ ES LA CALCULADORA DE HUELLA HÍDRICA?</h5>
+
+                        <h6 class="mb-3">La calculadora de Huella Hídrica es una herramienta que permite cuantificar el uso directo e indirecto del agua en las actividades y evaluar su impacto.</h6>
+                        <h6 class="mb-3">A través de datos y cálculos precisos, esta herramienta brinda una visión clara de la cantidad de agua requerida y cómo es posible reducir la Huella Hídrica para contribuir a la sostenibilidad del planeta.</h6>
+                    </div>
+
+                    <div class="custom-text-box text-center">
+                        <h6 class="mb-3">¿QUIERES CALCULAR TU HUELLA HÍDRICA?</h6>
+                        <a href="CalculadoraPag1.html" class="custom-btn btn smoothscroll">PRESIONA AQUÍ</a>
+                    </div>
+                </div>
             </div>
-        </div> 
+        </div>
+    </section>
+
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-12 mb-4">
+                <img src="images/logo-terra-b.png" class="logo-footer img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                <h5 class="site-footer-title mb-3">FUNDACIÓN GAIA PACHA</h5>
+
+                <p class="text-white d-flex mb-2">
+                    <i class="bi-telephone me-2"></i>
+
+                    <a href="tel: +591 76957456" class="site-footer-link">
+                        +591 76957456
+                    </a>
+                </p>
+
+                <p class="text-white d-flex">
+                    <i class="bi-envelope me-2"></i>
+
+                    <a href="mailto:gaiapacha@gaiapacha.org" class="site-footer-link">
+                        gaiapacha@gaiapacha.org
+                    </a>
+                </p>
+
+                <p class="text-white d-flex mt-3">
+                    <i class="bi-geo-alt me-2"></i>
+                    Calle Idelfonso Murguia 777, <br />entre Tocopilla y C. Antofagasta, <br />Cochabamba - Bolivia
+                </p>
+
+                <!--<a href="#" class="custom-btn btn mt-3">Get Direction</a>-->
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                <h5 class="site-footer-title mb-3">SOLIDAGRO</h5>
+
+                <p class="text-white d-flex mb-2">
+                    <i class="bi-telephone me-2"></i>
+
+                    <a href="tel: +32 3 777 20 15" class="site-footer-link">
+                        +32 3 777 20 15
+                    </a>
+                </p>
+
+                <p class="text-white d-flex">
+                    <i class="bi-envelope me-2"></i>
+
+                    <a href="mailto:info@solidagro.be" class="site-footer-link">
+                        info@solidagro.be
+                    </a>
+                </p>
+            </div>
+
+        </div>
     </div>
+
+    <div class="site-footer-bottom">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-7 col-12">
+                    <p class="copyright-text mb-0">
+                        Copyright © 2025
+                        <a href="https://gaiapacha.org" target="_blank">Fundación Gaia Pacha</a>
+                    </p>
+                </div>
+
+                <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
+                    <ul class="social-icon">
+                        <li class="social-icon-item">
+                            <a href="https://www.facebook.com/gaiapacha" target="_blank" class="social-icon-link bi-facebook"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="https://www.instagram.com/gaiapacha" target="_blank" class="social-icon-link bi-instagram"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha" target="_blank" class="social-icon-link bi-linkedin"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="http://wa.me/59176957456" target="_blank" class="social-icon-link bi-whatsapp"></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
+
 </html>

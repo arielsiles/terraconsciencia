@@ -25,7 +25,7 @@
         <form action="PHP/subir_noticias.php" method="post" class="subida" enctype="multipart/form-data">
             <h2>Subir una Noticia:</h2>
             <h3>Ingrese el titulo</h3>
-            <input type="text" name="titulo" maxlength="50" style="width: 360px;" required>
+            <input type="text" name="titulo" maxlength="255" style="width: 550px;" required>
             <h3>Suba la imagen</h3>
             <label for="imagenNt" style="cursor: pointer;" >
                 <img src="./IMG/imagenCamara.jpg" alt="" width="156px" height="110px" id="previewImgNt">
@@ -64,9 +64,8 @@
             <label for="subModPpNt" class="botonPortada" ><i class="fas fa-thumbs-up"></i></label>
         </form>
 
-        <a class="return" href="NoticiasAdm.php">
-            Volver 
-        </a>
+        <!--<a class="return" href="NoticiasAdm.php">Volver</a>-->
+        <a class="return" href="ConLogin.php">Volver</a>
     </div>
     <script src="./JS/preview.js"></script>
 </body>

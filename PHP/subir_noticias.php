@@ -28,7 +28,7 @@ if (isset($_FILES['imagenNoticia']) && isset($_POST['titulo']) && isset($_POST['
 
     $queryInsert = "INSERT INTO noticias (titulo_noticia, imagen_noticia, descripcion_noticia, noticia_completa) VALUES ('$titulo','$ruta', '$descripcion', '$ntCompl')";
     if (mysqli_query($conexion, $queryInsert)) {
-        header("Location: ../NoticiasAdm.php");
+        header("Location: ../Noticias.php");
     } else {
         echo "Error en la consulta de inserción: " . mysqli_error($conexion);
     }

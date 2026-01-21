@@ -1,16 +1,16 @@
 <?php
     session_start();
     include "./PHP/popups.php";
-    $roles_permitidos = ['Administrador','Usuario'];
+    $roles_permitidos = ['Administrador','Usuario','Docente'];
     if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
         header("Location: SinLogin.php");
         session_destroy();
         die();
-    } else {
+    } /*else {
         if ($_SESSION['rol'] == 'Administrador') {
             header("Location: J6Adm.php");
         }
-    }
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="es">

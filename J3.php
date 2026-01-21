@@ -1,231 +1,172 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
-    session_start();
-    include "./PHP/popups.php";
-    include "./PHP/fov.php";
-    $roles_permitidos = ['Administrador','Usuario'];
-    if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
-        header("Location: SinLogin.php");
-        session_destroy();
-        die();
-    } else {
-        if ($_SESSION['rol'] == 'Administrador') {
-            header("Location: J3Adm.php");
-        }
+header('Content-Type: text/html; charset=utf-8');
+session_start();
+include "./PHP/popups.php";
+include "./PHP/fov.php";
+$roles_permitidos = ['Administrador','Usuario','Docente'];
+if(!isset($_SESSION['usuario']) || !in_array($_SESSION['rol'], $roles_permitidos)){
+    header("Location: SinLogin.php");
+    session_destroy();
+    die();
+} /*else {
+    if ($_SESSION['rol'] == 'Administrador') {
+        header("Location: J3Adm.php");
     }
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Juego Memoria</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-        <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
-        <link rel="stylesheet" href="../assets/CSS/styleJgs.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Pacifico&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <!--Popup-->
-        <!--Confirmacion-->
-        <div class="confir" id="fndCf">
-            <div class="vent" id="vent">
-                <p>¿Desea cerrar sesión?</p>
-                <div class="botonesCf">
-                    <a class="btnConf" href="PHP/cerrar_sesion.php">Sí</a>
-                    <a class="btnConf" href="javascript:cierraConf()">NO</a>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Terra ConsCiencia</title>
+
+    <link rel="shortcut icon" href="IMG/Icono.ico" width="50px">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Para íconos -->
+
+    <!-- CSS FILES -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+<?php include 'header_info.php'; ?>
+
+<?php include 'main_menu_user.php'; ?>
+
+<main>
+
+    <section class="cta-section section-padding section-bg">
+
+        <div class="container py-4">
+            <div class="row">
+                <!-- Botón para regresar -->
+                <div class="col-12 mb-3 text-end">
+                    <a href="Trivias.php" class="btn btn-secondary">
+                        <i class="fas fa-arrow-circle-left"></i> Volver Atrás
+                    </a>
+                </div>
+
+                <!-- Sección de texto inicial -->
+                <div id="actFVTxt" class="col-12 text-center">
+                    <h2 class="mb-2 text-info">Áreas de Recarga Hídrica</h2>
+                    <h5 class="mb-4 text-secondary">Lee atentamente y responde</h5>
+
+                    <p class="lead">
+                        Una <strong>cuenca hidrográfica</strong> es un territorio determinado por la cumbre de los cerros, donde las aguas confluyen hacia un río principal. Una cuenca está formada por <span class="text-info">quebradas, acequias, riachuelos y vertientes</span> donde se moviliza el agua dulce hasta llegar a un punto único de desfogue llamado <em>punto de salida</em>, que usualmente es un río principal o mar. Las cuencas hidrográficas tienen como fin captar o recoger el agua de lluvia que alimenta a los ríos, quebradas, vertientes, lagos, lagunas y represas.
+                    </p>
+
+                    <p class="text-start">
+                        <strong>Partes de una cuenca hidrográfica:</strong> Una cuenca puede estar constituida por otras zonas donde la recarga hídrica puede ser significativa. Las más importantes son:
+                    </p>
+
+                    <ul class="list-group list-group-flush text-start mb-4">
+                        <li class="list-group-item">
+                            <strong>a)</strong> <span class="fw-bold">Cuenca alta:</span> Donde se originan los ríos y quebradas, con mayor concentración de áreas de recarga hídrica al existir mayor captación de agua de lluvia.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>b)</strong> <span class="fw-bold">Cuenca media:</span> Encargada de transportar el agua proveniente desde la zona alta hacia la parte baja, donde se concentra la mayor densidad hídrica conformada por lagunas, ríos, quebradas y vertientes.
+                        </li>
+                        <li class="list-group-item">
+                            <strong>c)</strong> <span class="fw-bold">Cuenca baja:</span> Es la zona más caudalosa que concentra la mayor cantidad de agua proveniente de las otras dos zonas.
+                        </li>
+                    </ul>
+
+                    <p class="lead">
+                        Es un sitio de mayor aprovechamiento ya que se usa en riego, consumo humano, ganadería e industria.
+                    </p>
+
+                    <p class="text-start">
+                        <strong>Importancia de las cuencas hidrográficas:</strong>
+                    </p>
+
+                    <ol class="list-group list-group-numbered text-start mb-4">
+                        <li class="list-group-item">Permiten la captación y acumulación de agua en el suelo.</li>
+                        <li class="list-group-item">Permiten el riego para especies cultivadas, dotando de alimentos a las familias cercanas a la cuenca y de la zona.</li>
+                        <li class="list-group-item">Su buen manejo reduce los riesgos de desastres naturales como las inundaciones, deslizamientos, erosión de suelos.</li>
+                        <li class="list-group-item">Ofrecen servicios ambientales como aire puro, agua, suelo fértil, humedad.</li>
+                        <li class="list-group-item">Se convierten en un hábitat para especies vegetales y/o animales silvestres.</li>
+                        <li class="list-group-item">Promueven la recreación y el turismo sostenible.</li>
+                    </ol>
+
+                    <p class="text-start">
+                        <strong>El área de recarga hídrica:</strong> Es la zona geográfica que, por sus características naturales, capta, almacena e incorpora el agua procedente de la lluvia al subsuelo, aguas superficiales y a otros acuíferos y cuerpos de agua estáticos y/o en movimiento. La capacidad de un área de recarga hídrica (cuenca, subcuenca o sitio específico), está definida por:
+                    </p>
+
+                    <ul class="list-group list-group-flush text-start mb-4">
+                        <li class="list-group-item">Cobertura vegetal permanente.</li>
+                        <li class="list-group-item">Mayor diversidad y combinación de plantaciones (forestales nativos o exóticos, arbustos, hierbas y pastos).</li>
+                        <li class="list-group-item">Tipo de suelo, especialmente la textura, un factor importante para determinar la capacidad de recarga hídrica. Los suelos impermeables y compactados impiden o dificultan la infiltración, mientras que los suelos permeables facilitan la recarga.</li>
+                    </ul>
+
+                    <p class="text-start">
+                        <strong>Las acciones para recuperar áreas de recarga hídrica son:</strong>
+                    </p>
+
+                    <ul class="list-group list-group-flush text-start">
+                        <li class="list-group-item">Promover e incentivar la regeneración de la cobertura arbórea, arbustiva o pastizales naturales dentro del área.</li>
+                        <li class="list-group-item">Realizar acciones de reforestación, sistemas agroforestales y prácticas agroecológicas.</li>
+                        <li class="list-group-item">Controlar y evitar la quema en las áreas de recarga y descarga, no contaminar el agua, ni matar la vegetación.</li>
+                        <li class="list-group-item">Evitar el sobrepastoreo y la agricultura convencional (uso de agroquímicos).</li>
+                        <li class="list-group-item">Evaluar para identificar si es necesario aislar o impedir el ingreso de personas o animales para que recupere, mantenga o incremente su cobertura vegetal.</li>
+                    </ul>
+
+                    <button class="btn btn-primary mt-4 px-5 py-2" onclick="mostrarPreguntas()">Continuar <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+
+
+                <!-- Sección del test de preguntas -->
+                <div id="actFV" class="col-12 d-none">
+                    <form id="formFV">
+                        <!-- Preguntas dinámicas -->
+                        <div id="preguntasContainer"></div>
+
+                        <!-- Botones de acción -->
+                        <div class="mt-4 text-center">
+                            <button type="button" class="btn btn-success" onclick="calcularPuntuacion()">Calcular Resultado</button>
+                            <button type="button" class="btn btn-warning" onclick="volverTexto()">Volver al Texto</button>
+                        </div>
+                    </form>
+
+                    <!-- Resultado -->
+                    <div id="resultadoFV" class="mt-4 d-none text-center">
+                        <h2>Resultado</h2>
+                        <p id="puntuacionFV" class="fs-4 fw-bold"></p>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--Portada-->
-        <div class="portada">
-            <a class="l1">
-            </a>
-            <div class="l2">
-                <a href="https://gaiapacha.org/" target="_blank" style="background-image: url(./IMG/LogoGaia.png); background-size: 100% 100%; width: 180px; height: 70px;  right: 120px;"></a>
-                <a href="https://www.solidagro.be/en/home/worldwide/bolivia" target="_blank" style="background-image: url(./IMG/LogoSolidagro.png); background-size: 100% 100%; width: 120px; height: 70px;"></a>
-                <a target="_blank" style="background-image: url(./IMG/bELGICA.png); background-size: 100% 100%; width: 220px; height: 120px; margin-top:10px;"></a>
-            </div>
-        </div>
-        <!--Navegacion-->
-        <nav class="navegador">
-            <ul class="contNav">
-                <a href="ConLoginAdm.php" class="boton" style="background:rgb(215, 102, 92); ">
-                    <li>INICIO</li>
-                </a>
-                <a href="Noticias.php" class="boton" style="background:rgb(239, 170, 86);border-color: black;">
-                    <li>NOTICIAS</li>
-                </a>
-                <a href="Publicaciones.php" class="boton" style="background:rgb(125, 192, 207); width: 22%;">
-                    <li>PUBLICACIONES</li>
-                </a>
-                <a href="Trivias.php" class="boton" style="background: #22764D;border-style:dashed; border-top:none; border-color: black;">
-                    <li>TRIVIAS</li>
-                </a>
-                <a href="javascript:abreCt()" class="boton" style="background:rgb(238, 37, 117); display: flex; justify-content: space-evenly;">
-                    <li>CUENTA&nbsp;&nbsp;</li>
-                    <!--Cuenta Desplegable-->
-                    <img class="abrirPerfil" id="giro" src="IMG/botArrow.svg" width="22px" height="22px" alt="">
-                    <a href="javascript:cierraCt()" class="cierra" id="cl"></a>
-                    <div class="desp" id="despCt">
-                        <a href="Cuenta.php" class="btnCtDesp">
-                            <i class="fas fa-user"></i>
-                            <p>Ir a mi cuenta</p>
-                        </a>
-                        <div class="btnCtDesp">
-                            <i class="fas fa-question"></i>
-                            <p>Ayuda</p>
-                        </div>
-                        <a href="javascript:abreConf()" class="btnCtDesp">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <p>Cerrar Sesion</p>
-                        </a>
-                    </div>
-                </a>
-            </ul>
-        </nav>
-        <!--Cuerpo-->
-        <div class="cuerpo">
-               <div class="lado">
-                    <a href="Trivias.php" class="btnBack">
-                        <i class="fas fa-arrow-circle-left"></i>
-                        Volver Atras
-                    </a>
-               </div>
-               <div class="central">
-               <div class="actFVTxt" id="actFVTxt">
-                        <h1><?php echo $titulo[0];?></h1>
-                        <p class="lectura">
-                        <?php echo $afirmaciones[0];?>
-                        </p>
-                    </div>
-                    <div class="actFV" id="actFV">
-                        <div class="contTestFV">
-                            <div id="testFV">
-                                <h1>Responde Falso o Verdadero</h1>
-                                <form id="formFV">
-                                    <h2>Afirmacion 1 (+2pts.)</h2>
-                                    <h3><?php echo $afirmaciones[1];?></h3>
-                                    <div class="rsFV">
-                                        <label>
-                                            <input type="radio" name="a1" value="f">
-                                            (F) Falso
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="a1" value="v">
-                                            (V) Verdadero 
-                                        </label>
-                                    </div>
-                                    <br>
-                                    <h2>Afirmacion 2 (+2pts.)</h2>
-                                    <h3><?php echo $afirmaciones[2];?></h3>
-                                    <div class="rsFV">
-                                        <label>
-                                            <input type="radio" name="a2" value="f">
-                                            (F) Falso
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="a2" value="v">
-                                            (V) Verdadero 
-                                        </label>
-                                    </div>
-                                    <br>
-                                    <h2>Afirmacion 3 (+2pts.)</h2>
-                                    <h3><?php echo $afirmaciones[3];?></h3>
-                                    <div class="rsFV">
-                                        <label>
-                                            <input type="radio" name="a3" value="f">
-                                            (F) Falso
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="a3" value="v">
-                                            (V) Verdadero 
-                                        </label>
-                                    </div>
-                                    <br>
-                                    <h2>Afirmacion 4 (+2pts.)</h2>
-                                    <h3><?php echo $afirmaciones[4];?></h3>
-                                    <div class="rsFV">
-                                        <label>
-                                            <input type="radio" name="a4" value="f">
-                                            (F) Falso
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="a4" value="v">
-                                            (V) Verdadero 
-                                        </label>
-                                    </div>
-                                    <br>
-                                    <h2>Afirmacion 5 (+2pts.)</h2>
-                                    <h3><?php echo $afirmaciones[5];?></h3>
-                                    <div class="rsFV">
-                                        <label>
-                                            <input type="radio" name="a5" value="f">
-                                            (F) Falso
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="a5" value="v">
-                                            (V) Verdadero 
-                                        </label>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>   
-                    </div>
-               </div>
-               <div class="lado" style="flex-direction: column; align-items:center; justify-content: start;">
-                    <div class="vntOpr" id="vOp1">
-                        <a href="javascript:mostrarFV()" class="btnBack">
-                            Continuar
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </a>
-                    </div>
-                    <div class="vntOpr2" id="vOp2">
-                        <button type="button" onclick="calcularPuntuacion()" class="btnBack" style="cursor: pointer;">Calcular Resultado</button>
-                        <div id="resultadoFV" style="display: none;">
-                            <h2>Resultado</h2>
-                            <p id="puntuacionFV"></p>
-                        </div>
-                        <a href="javascript:ocultarFV()" class="btnBack">
-                            <i class="fas fa-arrow-circle-left"></i>
-                            Volver al Texto
-                        </a>
-                    </div>
-               </div>
-        </div>
-        <!--Pie-->
-        <footer class="pie">
-            <div class="info">
-            <div class="infoGaia">
-                <p>
-                    <ul class="ct">
-                        <b>GAIA PACHA</b>
-                        <li>Celular: 76957456</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:gaiapacha@gaiapacha.org">gaiapacha@gaiapacha.org</a></li>
-                    </ul>
-                </p>
-            </div>
-            <div class="infoSolid">
-                <p>
-                    <ul class="ct">
-                        <b>SOLIDAGRO</b>
-                        <li>Celular: +32 3 777 20 15</li>
-                        <li>E-mail: <a style="text-decoration: underline; color: rgb(125, 127, 255);" href="mailto:info@solidagro.be">info@solidagro.be</a></li>
-                    </ul>
-                </p>
-            </div>
-            </div>
-            <div class="contacto">
-                <p>REDES SOCIALES:</p>
-                <a href="https://www.facebook.com/gaiapacha?mibextid=ZbWKwL"><img src="IMG/facebook.png" alt="facebook" width="50px" height="50px"></a>
-                <a href="https://instagram.com/gaiapacha?igshid=YmMyMTA2M2Y="><img src="IMG/instagram.png" alt="instagram" width="50px" height="50px"></a>
-                <a href="https://www.linkedin.com/company/fundaci%C3%B3n-gaia-pacha/"><img src="IMG/linkedin.png" alt="linkedin" width="50px" height="50px"></a>
-            </div>
-            <script src="JS/scriptCt.js"></script>
-            <script src="JS/scriptCl.js"></script>
-            <script src="JS/scripJgs.js"></script>
-        </footer>
-    </body>
+
+
+    </section>
+
+
+</main>
+
+<?php include 'footer.php'; ?>
+
+<!-- JAVASCRIPT FILES -->
+
+<script src="JS/jquery.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script src="JS/jquery.sticky.js"></script>
+<!--<script src="JS/click-scroll.js"></script>
+<script src="JS/counter.js"></script>
+<script src="JS/custom.js"></script>-->
+
+<script src="JS/scriptJuego3.js"></script>
+
+</body>
+
 </html>
