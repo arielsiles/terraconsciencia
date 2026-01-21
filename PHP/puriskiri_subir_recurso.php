@@ -52,10 +52,19 @@ if (!in_array($archivo_extension, $extensiones_permitidas)) {
     die();
 }
 
-// Verificar tamaño (50MB máximo)
-$max_size = 50 * 1024 * 1024; // 50MB
+// Obtener límite de tamaño desde la configuración
+$query_config = "SELECT valor FROM puriskiri_config WHERE clave = 'limite_archivo_mb'";
+$result_config = mysqli_query($conexion, $query_config);
+$limite_mb = 100; // Valor por defecto
+if ($result_config && mysqli_num_rows($result_config) > 0) {
+    $config_row = mysqli_fetch_assoc($result_config);
+    $limite_mb = (int)$config_row['valor'];
+}
+$max_size = $limite_mb * 1024 * 1024;
+
+// Verificar tamaño
 if ($_FILES['archivo']['size'] > $max_size) {
-    header("Location: ../PuriskiriSubir.php?error=tamano");
+    header("Location: ../PuriskiriSubir.php?error=tamano&limite=" . $limite_mb);
     die();
 }
 

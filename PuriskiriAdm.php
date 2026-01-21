@@ -159,6 +159,9 @@ if (isset($_GET['destacado'])) {
                     </form>
                 </div>
                 <div class="col-lg-6 col-12 text-lg-end">
+                    <button type="button" class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#configModal">
+                        <i class="fas fa-cog"></i> Configuracion
+                    </button>
                     <a href="PuriskiriCategoriasAdm.php" class="btn btn-info me-2">
                         <i class="fas fa-tags"></i> Gestionar Categorias
                     </a>
@@ -306,9 +309,118 @@ if (isset($_GET['destacado'])) {
 <?php include "footer.php"; ?>
 <?php include "modal_cierre.php"; ?>
 
+<!-- Modal de Configuración PURISKIRI -->
+<div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="configModalLabel"><i class="fas fa-cog"></i> Configuracion PURISKIRI</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="configForm">
+                    <!-- Límite de tamaño de archivo -->
+                    <div class="mb-4">
+                        <label for="limite_archivo_mb" class="form-label">
+                            <i class="fas fa-file-upload"></i> Limite maximo de archivo (MB)
+                        </label>
+                        <input type="number" class="form-control" id="limite_archivo_mb" name="limite_archivo_mb"
+                               min="1" max="150" value="100" required>
+                        <small class="text-muted">Rango permitido: 1 MB - 150 MB. Los usuarios no podran subir archivos mas grandes que este limite.</small>
+                    </div>
+
+                    <!-- Información del servidor -->
+                    <div class="alert alert-info mb-0">
+                        <small>
+                            <i class="fas fa-info-circle"></i>
+                            <strong>Nota:</strong> El servidor esta configurado para aceptar hasta 150 MB.
+                            Este ajuste limita el tamaño que los usuarios pueden subir.
+                        </small>
+                    </div>
+                </form>
+
+                <!-- Mensaje de estado -->
+                <div id="configMensaje" class="mt-3" style="display: none;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarConfig">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- JAVASCRIPT FILES -->
 <script src="JS/jquery.min.js"></script>
 <script src="JS/bootstrap.min.js"></script>
+
+<script>
+// Cargar configuración al abrir el modal
+$('#configModal').on('show.bs.modal', function () {
+    $.ajax({
+        url: 'PHP/puriskiri_obtener_config.php',
+        method: 'GET',
+        data: { clave: 'limite_archivo_mb' },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success && response.valor) {
+                $('#limite_archivo_mb').val(response.valor);
+            }
+        },
+        error: function() {
+            console.error('Error al cargar configuración');
+        }
+    });
+    $('#configMensaje').hide();
+});
+
+// Guardar configuración
+$('#btnGuardarConfig').on('click', function() {
+    var btn = $(this);
+    var limite = $('#limite_archivo_mb').val();
+
+    // Validar
+    if (limite < 1 || limite > 150) {
+        mostrarMensajeConfig('El límite debe estar entre 1 y 150 MB.', 'danger');
+        return;
+    }
+
+    btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Guardando...');
+
+    $.ajax({
+        url: 'PHP/puriskiri_guardar_config.php',
+        method: 'POST',
+        data: {
+            clave: 'limite_archivo_mb',
+            valor: limite
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                mostrarMensajeConfig('Configuración guardada correctamente.', 'success');
+            } else {
+                mostrarMensajeConfig(response.error || 'Error al guardar.', 'danger');
+            }
+        },
+        error: function() {
+            mostrarMensajeConfig('Error de conexión. Intenta nuevamente.', 'danger');
+        },
+        complete: function() {
+            btn.prop('disabled', false).html('<i class="fas fa-save"></i> Guardar Cambios');
+        }
+    });
+});
+
+function mostrarMensajeConfig(mensaje, tipo) {
+    $('#configMensaje')
+        .removeClass('alert-success alert-danger alert-info')
+        .addClass('alert alert-' + tipo)
+        .html(mensaje)
+        .show();
+}
+</script>
 
 </body>
 

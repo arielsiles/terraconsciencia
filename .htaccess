@@ -13,5 +13,8 @@ RewriteRule ^/?$ "http://localhost/terraco/SinLogin.php" [R=301,L]
     Header set Access-Control-Allow-Credentials true
 </IfModule>
 
-#php_value upload_max_filesize 50M
-#php_value post_max_size 50M
+# Límites PHP para subida de archivos PURISKIRI (150MB de margen para configuración dinámica)
+php_value upload_max_filesize 150M
+php_value post_max_size 160M
+php_value max_execution_time 300
+php_value max_input_time 300

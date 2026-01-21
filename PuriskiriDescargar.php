@@ -127,7 +127,7 @@ if ($orden != 'recientes') $url_params['orden'] = $orden;
     <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
 
     <!-- CSS Especifico PURISKIRI -->
-    <link href="assets/CSS/stylePuriskiri.css" rel="stylesheet">
+    <link href="assets/CSS/stylePuriskiri.css?v=2" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -157,7 +157,7 @@ if ($orden != 'recientes') $url_params['orden'] = $orden;
             <div class="row">
                 <div class="col-12 text-center mb-4">
                     <h2>Catalogo de Recursos Educativos</h2>
-                    <p class="text-muted">Explora y descarga materiales para tus clases</p>
+                    <!--<p class="text-muted">Explora y descarga materiales para tus clases</p>-->
                 </div>
 
                 <!-- Barra de busqueda -->
@@ -295,7 +295,7 @@ if ($orden != 'recientes') $url_params['orden'] = $orden;
                                             <i class="fas fa-download"></i> <?php echo $recurso['descargas']; ?> descargas
                                         </p>
                                         <p class="resource-description">
-                                            <?php echo htmlspecialchars(substr($recurso['descripcion'], 0, 100)) . '...'; ?>
+                                            <?php echo htmlspecialchars(substr($recurso['descripcion'], 0, 150)) . '...'; ?>
                                         </p>
                                     </div>
                                 </div>
