@@ -17,4 +17,5 @@ PHP/conexionBe.php
 .htaccess
 error_log
 /images/
+/tmp/
 
