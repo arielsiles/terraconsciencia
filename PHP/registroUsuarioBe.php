@@ -4,24 +4,57 @@ include "conexionBe.php";
 require_once "config_email.php";
 require_once "enviar_correo.php";
 
+// Detectar si es petición AJAX
+$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
+// Función para responder (JSON si es AJAX, script si no)
+function responder($success, $message, $redirect = null) {
+    global $isAjax;
+
+    if ($isAjax) {
+        header('Content-Type: application/json');
+        $response = ['success' => $success, 'message' => $message];
+        if ($redirect) {
+            $response['redirect'] = $redirect;
+        }
+        echo json_encode($response);
+        exit();
+    } else {
+        // Fallback para navegadores sin JavaScript
+        if ($success && $redirect) {
+            header("location: " . $redirect);
+            exit();
+        } else {
+            echo '<script>alert("' . addslashes($message) . '"); window.location = "../SinLogin.php";</script>';
+            exit();
+        }
+    }
+}
+
 $nombre_usuario = $_POST["nombre_usuario"];
 $correo = $_POST["correo"];
 $clave = $_POST["clave"];
+$nombre_completo = isset($_POST["nombre_completo"]) ? trim($_POST["nombre_completo"]) : '';
 $institucion = isset($_POST["institucion"]) ? trim($_POST["institucion"]) : '';
 $rol_id = 2;
+
+// Validar nombre completo
+if (empty($nombre_completo)) {
+    responder(false, "El nombre completo es requerido");
+}
+
+// Validar institución
+if (empty($institucion)) {
+    responder(false, "La institución es requerida");
+}
 
 // Validar reCAPTCHA si está configurado
 if (defined('RECAPTCHA_SECRET_KEY') && RECAPTCHA_SECRET_KEY !== 'tu_secret_key_aqui') {
     $recaptcha_response = isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : '';
 
     if (empty($recaptcha_response)) {
-        echo'
-            <script>
-                alert("Por favor completa el captcha");
-                window.location = "../SinLogin.php"
-            </script>
-        ';
-        exit();
+        responder(false, "Por favor completa el captcha");
     }
 
     // Verificar con la API de Google
@@ -45,13 +78,7 @@ if (defined('RECAPTCHA_SECRET_KEY') && RECAPTCHA_SECRET_KEY !== 'tu_secret_key_a
     $response_data = json_decode($verify_response);
 
     if (!$response_data->success) {
-        echo'
-            <script>
-                alert("Verificacion de captcha fallida. Intente nuevamente.");
-                window.location = "../SinLogin.php"
-            </script>
-        ';
-        exit();
+        responder(false, "Verificación de captcha fallida. Intente nuevamente.");
     }
 }
 
@@ -60,25 +87,13 @@ $clave = hash('sha512', $clave);
 $verificarCr = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo' ");
 
 if(mysqli_num_rows($verificarCr) > 0){
-    echo'
-        <script>
-            alert("Correo ya registrado, pruebe uno distinto");
-            window.location = "../SinLogin.php"
-        </script>
-    ';
-    exit();
+    responder(false, "Correo ya registrado, pruebe uno distinto");
 }
 
 $verificarUsr = mysqli_query($conexion, "SELECT * FROM usuarios WHERE nombre_usuario='$nombre_usuario' ");
 
 if(mysqli_num_rows($verificarUsr) > 0){
-    echo'
-        <script>
-            alert("Nombre de Usuario ya registrado, pruebe uno distinto");
-            window.location = "../SinLogin.php"
-        </script>
-    ';
-    exit();
+    responder(false, "Nombre de usuario ya registrado, pruebe uno distinto");
 }
 
 // Generar token de confirmación
@@ -96,12 +111,13 @@ try {
     // Escapar valores para prevenir problemas con caracteres especiales
     $nombre_usuario_escaped = mysqli_real_escape_string($conexion, $nombre_usuario);
     $correo_escaped = mysqli_real_escape_string($conexion, $correo);
+    $nombre_completo_escaped = mysqli_real_escape_string($conexion, $nombre_completo);
     $institucion_escaped = mysqli_real_escape_string($conexion, $institucion);
     $token_escaped = mysqli_real_escape_string($conexion, $token);
 
     // Insertar usuario con activo=0 y token de confirmación
-    $query2 = "INSERT INTO usuarios(id, nombre_usuario, correo, clave, rol_id, activo, token_confirmacion, token_expira, institucion)
-               VALUES('$id_perfil', '$nombre_usuario_escaped', '$correo_escaped', '$clave', '$rol_id', 0, '$token_escaped', '$token_expira', '$institucion_escaped')";
+    $query2 = "INSERT INTO usuarios(id, nombre_usuario, nombre_completo, correo, clave, rol_id, activo, token_confirmacion, token_expira, institucion)
+               VALUES('$id_perfil', '$nombre_usuario_escaped', '$nombre_completo_escaped', '$correo_escaped', '$clave', '$rol_id', 0, '$token_escaped', '$token_expira', '$institucion_escaped')";
     mysqli_query($conexion, $query2);
 
     // Enviar correo de confirmación
@@ -114,22 +130,16 @@ try {
 
     mysqli_commit($conexion);
 
-    // Redirigir a página de confirmación pendiente
-    header("location: ../confirmacion_pendiente.php?email=" . urlencode($correo));
-    exit();
+    // Responder con éxito
+    $redirect_url = "../confirmacion_pendiente.php?email=" . urlencode($correo);
+    responder(true, "Registro exitoso. Redirigiendo...", $redirect_url);
 
 } catch (mysqli_sql_exception $e) {
     mysqli_rollback($conexion);
-    echo "Error en la consulta SQL: " . mysqli_error($conexion);
+    responder(false, "Error en el registro. Por favor, intente nuevamente.");
 } catch (Exception $e) {
     mysqli_rollback($conexion);
-
-    echo'
-        <script>
-            alert("Error al procesar el registro. Por favor, intente nuevamente.");
-            window.location = "../SinLogin.php"
-        </script>
-       ';
+    responder(false, "Error al procesar el registro. Por favor, intente nuevamente.");
 }
 
 mysqli_close($conexion);
