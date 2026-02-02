@@ -67,6 +67,8 @@
 
 <?php include 'header_info.php'; ?>
 
+<?php include 'modal_iniciar.php'; ?>
+
 <!-- Menu -->
 <?php include 'main_menu.php'; ?>
 
