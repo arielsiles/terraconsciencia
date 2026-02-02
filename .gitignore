@@ -10,11 +10,15 @@
 *.bak
 /PHP/config.php
 PHP/conexionBe.php
+PHP/config_email.php
 /.idea/inspectionProfiles/Project_Default.xml
 
 /PURISKIRI/
 
 .htaccess
+.user.ini
+info.php
 error_log
 /images/
+/tmp/
 

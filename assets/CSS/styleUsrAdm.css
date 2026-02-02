@@ -1,0 +1,129 @@
+/*
+ * Usuarios Admin - Estilos personalizados
+ * Gestión de usuarios para administradores
+ * Terra ConsCiencia - 2024
+ */
+
+/* ========== VARIABLES PERSONALIZADAS ========== */
+:root {
+    --usr-primary: #5bc1ac;
+    --usr-secondary: #FF6600;
+    --usr-green-dark: #3d9c89;
+}
+
+/* ========== TABLA DE USUARIOS ========== */
+.table-usuarios {
+    width: 100%;
+}
+
+.table-usuarios th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.table-usuarios td {
+    vertical-align: middle;
+}
+
+.table-usuarios .usuario-info {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table-usuarios .col-fecha {
+    width: 90px;
+    white-space: nowrap;
+}
+
+/* ========== BADGES DE ESTADO ========== */
+.badge-activo {
+    background-color: #198754 !important;
+}
+
+.badge-inactivo {
+    background-color: #dc3545 !important;
+}
+
+.badge-admin {
+    background-color: #0d6efd !important;
+}
+
+.badge-usuario {
+    background-color: #6c757d !important;
+}
+
+/* ========== ICONOS DE ESTADO ========== */
+.btn-estado-activo {
+    color: #198754 !important;
+    pointer-events: none;
+    background: transparent !important;
+    border: none !important;
+}
+
+.btn-estado-inactivo {
+    color: #dc3545 !important;
+    pointer-events: none;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* ========== FILTROS ========== */
+.filtros-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.08);
+}
+
+/* ========== BOTONES DE ACCION ========== */
+.btn-accion {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.btn-accion i {
+    width: 16px;
+    text-align: center;
+}
+
+/* ========== PAGINACION ========== */
+.pagination .page-link {
+    color: var(--usr-primary);
+    border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--usr-primary);
+    border-color: var(--usr-primary);
+}
+
+.pagination .page-link:hover {
+    color: var(--usr-green-dark);
+    background-color: #e9ecef;
+}
+
+/* ========== INFO DE PAGINACION ========== */
+.pagination-info {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .filtros-container {
+        padding: 15px;
+    }
+
+    .table-usuarios {
+        font-size: 0.875rem;
+    }
+
+    .btn-accion {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+    }
+}

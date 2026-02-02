@@ -9,10 +9,10 @@
                 <form action="PHP/loginUsuarioBe.php" method="POST" class="sign-in-form">
                     <div class="mb-3">
                         <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo htmlspecialchars($config['default_user']); ?>">
+                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" value="<?php echo isset($config['default_user']) ? htmlspecialchars($config['default_user']) : ''; ?>">
                     </div>
                     <div class="mb-3"> <label for="clave" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="clave" name="clave" value="<?php echo htmlspecialchars($config['default_password']); ?>">
+                        <input type="password" class="form-control" id="clave" name="clave" value="<?php echo isset($config['default_password']) ? htmlspecialchars($config['default_password']) : ''; ?>">
                     </div>
                     <button type="submit" class="custom-btn">Iniciar Sesión</button>
                 </form>
