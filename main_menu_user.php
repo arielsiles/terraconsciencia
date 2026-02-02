@@ -43,6 +43,7 @@
                         <li><a class="dropdown-item" href="SubirPublicacion.php">Publicaciones</a></li>
                         <li><a class="dropdown-item" href="EdicionTrivias.php">Trivias</a></li>
                         <li><a class="dropdown-item" href="PuriskiriAdm.php">PURISKIRI</a></li>
+                        <li><a class="dropdown-item" href="UsuariosAdm.php">Usuarios</a></li>
                     </ul>
                 </li>
                 <?php } ?>

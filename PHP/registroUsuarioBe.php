@@ -32,12 +32,55 @@ function responder($success, $message, $redirect = null) {
     }
 }
 
-$nombre_usuario = $_POST["nombre_usuario"];
+// Función para validar contraseña
+function validarContrasena($clave) {
+    $errores = [];
+
+    if (strlen($clave) < 8) {
+        $errores[] = 'mínimo 8 caracteres';
+    }
+    if (!preg_match('/[A-Z]/', $clave)) {
+        $errores[] = 'al menos una mayúscula';
+    }
+    if (!preg_match('/[a-z]/', $clave)) {
+        $errores[] = 'al menos una minúscula';
+    }
+    if (!preg_match('/[0-9]/', $clave)) {
+        $errores[] = 'al menos un número';
+    }
+
+    return $errores;
+}
+
+// Función para validar nombre de usuario
+function validarNombreUsuario($nombre) {
+    $errores = [];
+
+    if (strlen($nombre) < 3) {
+        $errores[] = 'mínimo 3 caracteres';
+    }
+    if (strlen($nombre) > 20) {
+        $errores[] = 'máximo 20 caracteres';
+    }
+    if (!preg_match('/^[a-z0-9]+$/', $nombre)) {
+        $errores[] = 'solo letras minúsculas y números';
+    }
+
+    return $errores;
+}
+
+$nombre_usuario = strtolower(trim($_POST["nombre_usuario"]));
 $correo = $_POST["correo"];
 $clave = $_POST["clave"];
 $nombre_completo = isset($_POST["nombre_completo"]) ? trim($_POST["nombre_completo"]) : '';
 $institucion = isset($_POST["institucion"]) ? trim($_POST["institucion"]) : '';
 $rol_id = 2;
+
+// Validar nombre de usuario
+$erroresUsername = validarNombreUsuario($nombre_usuario);
+if (!empty($erroresUsername)) {
+    responder(false, "El nombre de usuario debe tener: " . implode(', ', $erroresUsername));
+}
 
 // Validar nombre completo
 if (empty($nombre_completo)) {
@@ -47,6 +90,12 @@ if (empty($nombre_completo)) {
 // Validar institución
 if (empty($institucion)) {
     responder(false, "La institución es requerida");
+}
+
+// Validar contraseña
+$erroresPassword = validarContrasena($clave);
+if (!empty($erroresPassword)) {
+    responder(false, "La contraseña debe tener: " . implode(', ', $erroresPassword));
 }
 
 // Validar reCAPTCHA si está configurado
@@ -124,14 +173,15 @@ try {
     $resultadoEmail = enviarCorreoConfirmacion($correo, $nombre_usuario, $token);
 
     if (!$resultadoEmail['success']) {
-        // Si falla el envío del email, hacer rollback
-        throw new Exception("Error al enviar correo de confirmación: " . $resultadoEmail['message']);
+        // Si falla el envío del email, hacer rollback y mostrar error específico
+        mysqli_rollback($conexion);
+        responder(false, "Error de correo: " . $resultadoEmail['message'] . ". Contacte al administrador.");
     }
 
     mysqli_commit($conexion);
 
     // Responder con éxito
-    $redirect_url = "../confirmacion_pendiente.php?email=" . urlencode($correo);
+    $redirect_url = "confirmacion_pendiente.php?email=" . urlencode($correo);
     responder(true, "Registro exitoso. Redirigiendo...", $redirect_url);
 
 } catch (mysqli_sql_exception $e) {
